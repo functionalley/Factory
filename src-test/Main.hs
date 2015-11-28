@@ -24,7 +24,6 @@
 
 module Main(main) where
 
-import			Control.Arrow((***))
 import qualified	Control.Monad
 import qualified	Factory.Test.QuickCheck.ArithmeticGeometricMean	as Test.QuickCheck.ArithmeticGeometricMean
 import qualified	Factory.Test.QuickCheck.Factorial		as Test.QuickCheck.Factorial
@@ -49,28 +48,24 @@ import qualified	ToolShed.Test.QuickCheck.Result
 -- | Entry-point.
 main :: IO ()
 main	= mapM_ (
-	snd {-exit-status-} . (
-		putStrLn . (++ ":") *** (
-			>>= (`Control.Monad.unless` System.Exit.exitFailure) . all ToolShed.Test.QuickCheck.Result.isSuccessful
-		)
-	)
+	(`Control.Monad.unless` System.Exit.exitFailure) . all ToolShed.Test.QuickCheck.Result.isSuccessful =<<
  ) [
-	("ArithmeticGeometricMean",	Test.QuickCheck.ArithmeticGeometricMean.results),
-	("Factorial",			Test.QuickCheck.Factorial.results),
-	("Hyperoperation",		Test.QuickCheck.Hyperoperation.results),
-	("Interval",			Test.QuickCheck.Interval.results),
-	("MonicPolynomial",		Test.QuickCheck.MonicPolynomial.results),
-	("PerfectPower",		Test.QuickCheck.PerfectPower.results),
-	("Pi",				Test.QuickCheck.Pi.results),
-	("Polynomial",			Test.QuickCheck.Polynomial.results),
-	("Power",			Test.QuickCheck.Power.results),
-	("Primality",			Test.QuickCheck.Primality.results),
-	("PrimeFactorisation",		Test.QuickCheck.PrimeFactorisation.results),
-	("Primes",			Test.QuickCheck.Primes.results),
-	("Probability",			Test.QuickCheck.Probability.results),
-	("Radix",			Test.QuickCheck.Radix.results),
-	("SquareRoot",			Test.QuickCheck.SquareRoot.results),
-	("Statistics",			Test.QuickCheck.Statistics.results),
-	("Summation",			Test.QuickCheck.Summation.results)
+	Test.QuickCheck.ArithmeticGeometricMean.results,
+	Test.QuickCheck.Factorial.results,
+	Test.QuickCheck.Hyperoperation.results,
+	Test.QuickCheck.Interval.results,
+	Test.QuickCheck.MonicPolynomial.results,
+	Test.QuickCheck.PerfectPower.results,
+	Test.QuickCheck.Pi.results,
+	Test.QuickCheck.Polynomial.results,
+	Test.QuickCheck.Power.results,
+	Test.QuickCheck.Primality.results,
+	Test.QuickCheck.PrimeFactorisation.results,
+	Test.QuickCheck.Primes.results,
+	Test.QuickCheck.Probability.results,
+	Test.QuickCheck.Radix.results,
+	Test.QuickCheck.SquareRoot.results,
+	Test.QuickCheck.Statistics.results,
+	Test.QuickCheck.Summation.results
  ]
 
