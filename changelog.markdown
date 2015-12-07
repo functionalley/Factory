@@ -139,4 +139,5 @@ and added the functions; `Factory.Data.Interval.precisely`, `Factory.Data.Interv
 * Reverted to calling "**error**" rather than "**Control.Monad.fail**", since the **String**-argument for the latter is discarded in **Monad**-implementations other than **IO**.
 * Uploaded to [GitHub](https://github.com/functionalley/Factory.git).
 * Simplified file **src-test/Main.hs**.
-* Added **.travis.yml** to control testing by <https://docs.travis-ci.com>.
+* Added file **.travis.yml** to control testing by <https://docs.travis-ci.com>.
+* Added file **.ghci**.
