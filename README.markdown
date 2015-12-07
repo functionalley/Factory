@@ -1,5 +1,7 @@
 # **Factory**
 
+[![Hackage](https://img.shields.io/hackage/v/factory.svg)](https://hackage.haskell.org/package/factory)
+
 This is "**Factory**", a library of number-theory functions.
 
 ## Installation
