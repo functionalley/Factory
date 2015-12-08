@@ -1,5 +1,5 @@
 {-
-	Copyright (C) 2011 Dr. Alistair Ward
+	Copyright (C) 2011-2015 Dr. Alistair Ward
 
 	This program is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
@@ -34,6 +34,7 @@ module Factory.Math.Implementations.Primes.Algorithm(
 	Algorithm(..)
 ) where
 
+import qualified	Data.Default
 import qualified	Data.Numbers.Primes
 import qualified	Factory.Data.PrimeWheel					as Data.PrimeWheel
 import qualified	Factory.Math.Implementations.Primes.SieveOfAtkin	as Math.Implementations.Primes.SieveOfAtkin
@@ -41,7 +42,6 @@ import qualified	Factory.Math.Implementations.Primes.SieveOfEratosthenes	as Math
 import qualified	Factory.Math.Implementations.Primes.TrialDivision	as Math.Implementations.Primes.TrialDivision
 import qualified	Factory.Math.Implementations.Primes.TurnersSieve	as Math.Implementations.Primes.TurnersSieve
 import qualified	Factory.Math.Primes					as Math.Primes
-import qualified	ToolShed.Defaultable
 
 -- | The implemented methods by which the primes may be generated.
 data Algorithm
@@ -52,8 +52,8 @@ data Algorithm
 	| WheelSieve Int					-- ^ 'Data.Numbers.Primes.wheelSieve'.
 	deriving (Eq, Read, Show)
 
-instance ToolShed.Defaultable.Defaultable Algorithm	where
-	defaultValue	= SieveOfEratosthenes 7	-- Resulting in a wheel of circumference 510510.
+instance Data.Default.Default Algorithm	where
+	def	= SieveOfEratosthenes 7	-- Resulting in a wheel of circumference 510510.
 
 instance Math.Primes.Algorithmic Algorithm	where
 	primes (SieveOfAtkin maxPrime)		= Math.Implementations.Primes.SieveOfAtkin.sieveOfAtkin (Data.PrimeWheel.estimateOptimalSize maxPrime) $ fromIntegral maxPrime

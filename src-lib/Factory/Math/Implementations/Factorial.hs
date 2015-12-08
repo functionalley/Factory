@@ -1,5 +1,5 @@
 {-
-	Copyright (C) 2011 Dr. Alistair Ward
+	Copyright (C) 2011-2015 Dr. Alistair Ward
 
 	This program is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
@@ -44,22 +44,22 @@ module Factory.Math.Implementations.Factorial(
 	(!/!)
 ) where
 
+import qualified	Data.Default
 import qualified	Data.Numbers.Primes
 import qualified	Factory.Data.Interval		as Data.Interval
 import qualified	Factory.Data.PrimeFactors	as Data.PrimeFactors
 import qualified	Factory.Math.Factorial		as Math.Factorial
-import qualified	ToolShed.Defaultable
 
 infixl 7 !/!	-- Same as (/).
 
 -- | The algorithms by which /factorial/ has been implemented.
-data Algorithm	=
-	Bisection		-- ^ The integers from which the /factorial/ is composed, are multiplied using @Data.Interval.product'@.
+data Algorithm
+	= Bisection		-- ^ The integers from which the /factorial/ is composed, are multiplied using @Data.Interval.product'@.
 	| PrimeFactorisation	-- ^ The /prime factors/ of the /factorial/ are extracted, then raised to the appropriate power, before multiplication.
 	deriving (Eq, Read, Show)
 
-instance ToolShed.Defaultable.Defaultable Algorithm	where
-	defaultValue	= Bisection
+instance Data.Default.Default Algorithm	where
+	def	= Bisection
 
 instance Math.Factorial.Algorithmic Algorithm	where
 	factorial algorithm n
@@ -130,8 +130,8 @@ fallingFactorial x n	= Data.Interval.product' (recip 2) 64 $ Data.Interval.norma
 	-> i	-- ^ The /denominator/.
 	-> f	-- ^ The resulting fraction.
 numerator !/! denominator
-	| numerator <= 1		= recip . fromIntegral $ Math.Factorial.factorial (ToolShed.Defaultable.defaultValue :: Algorithm) denominator
-	| denominator <= 1		= fromIntegral $ Math.Factorial.factorial (ToolShed.Defaultable.defaultValue :: Algorithm) numerator
+	| numerator <= 1		= recip . fromIntegral $ Math.Factorial.factorial (Data.Default.def :: Algorithm) denominator
+	| denominator <= 1		= fromIntegral $ Math.Factorial.factorial (Data.Default.def :: Algorithm) numerator
 	| numerator == denominator	= 1
 	| numerator < denominator	= recip $ denominator !/! numerator	-- Recurse.
 	| otherwise			= fromIntegral $ Data.Interval.product' (recip 2) 64 (succ denominator, numerator)

@@ -1,5 +1,5 @@
 {-
-	Copyright (C) 2011-2013 Dr. Alistair Ward
+	Copyright (C) 2011-2015 Dr. Alistair Ward
 
 	This program is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
@@ -26,6 +26,7 @@
 
 module Main(main) where
 
+import qualified	Data.Default
 import qualified	Data.Map
 import qualified	Data.List
 import qualified	Data.Version
@@ -56,7 +57,6 @@ import qualified	System.Info
 import qualified	System.IO
 import qualified	System.IO.Error
 import qualified	System.Random
-import qualified	ToolShed.Defaultable
 
 -- Local convenience definitions.
 type PrimalityAlgorithm		= Math.Implementations.Primality.Algorithm Math.Implementations.PrimeFactorisation.Algorithm
@@ -90,7 +90,7 @@ main	= do
 		optDescrList	= [
 --				 String	[String]					(G.ArgDescr CommandLineAction)												String
 			G.Option "?"	["help"]					(G.NoArg $ const printUsage)												"Display this help-text & then exit.",
-			G.Option ""	["verbose"]					(G.NoArg $ return {-to IO-monad-} . Test.CommandOptions.setVerbose)							("Provide additional information where available; default '" ++ show (Test.CommandOptions.verbose ToolShed.Defaultable.defaultValue) ++ "'."),
+			G.Option ""	["verbose"]					(G.NoArg $ return {-to IO-monad-} . Test.CommandOptions.setVerbose)							("Provide additional information where available; default '" ++ show (Test.CommandOptions.verbose Data.Default.def) ++ "'."),
 			G.Option ""	["version"]					(G.NoArg $ const printVersion)												"Print version-information & then exit.",
 			G.Option ""	["carmichaelNumbersPerformance"]		(carmichaelNumbersPerformance `G.ReqArg` "(Math.Implementations.Primality.Algorithm, Int)")				"Test the performance of 'Math.Primality.carmichaelNumbers'.",
 			G.Option ""	["factorialPerformance"]			(factorialPerformance `G.ReqArg` "(Math.Implementations.Factorial.Algorithm, Integer)")					"Test the performance of 'Math.Factorial.factorial'.",
@@ -125,7 +125,7 @@ main	= do
 
 				author, compiler :: String
 				author		= "Dr. Alistair Ward"
-				compiler	= System.Info.compilerName ++ "-" ++ Data.List.intercalate "." (map show $ Data.Version.versionBranch System.Info.compilerVersion)
+				compiler	= showString System.Info.compilerName . showChar '-' . Data.List.intercalate "." . map show $ Data.Version.versionBranch System.Info.compilerVersion
 
 			printUsage	= System.IO.hPutStrLn System.IO.stderr usageMessage	>> System.Exit.exitSuccess
 
@@ -236,6 +236,6 @@ main	= do
 
 --	G.getOpt :: G.ArgOrder CommandLineAction -> [G.OptDescr Action] -> [String] -> ([Action], [String], [String])
 	case G.getOpt G.RequireOrder optDescrList args of
-		(commandLineActions, _, [])	-> Data.List.foldl' (>>=) (return {-to IO-monad-} ToolShed.Defaultable.defaultValue) commandLineActions	>> System.Exit.exitSuccess
+		(commandLineActions, _, [])	-> Data.List.foldl' (>>=) (return {-to IO-monad-} Data.Default.def) commandLineActions	>> System.Exit.exitSuccess
 		(_, _, errors)			-> System.IO.Error.ioError . System.IO.Error.userError $ concat errors ++ usageMessage	-- Throw.
 

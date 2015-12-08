@@ -1,5 +1,5 @@
 {-
-	Copyright (C) 2011 Dr. Alistair Ward
+	Copyright (C) 2011-2015 Dr. Alistair Ward
 
 	This program is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
@@ -26,12 +26,12 @@ module Factory.Math.Implementations.Pi.Borwein.Algorithm(
 	Algorithm(..)
 ) where
 
+import qualified	Data.Default
 import qualified	Factory.Math.Factorial					as Math.Factorial
 import qualified	Factory.Math.Implementations.Pi.Borwein.Borwein1993	as Math.Implementations.Pi.Borwein.Borwein1993
 import qualified	Factory.Math.Implementations.Pi.Borwein.Implementation	as Math.Implementations.Pi.Borwein.Implementation
 import qualified	Factory.Math.Pi						as Math.Pi
 import qualified	Factory.Math.SquareRoot					as Math.SquareRoot
-import qualified	ToolShed.Defaultable
 
 {- |
 	* Define those /Borwein/-series which have been implemented.
@@ -43,10 +43,10 @@ data Algorithm squareRootAlgorithm factorialAlgorithm	=
 	deriving (Eq, Read, Show)
 
 instance (
-	ToolShed.Defaultable.Defaultable	squareRootAlgorithm,
-	ToolShed.Defaultable.Defaultable	factorialAlgorithm
- ) => ToolShed.Defaultable.Defaultable (Algorithm squareRootAlgorithm factorialAlgorithm)	where
-	defaultValue	= Borwein1993 ToolShed.Defaultable.defaultValue ToolShed.Defaultable.defaultValue
+	Data.Default.Default	squareRootAlgorithm,
+	Data.Default.Default	factorialAlgorithm
+ ) => Data.Default.Default (Algorithm squareRootAlgorithm factorialAlgorithm)	where
+	def	= Borwein1993 Data.Default.def Data.Default.def
 
 instance (
 	Math.SquareRoot.Algorithmic	squareRootAlgorithm,

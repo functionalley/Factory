@@ -1,5 +1,5 @@
 {-
-	Copyright (C) 2011 Dr. Alistair Ward
+	Copyright (C) 2011-2015 Dr. Alistair Ward
 
 	This program is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
@@ -26,16 +26,16 @@ module Factory.Math.Implementations.Pi.AGM.Algorithm(
 	Algorithm(..)
 ) where
 
+import qualified	Data.Default
 import qualified	Factory.Math.Implementations.Pi.AGM.BrentSalamin	as Math.Implementations.Pi.AGM.BrentSalamin
 import qualified	Factory.Math.Pi						as Math.Pi
 import qualified	Factory.Math.SquareRoot					as Math.SquareRoot
-import qualified	ToolShed.Defaultable
 
 -- | Defines the available algorithms.
 data Algorithm squareRootAlgorithm	= BrentSalamin squareRootAlgorithm	deriving (Eq, Read, Show)
 
-instance ToolShed.Defaultable.Defaultable squareRootAlgorithm => ToolShed.Defaultable.Defaultable (Algorithm squareRootAlgorithm)	where
-	defaultValue	= BrentSalamin ToolShed.Defaultable.defaultValue
+instance Data.Default.Default squareRootAlgorithm => Data.Default.Default (Algorithm squareRootAlgorithm)	where
+	def	= BrentSalamin Data.Default.def
 
 instance Math.SquareRoot.Algorithmic squareRootAlgorithm => Math.Pi.Algorithmic (Algorithm squareRootAlgorithm)	where
 	openR (BrentSalamin squareRootAlgorithm)	= Math.Implementations.Pi.AGM.BrentSalamin.openR squareRootAlgorithm

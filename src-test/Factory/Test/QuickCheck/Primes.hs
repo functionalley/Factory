@@ -31,6 +31,7 @@ module Factory.Test.QuickCheck.Primes(
 ) where
 
 import qualified	Control.DeepSeq
+import qualified	Data.Default
 import qualified	Data.Set
 import qualified	Factory.Data.PrimeWheel				as Data.PrimeWheel
 import qualified	Factory.Math.Implementations.Primality		as Math.Implementations.Primality
@@ -40,7 +41,6 @@ import qualified	Factory.Math.Primality				as Math.Primality
 import qualified	Factory.Math.Primes				as Math.Primes
 import qualified	Test.QuickCheck
 import			Test.QuickCheck((==>))
-import qualified	ToolShed.Defaultable
 
 instance Test.QuickCheck.Arbitrary Math.Implementations.Primes.Algorithm.Algorithm	where
 	arbitrary	= Test.QuickCheck.oneof [
@@ -52,7 +52,7 @@ instance Test.QuickCheck.Arbitrary Math.Implementations.Primes.Algorithm.Algorit
 isPrime :: (Control.DeepSeq.NFData i, Integral i, Show i) => i -> Bool
 isPrime	= Math.Primality.isPrime primalityAlgorithm	where
 	primalityAlgorithm :: Math.Implementations.Primality.Algorithm Math.Implementations.PrimeFactorisation.Algorithm
-	primalityAlgorithm	= ToolShed.Defaultable.defaultValue
+	primalityAlgorithm	= Data.Default.def
 
 upperBound :: Math.Implementations.Primes.Algorithm.Algorithm -> Int -> Int
 upperBound algorithm i	= mod i $ if algorithm == Math.Implementations.Primes.Algorithm.TurnersSieve
@@ -60,7 +60,7 @@ upperBound algorithm i	= mod i $ if algorithm == Math.Implementations.Primes.Alg
 	else 65536
 
 defaultAlgorithm :: Math.Implementations.Primes.Algorithm.Algorithm
-defaultAlgorithm	= ToolShed.Defaultable.defaultValue
+defaultAlgorithm	= Data.Default.def
 
 -- | The constant test-results for this data-type.
 results :: IO [Test.QuickCheck.Result]

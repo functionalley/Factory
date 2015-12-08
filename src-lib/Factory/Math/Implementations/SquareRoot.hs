@@ -1,5 +1,5 @@
 {-
-	Copyright (C) 2011 Dr. Alistair Ward
+	Copyright (C) 2011-2015 Dr. Alistair Ward
 
 	This program is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
@@ -39,6 +39,7 @@ module Factory.Math.Implementations.SquareRoot(
 ) where
 
 import			Control.Arrow((***))
+import qualified	Data.Default
 import			Factory.Data.PrimeFactors((>/<), (>^))
 import qualified	Factory.Data.PrimeFactors		as Data.PrimeFactors
 import qualified	Factory.Math.Implementations.Factorial	as Math.Implementations.Factorial
@@ -46,7 +47,6 @@ import qualified	Factory.Math.Power			as Math.Power
 import qualified	Factory.Math.Precision			as Math.Precision
 import qualified	Factory.Math.SquareRoot			as Math.SquareRoot
 import qualified	Factory.Math.Summation			as Math.Summation
-import qualified	ToolShed.Defaultable
 
 -- | The number of terms in a series.
 type Terms	= Int
@@ -60,8 +60,8 @@ data Algorithm
 	| TaylorSeries Terms		-- ^ <http://en.wikipedia.org/wiki/Methods_of_computing_square_roots#Taylor_series>.
 	deriving (Eq, Read, Show)
 
-instance ToolShed.Defaultable.Defaultable Algorithm	where
-	defaultValue	= NewtonRaphsonIteration
+instance Data.Default.Default Algorithm	where
+	def	= NewtonRaphsonIteration
 
 -- | Returns an improved estimate for the /square-root/ of the specified value, to the required precision, using the supplied initial estimate..
 type ProblemSpecification operand

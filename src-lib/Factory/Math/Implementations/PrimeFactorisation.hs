@@ -1,5 +1,5 @@
 {-
-	Copyright (C) 2011 Dr. Alistair Ward
+	Copyright (C) 2011-2015 Dr. Alistair Ward
 
 	This program is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
@@ -42,6 +42,7 @@ import			Control.Arrow((&&&))
 import qualified	Control.Arrow
 import qualified	Control.DeepSeq
 import qualified	Control.Parallel.Strategies
+import qualified	Data.Default
 import qualified	Data.Maybe
 import qualified	Data.Numbers.Primes
 import qualified	Factory.Data.Exponential	as Data.Exponential
@@ -51,7 +52,6 @@ import qualified	Factory.Math.PerfectPower	as Math.PerfectPower
 import qualified	Factory.Math.Power		as Math.Power
 import qualified	Factory.Math.PrimeFactorisation	as Math.PrimeFactorisation
 import qualified	ToolShed.Data.Pair
-import qualified	ToolShed.Defaultable
 
 -- | The algorithms by which prime-factorisation has been implemented.
 data Algorithm
@@ -60,8 +60,8 @@ data Algorithm
 	| TrialDivision	-- ^ <http://en.wikipedia.org/wiki/Trial_division>.
 	deriving (Eq, Read, Show)
 
-instance ToolShed.Defaultable.Defaultable Algorithm	where
-	defaultValue	= TrialDivision
+instance Data.Default.Default Algorithm	where
+	def	= TrialDivision
 
 instance Math.PrimeFactorisation.Algorithmic Algorithm	where
 	primeFactors algorithm	= case algorithm of

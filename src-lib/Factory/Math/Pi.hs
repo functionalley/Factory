@@ -1,5 +1,5 @@
 {-
-	Copyright (C) 2011 Dr. Alistair Ward
+	Copyright (C) 2011-2015 Dr. Alistair Ward
 
 	This program is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
@@ -28,8 +28,8 @@ module Factory.Math.Pi(
 	Category(..)
 ) where
 
+import qualified	Data.Default
 import qualified	Factory.Math.Precision	as Math.Precision
-import qualified	ToolShed.Defaultable
 
 {- |
 	* Defines the methods expected of a /Pi/-algorithm.
@@ -65,13 +65,13 @@ data Category agm bbp borwein ramanujan spigot
 	deriving (Eq, Read, Show)
 
 instance (
-	ToolShed.Defaultable.Defaultable agm,
-	ToolShed.Defaultable.Defaultable bbp,
-	ToolShed.Defaultable.Defaultable borwein,
-	ToolShed.Defaultable.Defaultable ramanujan,
-	ToolShed.Defaultable.Defaultable spigot
- )  => ToolShed.Defaultable.Defaultable (Category agm bbp borwein ramanujan spigot)	where
-	defaultValue	= BBP ToolShed.Defaultable.defaultValue
+	Data.Default.Default agm,
+	Data.Default.Default bbp,
+	Data.Default.Default borwein,
+	Data.Default.Default ramanujan,
+	Data.Default.Default spigot
+ )  => Data.Default.Default (Category agm bbp borwein ramanujan spigot)	where
+	def	= BBP Data.Default.def
 
 instance (
 	Algorithmic agm,

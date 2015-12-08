@@ -1,5 +1,5 @@
 {-
-	Copyright (C) 2011 Dr. Alistair Ward
+	Copyright (C) 2011-2015 Dr. Alistair Ward
 
 	This program is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
@@ -29,20 +29,19 @@ module Factory.Test.CommandOptions(
 	setVerbose
 ) where
 
-import qualified	ToolShed.Defaultable
+import qualified	Data.Default
 
 -- | Declare a record used to contain command-line options.
 data CommandOptions	= MkCommandOptions {
 	verbose	:: Bool	-- ^ Whether additional informative output should be generated, where applicable.
 }
 
-instance ToolShed.Defaultable.Defaultable CommandOptions	where
-	defaultValue	= MkCommandOptions { verbose = False }
+instance Data.Default.Default CommandOptions	where
+	def	= MkCommandOptions { verbose = False }
 
 -- | Mutator.
 setVerbose :: CommandOptions -> CommandOptions
 setVerbose commandOptions = commandOptions {
 	verbose	= True
 }
-
 

@@ -1,5 +1,5 @@
 {-
-	Copyright (C) 2011 Dr. Alistair Ward
+	Copyright (C) 2011-2015 Dr. Alistair Ward
 
 	This program is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
@@ -26,21 +26,21 @@ module Factory.Math.Implementations.Pi.Spigot.Algorithm(
 	Algorithm(..)
 ) where
 
+import qualified	Data.Default
 import			Data.Ratio((%))
 import qualified	Factory.Math.Implementations.Pi.Spigot.Gosper		as Math.Implementations.Pi.Spigot.Gosper
 import qualified	Factory.Math.Implementations.Pi.Spigot.RabinowitzWagon	as Math.Implementations.Pi.Spigot.RabinowitzWagon
 import qualified	Factory.Math.Implementations.Pi.Spigot.Spigot		as Math.Implementations.Pi.Spigot.Spigot
 import qualified	Factory.Math.Pi						as Math.Pi
-import qualified	ToolShed.Defaultable
 
 -- | Define those /Spigot/-algorithms which have been implemented.
-data Algorithm	=
-	Gosper			-- ^ A /continued fraction/ discovered by /Gosper/.
+data Algorithm
+	= Gosper		-- ^ A /continued fraction/ discovered by /Gosper/.
 	| RabinowitzWagon	-- ^ A /continued fraction/ discovered by /Rabinowitz/ and /Wagon/.
 	deriving (Eq, Read, Show)
 
-instance ToolShed.Defaultable.Defaultable Algorithm	where
-	defaultValue	= Gosper
+instance Data.Default.Default Algorithm	where
+	def	= Gosper
 
 instance Math.Pi.Algorithmic Algorithm	where
 	openI Gosper			= Math.Implementations.Pi.Spigot.Spigot.openI Math.Implementations.Pi.Spigot.Gosper.series

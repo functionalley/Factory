@@ -1,5 +1,5 @@
 {-
-	Copyright (C) 2011 Dr. Alistair Ward
+	Copyright (C) 2011-2015 Dr. Alistair Ward
 
 	This program is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
@@ -42,6 +42,7 @@ module Factory.Math.Implementations.Primality(
 import			Control.Arrow((&&&))
 import qualified	Control.DeepSeq
 import qualified	Control.Parallel.Strategies
+import qualified	Data.Default
 import qualified	Data.Numbers.Primes
 import qualified	Factory.Data.MonicPolynomial		as Data.MonicPolynomial
 import qualified	Factory.Data.Polynomial			as Data.Polynomial
@@ -51,16 +52,15 @@ import qualified	Factory.Math.PerfectPower		as Math.PerfectPower
 import qualified	Factory.Math.Power			as Math.Power
 import qualified	Factory.Math.Primality			as Math.Primality
 import qualified	Factory.Math.PrimeFactorisation		as Math.PrimeFactorisation
-import qualified	ToolShed.Defaultable
 
 -- | The algorithms by which /primality/-testing has been implemented.
-data Algorithm factorisationAlgorithm	=
-	AKS factorisationAlgorithm	-- ^ <http://en.wikipedia.org/wiki/AKS_primality_test>.
+data Algorithm factorisationAlgorithm
+	= AKS factorisationAlgorithm	-- ^ <http://en.wikipedia.org/wiki/AKS_primality_test>.
 	| MillerRabin			-- ^ <http://en.wikipedia.org/wiki/Miller%E2%80%93Rabin_primality_test>.
 	deriving (Eq, Read, Show)
 
-instance ToolShed.Defaultable.Defaultable (Algorithm factorisationAlgorithm)	where
-	defaultValue	= MillerRabin
+instance Data.Default.Default (Algorithm factorisationAlgorithm)	where
+	def	= MillerRabin
 
 instance Math.PrimeFactorisation.Algorithmic factorisationAlgorithm => Math.Primality.Algorithmic (Algorithm factorisationAlgorithm)	where
 	isPrime _ 2	= True	-- The only even prime.

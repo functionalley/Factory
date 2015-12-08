@@ -134,10 +134,11 @@ and added the functions; `Factory.Data.Interval.precisely`, `Factory.Data.Interv
 * Partitioned the source-files into directories "**src-lib**", "**src-exe**", & "**src-test**", & referenced them individually from the *.cabal*-file to avoid repeated compilation.
 * Used **CPP** to control the import of symbols from **Control.Applicative**.
 
-## 0.2.1.3
+## 0.2.2.0
 * Corrected the markdown-syntax in this file.
 * Reverted to calling "**error**" rather than "**Control.Monad.fail**", since the **String**-argument for the latter is discarded in **Monad**-implementations other than **IO**.
 * Uploaded to [GitHub](https://github.com/functionalley/Factory.git).
 * Simplified file **src-test/Main.hs**.
 * Added file **.travis.yml** to control testing by <https://docs.travis-ci.com>.
 * Added file **.ghci**.
+* Replaced use of module **ToolShed.Defaultable** with **Data.Default**.

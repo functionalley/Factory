@@ -1,5 +1,5 @@
 {-
-	Copyright (C) 2011 Dr. Alistair Ward
+	Copyright (C) 2011-2015 Dr. Alistair Ward
 
 	This program is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
@@ -26,11 +26,11 @@ module Factory.Math.Implementations.Pi.BBP.Algorithm(
 	Algorithm(..)
 ) where
 
+import qualified	Data.Default
 import qualified	Factory.Math.Implementations.Pi.BBP.Base65536		as Math.Implementations.Pi.BBP.Base65536
 import qualified	Factory.Math.Implementations.Pi.BBP.Bellard		as Math.Implementations.Pi.BBP.Bellard
 import qualified	Factory.Math.Implementations.Pi.BBP.Implementation	as Math.Implementations.Pi.BBP.Implementation
 import qualified	Factory.Math.Pi						as Math.Pi
-import qualified	ToolShed.Defaultable
 
 -- | Defines those /BBP/-type series which have been implemented.
 data Algorithm	=
@@ -38,8 +38,8 @@ data Algorithm	=
 	| Bellard	-- ^ A /nega-base/ @2^10@ version of the formula.
 	deriving (Eq, Read, Show)
 
-instance ToolShed.Defaultable.Defaultable Algorithm	where
-	defaultValue	= Base65536
+instance Data.Default.Default Algorithm	where
+	def	= Base65536
 
 instance Math.Pi.Algorithmic Algorithm	where
 	openR Base65536	= Math.Implementations.Pi.BBP.Implementation.openR Math.Implementations.Pi.BBP.Base65536.series
