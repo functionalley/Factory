@@ -174,7 +174,7 @@ Executable factory
         if flag(llvm)
             GHC-options:	-fllvm
 
-Test-Suite quickCheck
+Test-Suite test
     Default-language:	Haskell2010
     GHC-options:	-Wall -fno-warn-tabs
     Hs-source-dirs:	src-test
