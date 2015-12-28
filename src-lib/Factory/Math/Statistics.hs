@@ -65,6 +65,8 @@ getMean foldable
 	* The specified value is only evaluated if the corresponding weight is non-zero.
 
 	* Should the caller define the result-type as 'Rational', then it will be free from rounding-errors.
+
+	* CAVEAT: because the operand isn't merely a list, no optimisation is performed when supplied a singleton.
 -}
 getWeightedMean :: (
 	Data.Foldable.Foldable	foldable,
@@ -80,7 +82,7 @@ getWeightedMean foldable
 	where
 		(numerator, denominator)	= Data.Foldable.foldr (
 			\(value, weight)	-> if weight == 0
-				then id	--Avoid unnecessarily evaluation.
+				then id	-- Avoid unnecessarily evaluation.
 				else (+ realToFrac value * realToFrac weight) *** (+ weight)
 		 ) (0, 0) foldable
 
