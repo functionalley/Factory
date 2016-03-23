@@ -142,3 +142,4 @@ and added the functions; `Factory.Data.Interval.precisely`, `Factory.Data.Interv
 * Added file **.travis.yml** to control testing by <https://docs.travis-ci.com>.
 * Added file **.ghci**.
 * Replaced use of module **ToolShed.Defaultable** with **Data.Default**.
+* Re-code **Factory.Test.QuickCheck.Statistics** to **Data.Array.IArray** rather than **Data.Array**.

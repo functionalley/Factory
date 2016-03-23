@@ -34,7 +34,7 @@ import qualified	Factory.Math.Precision			as Math.Precision
 import qualified	Factory.Math.SquareRoot			as Math.SquareRoot
 import qualified	Test.QuickCheck
 
-instance Test.QuickCheck.Arbitrary (Math.Implementations.SquareRoot.Algorithm)	where
+instance Test.QuickCheck.Arbitrary Math.Implementations.SquareRoot.Algorithm	where
 	arbitrary	= Test.QuickCheck.oneof [
 		Test.QuickCheck.elements [
 			Math.Implementations.SquareRoot.BakhshaliApproximation,

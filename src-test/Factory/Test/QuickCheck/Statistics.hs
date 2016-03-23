@@ -25,7 +25,7 @@ module Factory.Test.QuickCheck.Statistics(
 	results
 ) where
 
-import qualified	Data.Array
+import qualified	Data.Array.IArray
 import qualified	Data.List
 import qualified	Data.Map
 import qualified	Data.Numbers.Primes
@@ -94,7 +94,9 @@ results	= sequence [
 	prop_varianceScaled l		= not (null l)	==> Test.QuickCheck.label "prop_varianceScaled" $ (4 * Math.Statistics.getVariance l :: Rational) == Math.Statistics.getVariance (map (* 2) l)
 	prop_varianceOrder l		= not (null l)	==> Test.QuickCheck.label "prop_varianceOrder" $ Math.Statistics.getVariance l == (Math.Statistics.getVariance (reverse l) :: Rational)
 	prop_equivalence l		= not (null l)	==> Test.QuickCheck.label "prop_equivalence" $ Math.Statistics.getVariance l == Math.Statistics.getMean (map Math.Power.square l) - Math.Power.square (Math.Statistics.getMean l :: Rational)
-	prop_varianceOfArray l		= not (null l)	==> Test.QuickCheck.label "prop_varianceOfArray" $ Math.Statistics.getVariance (Data.Array.array (1, length l) $ zip [1 ..] l) == (Math.Statistics.getVariance l :: Rational)
+	prop_varianceOfArray l		= not (null l)	==> Test.QuickCheck.label "prop_varianceOfArray" $ Math.Statistics.getVariance (
+		Data.Array.IArray.array (1, length l) $ zip [1 ..] l :: Data.Array.IArray.Array Int Integer
+	 ) == (Math.Statistics.getVariance l :: Rational)
 	prop_varianceOfMap l		= not (null l)	==> Test.QuickCheck.label "prop_varianceOfMap" $ Math.Statistics.getVariance (Data.Map.fromList $ zip [0 :: Int ..] l) == (Math.Statistics.getVariance l :: Rational)
 	prop_meanOfSet l		= not (null l')	==> Test.QuickCheck.label "prop_meanOfSet" $ Math.Statistics.getMean (Data.Set.fromList l') == (Math.Statistics.getMean l' :: Rational)	where
 		l'	= Data.List.nub l
