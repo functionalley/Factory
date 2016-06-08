@@ -83,7 +83,9 @@ getWeightedMean foldable
 		(numerator, denominator)	= Data.Foldable.foldr (
 			\(value, weight)	-> if weight == 0
 				then id	-- Avoid unnecessarily evaluation.
-				else (+ realToFrac value * realToFrac weight) *** (+ weight)
+				else (
+					+ realToFrac value * realToFrac weight	-- Perform the arithmetic in the specified result-type.
+				) *** (+ weight)
 		 ) (0, 0) foldable
 
 {- |
