@@ -143,3 +143,4 @@ and added the functions; `Factory.Data.Interval.precisely`, `Factory.Data.Interv
 * Added file **.ghci**.
 * Replaced use of module **ToolShed.Defaultable** with **Data.Default**.
 * Re-code **Factory.Test.QuickCheck.Statistics** to **Data.Array.IArray** rather than **Data.Array**.
+* Added function **Factory.Math.Statistics.getRootMeanSquare**.

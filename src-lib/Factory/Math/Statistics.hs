@@ -23,6 +23,7 @@
 module Factory.Math.Statistics(
 -- * Functions
 	getMean,
+	getRootMeanSquare,
 	getWeightedMean,
 --	getDispersionFromMean,
 	getVariance,
@@ -42,7 +43,7 @@ import qualified	Factory.Math.Implementations.Factorial	as Math.Implementations.
 import qualified	Factory.Math.Power			as Math.Power
 
 {- |
-	* Determines the /mean/ of the specified numbers; <http://en.wikipedia.org/wiki/Mean>.
+	* Determines the /mean/ of the specified numbers; <https://en.wikipedia.org/wiki/Mean>.
 
 	* Should the caller define the result-type as 'Rational', then it will be free from rounding-errors.
 -}
@@ -59,8 +60,22 @@ getMean foldable
 	where
 		(numerator, denominator)	= Data.Foldable.foldr (\s -> (+ s) *** succ) (0, 0 :: Int) foldable
 
+-- | Determines the /root mean square/ of the specified numbers; <https://en.wikipedia.org/wiki/Root_mean_square>.
+getRootMeanSquare :: (
+	Data.Foldable.Foldable	foldable,
+	Floating		result,
+	Real			value
+ )
+	=> foldable value
+	-> result
+getRootMeanSquare foldable
+	| denominator == 0	= error "Factory.Math.Statistics.getRootMeanSquare:\tno data => undefined result."
+	| otherwise		= sqrt $ realToFrac numerator / fromIntegral denominator
+	where
+		(numerator, denominator)	= Data.Foldable.foldr (\s -> (+ Math.Power.square s) *** succ) (0, 0 :: Int) foldable
+
 {- |
-	* Determines the /weighted mean/ of the specified numbers; <http://en.wikipedia.org/wiki/Weighted_arithmetic_mean>.
+	* Determines the /weighted mean/ of the specified numbers; <https://en.wikipedia.org/wiki/Weighted_arithmetic_mean>.
 
 	* The specified value is only evaluated if the corresponding weight is non-zero.
 
@@ -89,7 +104,7 @@ getWeightedMean foldable
 		 ) (0, 0) foldable
 
 {- |
-	* Measures the /dispersion/ of a /population/ of results from the /mean/ value; <http://en.wikipedia.org/wiki/Statistical_dispersion>.
+	* Measures the /dispersion/ of a /population/ of results from the /mean/ value; <https://en.wikipedia.org/wiki/Statistical_dispersion>.
 
 	* Should the caller define the result-type as 'Rational', then it will be free from rounding-errors.
 -}
@@ -104,7 +119,7 @@ getDispersionFromMean weight foldable	= getMean $ fmap (weight . (+ negate mean)
 	mean	= getMean foldable
 
 {- |
-	* Determines the exact /variance/ of the specified numbers; <http://en.wikipedia.org/wiki/Variance>.
+	* Determines the exact /variance/ of the specified numbers; <https://en.wikipedia.org/wiki/Variance>.
 
 	* Should the caller define the result-type as 'Rational', then it will be free from rounding-errors.
 -}
@@ -116,7 +131,7 @@ getVariance :: (
  ) => foldable value -> variance
 getVariance	= getDispersionFromMean Math.Power.square
 
--- | Determines the /standard-deviation/ of the specified numbers; <http://en.wikipedia.org/wiki/Standard_deviation>.
+-- | Determines the /standard-deviation/ of the specified numbers; <https://en.wikipedia.org/wiki/Standard_deviation>.
 getStandardDeviation :: (
 	Data.Foldable.Foldable	foldable,
 	Floating		result,
@@ -126,7 +141,7 @@ getStandardDeviation :: (
 getStandardDeviation	= sqrt . getVariance
 
 {- |
-	* Determines the /average absolute deviation/ of the specified numbers; <http://en.wikipedia.org/wiki/Absolute_deviation#Average_absolute_deviation>.
+	* Determines the /average absolute deviation/ of the specified numbers; <https://en.wikipedia.org/wiki/Absolute_deviation#Average_absolute_deviation>.
 
 	* Should the caller define the result-type as 'Rational', then it will be free from rounding-errors.
 -}
@@ -138,7 +153,7 @@ getAverageAbsoluteDeviation :: (
  ) => foldable value -> result
 getAverageAbsoluteDeviation	= getDispersionFromMean abs
 
--- | Determines the /coefficient-of-variance/ of the specified numbers; <http://en.wikipedia.org/wiki/Coefficient_of_variation>.
+-- | Determines the /coefficient-of-variance/ of the specified numbers; <https://en.wikipedia.org/wiki/Coefficient_of_variation>.
 getCoefficientOfVariance :: (
 	Data.Foldable.Foldable	foldable,
 	Eq			result,
@@ -152,7 +167,7 @@ getCoefficientOfVariance l
 	where
 		mean	= getMean l
 
--- | The number of unordered /combinations/ of /r/ objects taken from /n/; <http://en.wikipedia.org/wiki/Combination>.
+-- | The number of unordered /combinations/ of /r/ objects taken from /n/; <https://en.wikipedia.org/wiki/Combination>.
 nCr :: (Math.Factorial.Algorithmic factorialAlgorithm, Integral i, Show i)
 	=> factorialAlgorithm
 	-> i	-- ^ The total number of items from which to select.
@@ -170,7 +185,7 @@ nCr factorialAlgorithm n r
 		numerator		= Math.Implementations.Factorial.risingFactorial (succ bigger) (n - bigger)
 		denominator		= Math.Factorial.factorial factorialAlgorithm smaller
 
--- | The number of /permutations/ of /r/ objects taken from /n/; <http://en.wikipedia.org/wiki/Permutations>.
+-- | The number of /permutations/ of /r/ objects taken from /n/; <https://en.wikipedia.org/wiki/Permutations>.
 nPr :: (Integral i, Show i)
 	=> i	-- ^ The total number of items from which to select.
 	-> i	-- ^ The number of items in a sample.
