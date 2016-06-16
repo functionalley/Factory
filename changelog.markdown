@@ -144,3 +144,4 @@ and added the functions; `Factory.Data.Interval.precisely`, `Factory.Data.Interv
 * Replaced use of module **ToolShed.Defaultable** with **Data.Default**.
 * Re-code **Factory.Test.QuickCheck.Statistics** to **Data.Array.IArray** rather than **Data.Array**.
 * Added functions **Factory.Math.Statistics.getRootMeanSquare** **Factory.Test.QuickCheck.Statistics.prop_rootMeanSquare**.
+* Added function **Factory.Test.QuickCheck.Statistics.prop_standardDeviationRMS**.

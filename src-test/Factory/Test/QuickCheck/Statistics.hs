@@ -40,6 +40,7 @@ import			Test.QuickCheck((==>))
 -- | The constant test-results for this data-type.
 results :: IO [Test.QuickCheck.Result]
 results	= sequence [
+	Test.QuickCheck.quickCheckResult prop_standardDeviationRMS,
 	Test.QuickCheck.quickCheckResult prop_nC0,
 	Test.QuickCheck.quickCheckResult prop_nC1,
 	Test.QuickCheck.quickCheckResult prop_sum,
@@ -127,5 +128,9 @@ results	= sequence [
 	 )
 
 	prop_rootMeanSquare :: [Rational] -> Test.QuickCheck.Property
-	prop_rootMeanSquare l		= not (null l)	==> Test.QuickCheck.label "prop_rootMeanSquare" $ Math.Statistics.getRootMeanSquare l == sqrt (Math.Statistics.getMean $ map Math.Power.square l :: Double)
+	prop_rootMeanSquare l	= not (null l)	==> Test.QuickCheck.label "prop_rootMeanSquare" $ Math.Statistics.getRootMeanSquare l == sqrt (Math.Statistics.getMean $ map Math.Power.square l :: Double)
+
+	prop_standardDeviationRMS :: [Rational] -> Test.QuickCheck.Property
+	prop_standardDeviationRMS l	= not (null l)	==> Test.QuickCheck.label "prop_standardDeviationRMS" $ Math.Statistics.getRootMeanSquare l' == (Math.Statistics.getStandardDeviation l' :: Double)	where
+		l'	= l ++ map negate l	-- Ensure mean == 0.
 
