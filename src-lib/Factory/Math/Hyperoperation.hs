@@ -17,7 +17,7 @@
 {- |
  [@AUTHOR@]	Dr. Alistair Ward
 
- [@DESCRIPTION@]	Provides various /hyperoperations/; <http://en.wikipedia.org/wiki/Hyperoperation>.
+ [@DESCRIPTION@]	Provides various /hyperoperations/; <https://en.wikipedia.org/wiki/Hyperoperation>.
 -}
 
 module Factory.Math.Hyperoperation(
@@ -64,7 +64,7 @@ succession, addition, multiplication, exponentiation, tetration, pentation, hexa
 	* Returns the /power-tower/ of the specified /base/; <http://mathworld.wolfram.com/PowerTower.html>.
 
 	* A synonym for /tetration/;
-		<http://en.wikipedia.org/wiki/Tetration>,
+		<https://en.wikipedia.org/wiki/Tetration>,
 		<http://www.tetration.org/Fractals/Atlas/index.html>.
 -}
 powerTower :: (Integral base, Integral hyperExponent, Show base) => base -> hyperExponent -> base
@@ -76,7 +76,7 @@ powerTower base hyperExponent
 	| base < 0 && hyperExponent > 1	= error $ "Factory.Math.Hyperoperation.powerTower:\tundefined for negative base; " ++ show base
 	| otherwise			= Data.List.genericIndex (iterate (base ^) 1) hyperExponent
 
--- | The /hyperoperation/-sequence; <http://en.wikipedia.org/wiki/Hyperoperation>.
+-- | The /hyperoperation/-sequence; <https://en.wikipedia.org/wiki/Hyperoperation>.
 hyperoperation :: (Integral rank, Show rank) => rank -> Base -> HyperExponent -> Base
 hyperoperation rank base hyperExponent
 	| rank < fromIntegral succession	= error $ "Factory.Math.Hyperoperation.hyperoperation:\tundefined for rank; " ++ show rank
@@ -100,7 +100,7 @@ hyperoperation rank base hyperExponent
 				where
 					e'	= {-fromIntegral $-} r ^# pred e
 
--- | The /Ackermann-Peter/-function; <http://en.wikipedia.org/wiki/Ackermann_function#Ackermann_numbers>.
+-- | The /Ackermann-Peter/-function; <https://en.wikipedia.org/wiki/Ackermann_function#Ackermann_numbers>.
 ackermannPeter :: (Integral rank, Show rank) => rank -> HyperExponent -> Base
 ackermannPeter rank	= (+ negate 3) . hyperoperation rank 2 {-base-} . (+ 3)
 

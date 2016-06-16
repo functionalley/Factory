@@ -21,7 +21,7 @@
 
 	* Determines whether an integer is prime.
 
-	* <http://en.wikipedia.org/wiki/Primality_test>.
+	* <https://en.wikipedia.org/wiki/Primality_test>.
 
 	* <http://primes.utm.edu/index.html>
 
@@ -55,8 +55,8 @@ import qualified	Factory.Math.PrimeFactorisation		as Math.PrimeFactorisation
 
 -- | The algorithms by which /primality/-testing has been implemented.
 data Algorithm factorisationAlgorithm
-	= AKS factorisationAlgorithm	-- ^ <http://en.wikipedia.org/wiki/AKS_primality_test>.
-	| MillerRabin			-- ^ <http://en.wikipedia.org/wiki/Miller%E2%80%93Rabin_primality_test>.
+	= AKS factorisationAlgorithm	-- ^ <https://en.wikipedia.org/wiki/AKS_primality_test>.
+	| MillerRabin			-- ^ <https://en.wikipedia.org/wiki/Miller%E2%80%93Rabin_primality_test>.
 	deriving (Eq, Read, Show)
 
 instance Data.Default.Default (Algorithm factorisationAlgorithm)	where
@@ -79,7 +79,7 @@ instance Math.PrimeFactorisation.Algorithmic factorisationAlgorithm => Math.Prim
 		) candidate
 
 {- |
-	* An implementation of the /Agrawal-Kayal-Saxena/ primality-test; <http://en.wikipedia.org/wiki/AKS_primality_test>,
+	* An implementation of the /Agrawal-Kayal-Saxena/ primality-test; <https://en.wikipedia.org/wiki/AKS_primality_test>,
 	using the /Lenstra/ and /Pomerance/ algorithm.
 
 	* CAVEAT: this deterministic algorithm has a theoretical time-complexity of @O(log^6)@,
@@ -174,7 +174,7 @@ witnessesCompositeness candidate oddRemainder nPowersOfTwo base	= all (
 
 	* A testing of smaller set of bases, is sufficient for candidates smaller than various thresholds; <http://primes.utm.edu/prove/prove2_3.html>.
 
-	* <http://en.wikipedia.org/wiki/Miller-Rabin_primality_test>.
+	* <https://en.wikipedia.org/wiki/Miller-Rabin_primality_test>.
 
 	* <http://mathworld.wolfram.com/Rabin-MillerStrongPseudoprimeTest.html>
 

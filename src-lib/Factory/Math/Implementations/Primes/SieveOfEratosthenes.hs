@@ -19,7 +19,7 @@
 
  [@DESCRIPTION@]
 
-	* Generates the constant, conceptually infinite, list of /prime-numbers/, using the /Sieve of Eratosthenes/; <http://en.wikipedia.org/wiki/Sieve_of_Eratosthenes>.
+	* Generates the constant, conceptually infinite, list of /prime-numbers/, using the /Sieve of Eratosthenes/; <https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes>.
 
 	* Based on <http://www.cs.hmc.edu/~oneill/papers/Sieve-JFP.pdf>.
 
@@ -79,7 +79,7 @@ type Repository i	= (PrimeMultiplesQueue i, PrimeMultiplesMap i)
 	* A refinement of the /Sieve Of Eratosthenes/, which pre-sieves candidates, selecting only those /coprime/ to the specified short sequence of low prime-numbers.
 
 	* The short sequence of initial primes are represented by a 'Data.PrimeWheel.PrimeWheel',
-	of parameterised, but static, size; <http://en.wikipedia.org/wiki/Wheel_factorization>.
+	of parameterised, but static, size; <https://en.wikipedia.org/wiki/Wheel_factorization>.
 
 	* The algorithm requires one to record multiples of previously discovered primes, allowing /composite/ candidates to be eliminated by comparison.
 

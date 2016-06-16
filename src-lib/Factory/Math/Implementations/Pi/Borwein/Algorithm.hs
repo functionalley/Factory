@@ -39,7 +39,7 @@ import qualified	Factory.Math.SquareRoot					as Math.SquareRoot
 	* Though currently there's only one, provision has been made for the addition of more.
 -}
 data Algorithm squareRootAlgorithm factorialAlgorithm	=
-	Borwein1993 squareRootAlgorithm factorialAlgorithm	-- ^ <http://en.wikipedia.org/wiki/Borwein%27s_algorithm>.
+	Borwein1993 squareRootAlgorithm factorialAlgorithm	-- ^ <https://en.wikipedia.org/wiki/Borwein%27s_algorithm>.
 	deriving (Eq, Read, Show)
 
 instance (

@@ -35,7 +35,7 @@ import qualified	Factory.Math.Power	as Math.Power
 {- |
 	* Returns @(Just . sqrt)@ if the specified integer is a /square number/ (AKA /perfect square/).
 
-	* <http://en.wikipedia.org/wiki/Square_number>.
+	* <https://en.wikipedia.org/wiki/Square_number>.
 
 	* <http://mathworld.wolfram.com/SquareNumber.html>.
 
@@ -69,7 +69,7 @@ maybeSquareNumber i
 
 	* CAVEAT: /zero/ and /one/ are normally excluded from this set.
 
-	* <http://en.wikipedia.org/wiki/Perfect_power>.
+	* <https://en.wikipedia.org/wiki/Perfect_power>.
 
 	* <http://mathworld.wolfram.com/PerfectPower.html>.
 

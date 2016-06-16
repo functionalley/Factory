@@ -20,9 +20,9 @@
 
  [@DESCRIPTION@]
 
-	* Describes a <http://en.wikipedia.org/wiki/Univariate> polynomial and operations on it.
+	* Describes a <https://en.wikipedia.org/wiki/Univariate> polynomial and operations on it.
 
-	* <http://en.wikipedia.org/wiki/Polynomial>.
+	* <https://en.wikipedia.org/wiki/Polynomial>.
 
 	* <http://mathworld.wolfram.com/Polynomial.html>.
 -}
@@ -86,7 +86,7 @@ type MonomialList coefficient exponent	= [Data.Monomial.Monomial coefficient exp
 
 {- |
 	* The type of an arbitrary /univariate/ polynomial;
-	actually it's more general, since it permits negative powers (<http://en.wikipedia.org/wiki/Laurent_polynomial>s).
+	actually it's more general, since it permits negative powers (<https://en.wikipedia.org/wiki/Laurent_polynomial>s).
 	It can't describe /multivariate/ polynomials, which would require a list of /exponents/.
 	Rather than requiring the /exponent/ to implement the /type-class/ 'Integral', this is implemented at the function-level, as required.
 
@@ -94,7 +94,7 @@ type MonomialList coefficient exponent	= [Data.Monomial.Monomial coefficient exp
 	in which /coefficients/ are inferred to be zero, thus enabling efficient representation of sparse polynomials.
 
 	* CAVEAT: the 'MonomialList' is required to;
-	be ordered by /descending/ exponent (ie. reverse <http://en.wikipedia.org/wiki/Monomial_order>);
+	be ordered by /descending/ exponent (ie. reverse <https://en.wikipedia.org/wiki/Monomial_order>);
 	have had zero coefficients removed;
 	and to have had /like/ terms merged;
 	so the raw data-constructor isn't exported.
@@ -103,7 +103,7 @@ newtype {- Integral exponent => -} Polynomial coefficient exponent	= MkPolynomia
 	getMonomialList	:: MonomialList coefficient exponent	-- ^ Accessor.
 } deriving (Eq, Show)
 
--- | Makes /Polynomial/ a 'Data.Ring.Ring', over the /field/ composed from all possible /coefficients/; <http://en.wikipedia.org/wiki/Polynomial_ring>.
+-- | Makes /Polynomial/ a 'Data.Ring.Ring', over the /field/ composed from all possible /coefficients/; <https://en.wikipedia.org/wiki/Polynomial_ring>.
 instance (
 	Eq	c,
 	Num	c,
@@ -166,7 +166,7 @@ instance (
  ) => Data.QuotientRing.QuotientRing (Polynomial c e)	where
 {-
 	Uses /Euclidian division/.
-	<http://en.wikipedia.org/wiki/Polynomial_long_division>.
+	<https://en.wikipedia.org/wiki/Polynomial_long_division>.
 	<http://demonstrations.wolfram.com/PolynomialLongDivision/>.
 -}
 	_ `quotRem'` MkPolynomial []		= error "Factory.Data.Polynomial.quotRem':\tzero denominator."
@@ -262,7 +262,7 @@ isNormalised polynomial	= all ($ polynomial) [isReduced, inDescendingOrder]
 {- |
 	* 'True' if the /leading coefficient/ is one.
 
-	* <http://en.wikipedia.org/wiki/Monic_polynomial#Classifications>.
+	* <https://en.wikipedia.org/wiki/Monic_polynomial#Classifications>.
 -}
 isMonic :: (Eq c, Num c) => Polynomial c e -> Bool
 isMonic (MkPolynomial [])	= False	-- All coefficients are zero, and have therefore been removed.
@@ -301,7 +301,7 @@ areCongruentModulo l r	modulus
 {- |
 	* Return the /degree/ (AKA /order/) of the /polynomial/.
 
-	* <http://en.wikipedia.org/wiki/Degree_of_a_polynomial>.
+	* <https://en.wikipedia.org/wiki/Degree_of_a_polynomial>.
 
 	* <http://mathworld.wolfram.com/PolynomialDegree.html>.
 -}
@@ -312,7 +312,7 @@ getDegree p			= Data.Monomial.getExponent $ getLeadingTerm p
 {- |
 	* Scale-up the specified /polynomial/ by a constant /monomial/ factor.
 
-	* <http://en.wikipedia.org/wiki/Scalar_multiplication>.
+	* <https://en.wikipedia.org/wiki/Scalar_multiplication>.
 -}
 (*=) :: (Eq c, Num c, Num e) => Polynomial c e -> Data.Monomial.Monomial c e -> Polynomial c e
 polynomial *= monomial

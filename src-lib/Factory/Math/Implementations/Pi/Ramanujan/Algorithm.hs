@@ -17,7 +17,7 @@
 {- |
  [@AUTHOR@]	Dr. Alistair Ward
 
- [@DESCRIPTION@]	Defines the set of /Ramanujan/-type algorithms which have been implemented; <http://en.wikipedia.org/wiki/Pi>.
+ [@DESCRIPTION@]	Defines the set of /Ramanujan/-type algorithms which have been implemented; <https://en.wikipedia.org/wiki/Pi>.
 -}
 
 module Factory.Math.Implementations.Pi.Ramanujan.Algorithm(

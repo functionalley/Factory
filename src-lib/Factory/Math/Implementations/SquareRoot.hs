@@ -53,11 +53,11 @@ type Terms	= Int
 
 -- | The algorithms by which the /square-root/ has been implemented.
 data Algorithm
-	= BakhshaliApproximation	-- ^ <http://en.wikipedia.org/wiki/Methods_of_computing_square_roots#Bakhshali_approximation>
-	| ContinuedFraction		-- ^ <http://en.wikipedia.org/wiki/Methods_of_computing_square_roots#Continued_fraction_expansion>.
-	| HalleysMethod			-- ^ <http://en.wikipedia.org/wiki/Halley%27s_method>.
-	| NewtonRaphsonIteration	-- ^ <http://en.wikipedia.org/wiki/Newton%27s_method>.
-	| TaylorSeries Terms		-- ^ <http://en.wikipedia.org/wiki/Methods_of_computing_square_roots#Taylor_series>.
+	= BakhshaliApproximation	-- ^ <https://en.wikipedia.org/wiki/Methods_of_computing_square_roots#Bakhshali_approximation>
+	| ContinuedFraction		-- ^ <https://en.wikipedia.org/wiki/Methods_of_computing_square_roots#Continued_fraction_expansion>.
+	| HalleysMethod			-- ^ <https://en.wikipedia.org/wiki/Halley%27s_method>.
+	| NewtonRaphsonIteration	-- ^ <https://en.wikipedia.org/wiki/Newton%27s_method>.
+	| TaylorSeries Terms		-- ^ <https://en.wikipedia.org/wiki/Methods_of_computing_square_roots#Taylor_series>.
 	deriving (Eq, Read, Show)
 
 instance Data.Default.Default Algorithm	where
@@ -128,12 +128,12 @@ instance Math.SquareRoot.Iterator Algorithm where
 
 {- |
 	* Uses /continued-fractions/, to iterate towards the principal /square-root/ of the specified positive integer;
-	<http://en.wikipedia.org/wiki/Solving_quadratic_equations_with_continued_fractions>,
-	<http://en.wikipedia.org/wiki/Generalized_continued_fraction#Roots_of_positive_numbers>,
-	<http://en.wikipedia.org/wiki/Methods_of_computing_square_roots#Continued_fraction_expansion>.
+	<https://en.wikipedia.org/wiki/Solving_quadratic_equations_with_continued_fractions>,
+	<https://en.wikipedia.org/wiki/Generalized_continued_fraction#Roots_of_positive_numbers>,
+	<https://en.wikipedia.org/wiki/Methods_of_computing_square_roots#Continued_fraction_expansion>.
 	<http://www.myreckonings.com/Dead_Reckoning/Online/Materials/General%20Method%20for%20Extracting%20Roots.pdf>
 
-	* The convergence <http://en.wikipedia.org/wiki/Rate_of_convergence> of the /continued-fraction/ is merely /1st order/ (linear).
+	* The convergence <https://en.wikipedia.org/wiki/Rate_of_convergence> of the /continued-fraction/ is merely /1st order/ (linear).
 -}
 squareRootByContinuedFraction :: Real operand => ProblemSpecification operand
 squareRootByContinuedFraction (initialEstimate, initialDecimalDigits) requiredDecimalDigits y	= initialEstimate + (convergents initialEstimate !! Math.Precision.getTermsRequired (10 ^^ negate initialDecimalDigits) requiredDecimalDigits)	where
@@ -141,7 +141,7 @@ squareRootByContinuedFraction (initialEstimate, initialDecimalDigits) requiredDe
 	convergents x	= iterate ((Math.SquareRoot.getDiscrepancy y x /) . ((2 * x) +)) 0
 
 {- |
-	* The constant coefficients of the /Taylor-series/ for a /square-root/; <http://en.wikipedia.org/wiki/Methods_of_computing_square_roots#Taylor_series>.
+	* The constant coefficients of the /Taylor-series/ for a /square-root/; <https://en.wikipedia.org/wiki/Methods_of_computing_square_roots#Taylor_series>.
 
 	* @ ((-1)^n * factorial(2*n)) / ((1 - 2*n) * 4^n * factorial(n^2)) @.
 -}
@@ -160,7 +160,7 @@ taylorSeriesCoefficients	= zipWith (
 {- |
 	* Returns the /Taylor-series/ for the /square-root/ of the specified value, to any requested number of terms.
 
-	* <http://en.wikipedia.org/wiki/Methods_of_computing_square_roots#Taylor_series>.
+	* <https://en.wikipedia.org/wiki/Methods_of_computing_square_roots#Taylor_series>.
 
 	* The convergence of the series is merely /linear/,
 	in that each term increases the precision, by a constant number of decimal places, equal to the those in the original estimate.

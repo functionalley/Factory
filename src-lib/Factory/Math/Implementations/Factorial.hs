@@ -24,7 +24,7 @@
 	* Provides additional functions related to /factorials/, but which depends on a specific implementation,
 	and which therefore can't be accessed throught the class-interface.
 
-	* <http://en.wikipedia.org/wiki/Factorial>.
+	* <https://en.wikipedia.org/wiki/Factorial>.
 
 	* <http://mathworld.wolfram.com/Factorial.html>.
 
@@ -74,7 +74,7 @@ instance Math.Factorial.Algorithmic Algorithm	where
 	* Precisely all the primes less than or equal to the specified integer /n/, are included in /n!/;
 	only the multiplicity of each of these known prime components need be determined.
 
-	* <http://en.wikipedia.org/wiki/Factorial#Number_theory>.
+	* <https://en.wikipedia.org/wiki/Factorial#Number_theory>.
 
 	* CAVEAT: currently a hotspot.
 -}

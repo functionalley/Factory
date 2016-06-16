@@ -30,7 +30,7 @@
 	* The API was driven top-down by its caller's requirements, rather than a bottom-up attempt to provide a complete interface.
 	consequently there may be omissions from the view point of future callers.
 
-	* Thought similar to the mathematical concept of an /interval/, the latter technically relates to /real/ numbers; <http://en.wikipedia.org/wiki/Interval_%28mathematics%29>.
+	* Thought similar to the mathematical concept of an /interval/, the latter technically relates to /real/ numbers; <https://en.wikipedia.org/wiki/Interval_%28mathematics%29>.
 
 	* No account has been made for /semi-closed/ or /open/ intervals.
 -}
@@ -80,7 +80,7 @@ getMinBound	= fst
 getMaxBound :: Interval endPoint -> endPoint
 getMaxBound	= snd
 
--- | Construct the /unsigned closed unit-interval/; <http://en.wikipedia.org/wiki/Unit_interval>.
+-- | Construct the /unsigned closed unit-interval/; <https://en.wikipedia.org/wiki/Unit_interval>.
 closedUnitInterval :: Num n => Interval n
 closedUnitInterval	= (0, 1)
 
@@ -148,7 +148,7 @@ toList	= uncurry enumFromTo	-- CAVEAT: in this eta-reduced form, it'll only be i
 {- |
 	* Reduces 'Interval' to a single integral value encapsulated in a 'Data.Monoid.Monoid',
 	using a /divide-and-conquer/ strategy,
-	bisecting the /interval/ and recursively evaluating each part; <http://en.wikipedia.org/wiki/Divide_and_conquer_algorithm>.
+	bisecting the /interval/ and recursively evaluating each part; <https://en.wikipedia.org/wiki/Divide_and_conquer_algorithm>.
 
 	* By choosing a 'ratio' other than @(1 % 2)@, the bisection can be made asymmetrical.
 	The specified ratio represents the length of the left-hand portion over the original list-length;
@@ -157,7 +157,7 @@ toList	= uncurry enumFromTo	-- CAVEAT: in this eta-reduced form, it'll only be i
 	* This process of recursive bisection, is terminated beneath the specified minimum length,
 	after which the 'Interval' are expanded into the corresponding list, and the /monoid/'s binary operator is directly /folded/ over it.
 
-	* One can view this as a <http://en.wikipedia.org/wiki/Hylomorphism_%28computer_science%29>,
+	* One can view this as a <https://en.wikipedia.org/wiki/Hylomorphism_%28computer_science%29>,
 	in which 'Interval' is exploded into a binary tree-structure
 	(each leaf of which contains a list of up to 'minLength' integers, and each node of which contains an associative binary operator),
 	and then collapsed to a scalar, by application of the operators.

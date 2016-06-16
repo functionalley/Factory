@@ -20,7 +20,7 @@
 
  [@DESCRIPTION@]
 
-	* Describes a <http://en.wikipedia.org/wiki/Monomial> and operations on it.
+	* Describes a <https://en.wikipedia.org/wiki/Monomial> and operations on it.
 
 	* A /monomial/ is merely a /polynomial/ with a single non-zero term; cf. /Binomial/.
 -}

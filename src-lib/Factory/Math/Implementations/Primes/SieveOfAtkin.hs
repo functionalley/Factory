@@ -19,7 +19,7 @@
 
  [@DESCRIPTION@]
 
-	* Generates the constant /bounded/ list of /prime-numbers/, using the /Sieve of Atkin/; <http://en.wikipedia.org/wiki/Sieve_of_Atkin>.
+	* Generates the constant /bounded/ list of /prime-numbers/, using the /Sieve of Atkin/; <https://en.wikipedia.org/wiki/Sieve_of_Atkin>.
 
 	* <cr.yp.to/papers/primesieves-19990826.pdf>.
 
@@ -99,7 +99,7 @@ polynomialTypeLookupPeriod	= lcm atkinsModulus . Data.PrimeWheel.getCircumferenc
 	* Because the results are /bounded/, they're returned in a zero-indexed /array/, to provide efficient random access;
 	the first few elements should never be required, but it makes query clearer.
 
-	* <http://en.wikipedia.org/wiki/Sieve_of_Atkin>.
+	* <https://en.wikipedia.org/wiki/Sieve_of_Atkin>.
 -}
 polynomialTypeLookup :: (Data.Array.IArray.Ix i, Integral i)
 	=> Data.PrimeWheel.PrimeWheel i

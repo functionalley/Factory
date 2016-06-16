@@ -17,7 +17,7 @@
 {- |
  [@AUTHOR@]	Dr. Alistair Ward
 
- [@DESCRIPTION@]	Defines /Borwein/ series for /Pi/; <http://en.wikipedia.org/wiki/Borwein%27s_algorithm>
+ [@DESCRIPTION@]	Defines /Borwein/ series for /Pi/; <https://en.wikipedia.org/wiki/Borwein%27s_algorithm>
 -}
 
 module Factory.Math.Implementations.Pi.Borwein.Implementation(

@@ -20,7 +20,7 @@
  [@DESCRIPTION@]
 
 	* Implements the /Brent-Salamin/ (AKA /Gauss-Legendre/) algorithm;
-		<http://en.wikipedia.org/wiki/Gauss%E2%80%93Legendre_algorithm>,
+		<https://en.wikipedia.org/wiki/Gauss%E2%80%93Legendre_algorithm>,
 		<http://mathworld.wolfram.com/Brent-SalaminFormula.html>,
 		<http://www.pi314.net/eng/salamin.php>.
 

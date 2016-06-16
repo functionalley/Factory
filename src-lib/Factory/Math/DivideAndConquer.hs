@@ -56,7 +56,7 @@ type MinLength	= Int
 {- |
 	* Reduces a list to a single scalar encapsulated in a 'Data.Monoid.Monoid',
 	using a /divide-and-conquer/ strategy,
-	bisecting the list and recursively evaluating each part; <http://en.wikipedia.org/wiki/Divide_and_conquer_algorithm>.
+	bisecting the list and recursively evaluating each part; <https://en.wikipedia.org/wiki/Divide_and_conquer_algorithm>.
 
 	* By choosing a 'bisectionRatio' other than @(1 % 2)@, the bisection can be made asymmetrical.
 	The specified ratio represents the length of the left-hand portion, over the original list-length;
@@ -65,7 +65,7 @@ type MinLength	= Int
 	* This process of recursive bisection, is terminated beneath the specified minimum list-length,
 	after which the /monoid/'s binary operator is directly /folded/ over the list.
 
-	* One can view this as a <http://en.wikipedia.org/wiki/Hylomorphism_%28computer_science%29>,
+	* One can view this as a <https://en.wikipedia.org/wiki/Hylomorphism_%28computer_science%29>,
 	in which the list is exploded into a binary tree-structure
 	(each leaf of which contains a list of up to 'minLength' integers, and each node of which contains an associative binary operator),
 	and then collapsed to a scalar, by application of the operators.

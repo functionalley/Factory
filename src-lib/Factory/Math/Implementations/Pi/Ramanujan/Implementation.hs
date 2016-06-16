@@ -17,7 +17,7 @@
 {- |
  [@AUTHOR@]	Dr. Alistair Ward
 
- [@DESCRIPTION@]	Implements a /Ramanujan/-type series for /Pi/; <http://en.wikipedia.org/wiki/Srinivasa_Ramanujan>.
+ [@DESCRIPTION@]	Implements a /Ramanujan/-type series for /Pi/; <https://en.wikipedia.org/wiki/Srinivasa_Ramanujan>.
 -}
 
 module Factory.Math.Implementations.Pi.Ramanujan.Implementation(

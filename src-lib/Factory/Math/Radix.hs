@@ -117,7 +117,7 @@ fromBase base s
 {- |
 	* <http://mathworld.wolfram.com/DigitSum.html>.
 
-	* <http://en.wikipedia.org/wiki/Digit_sum>.
+	* <https://en.wikipedia.org/wiki/Digit_sum>.
 -}
 digitSum :: (
 	Data.Array.IArray.Ix	decimal,
@@ -129,7 +129,7 @@ digitSum :: (
 digitSum 10	= fromIntegral . foldr ((+) . Data.Char.digitToInt) 0 . show
 digitSum base	= sum . Data.Maybe.mapMaybe (`lookup` decodes) . toBase base
 
--- | <http://en.wikipedia.org/wiki/Digital_root>.
+-- | <https://en.wikipedia.org/wiki/Digital_root>.
 digitalRoot :: (
 	Data.Array.IArray.Ix	decimal,
 	Integral		decimal,

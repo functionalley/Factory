@@ -45,8 +45,8 @@ import qualified	Factory.Math.Primes					as Math.Primes
 
 -- | The implemented methods by which the primes may be generated.
 data Algorithm
-	= SieveOfAtkin Integer					-- ^ The /Sieve of Atkin/, optimised using a 'Data.PrimeWheel.PrimeWheel' of optimal size, for primes up to the specified maximum bound; <http://en.wikipedia.org/wiki/Sieve_of_Atkin>.
-	| SieveOfEratosthenes Data.PrimeWheel.NPrimes		-- ^ The /Sieve of Eratosthenes/ (<http://en.wikipedia.org/wiki/Sieve_of_Eratosthenes>), optimised using a 'Data.PrimeWheel.PrimeWheel'.
+	= SieveOfAtkin Integer					-- ^ The /Sieve of Atkin/, optimised using a 'Data.PrimeWheel.PrimeWheel' of optimal size, for primes up to the specified maximum bound; <https://en.wikipedia.org/wiki/Sieve_of_Atkin>.
+	| SieveOfEratosthenes Data.PrimeWheel.NPrimes		-- ^ The /Sieve of Eratosthenes/ (<https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes>), optimised using a 'Data.PrimeWheel.PrimeWheel'.
 	| TrialDivision Data.PrimeWheel.NPrimes			-- ^ For each candidate, confirm indivisibility, by all /primes/ smaller than its /square-root/, optimised using a 'Data.PrimeWheel.PrimeWheel'.
 	| TurnersSieve						-- ^ For each /prime/, the infinite list of candidates greater than its /square/, is filtered for indivisibility; <http://www.haskell.org/haskellwiki/Prime_numbers#Turner.27s_sieve_-_Trial_division>.
 	| WheelSieve Int					-- ^ 'Data.Numbers.Primes.wheelSieve'.

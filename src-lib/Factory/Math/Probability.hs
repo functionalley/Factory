@@ -61,12 +61,12 @@ maxPreciseInteger	= (2 ^) . floatDigits
 minPositiveFloat :: RealFloat a => a -> a
 minPositiveFloat	= encodeFloat 1 . uncurry (-) . (fst . floatRange &&& floatDigits)
 
--- | Describes /continuous probability-distributions/; <http://en.wikipedia.org/wiki/List_of_probability_distributions#Continuous_distributions>.
+-- | Describes /continuous probability-distributions/; <https://en.wikipedia.org/wiki/List_of_probability_distributions#Continuous_distributions>.
 data ContinuousDistribution parameter
-	= ExponentialDistribution parameter {-lambda-}				-- ^ Defines an /Exponential/-distribution with a particular /lambda/; <http://en.wikipedia.org/wiki/Exponential_distribution>.
-	| LogNormalDistribution parameter {-location-} parameter {-scale2-}	-- ^ Defines a distribution whose logarithm is normally distributed with a particular /mean/ & /variance/; <http://en.wikipedia.org/wiki/Lognormal>.
-	| NormalDistribution parameter {-mean-} parameter {-variance-}		-- ^ Defines a /Normal/-distribution with a particular /mean/ & /variance/; <http://en.wikipedia.org/wiki/Normal_distribution>.
-	| UniformDistribution (Data.Interval.Interval parameter)		-- ^ Defines a /Uniform/-distribution within a /closed interval/; <http://en.wikipedia.org/wiki/Uniform_distribution>.
+	= ExponentialDistribution parameter {-lambda-}				-- ^ Defines an /Exponential/-distribution with a particular /lambda/; <https://en.wikipedia.org/wiki/Exponential_distribution>.
+	| LogNormalDistribution parameter {-location-} parameter {-scale2-}	-- ^ Defines a distribution whose logarithm is normally distributed with a particular /mean/ & /variance/; <https://en.wikipedia.org/wiki/Lognormal>.
+	| NormalDistribution parameter {-mean-} parameter {-variance-}		-- ^ Defines a /Normal/-distribution with a particular /mean/ & /variance/; <https://en.wikipedia.org/wiki/Normal_distribution>.
+	| UniformDistribution (Data.Interval.Interval parameter)		-- ^ Defines a /Uniform/-distribution within a /closed interval/; <https://en.wikipedia.org/wiki/Uniform_distribution>.
 	deriving (Eq, Read, Show)
 
 instance (Floating parameter, Ord parameter, Show parameter) => ToolShed.SelfValidate.SelfValidator (ContinuousDistribution parameter)	where
@@ -81,10 +81,10 @@ instance (Floating parameter, Ord parameter, Show parameter) => ToolShed.SelfVal
 		NormalDistribution _ variance		-> [(variance <= 0, "variance must exceed zero; " ++ show probabilityDistribution ++ ".")]
 		UniformDistribution interval		-> [(Data.Interval.isReversed interval, "reversed interval='" ++ show probabilityDistribution ++ "'.")]
 
--- | Describes /discrete probability-distributions/; <http://en.wikipedia.org/wiki/List_of_probability_distributions#Discrete_distributions>.
+-- | Describes /discrete probability-distributions/; <https://en.wikipedia.org/wiki/List_of_probability_distributions#Discrete_distributions>.
 data DiscreteDistribution parameter
-	= PoissonDistribution parameter {-lambda-}			-- ^ Defines an /Poisson/-distribution with a particular /lambda/; <http://en.wikipedia.org/wiki/Poisson_distribution>.
-	| ShiftedGeometricDistribution parameter {-probability-}	-- ^ Defines an /Geometric/-distribution with a particular probability of success; <http://en.wikipedia.org/wiki/Geometric_distribution>.
+	= PoissonDistribution parameter {-lambda-}			-- ^ Defines an /Poisson/-distribution with a particular /lambda/; <https://en.wikipedia.org/wiki/Poisson_distribution>.
+	| ShiftedGeometricDistribution parameter {-probability-}	-- ^ Defines an /Geometric/-distribution with a particular probability of success; <https://en.wikipedia.org/wiki/Geometric_distribution>.
 	deriving (Eq, Read, Show)
 
 instance (Num parameter, Ord parameter, Show parameter) => ToolShed.SelfValidate.SelfValidator (DiscreteDistribution parameter)	where
@@ -134,7 +134,7 @@ instance (RealFloat parameter, Show parameter, System.Random.Random parameter) =
 	* Converts a pair of independent /uniformly distributed/ random numbers, within the /semi-closed unit interval/ /(0,1]/,
 	to a pair of independent /normally distributed/ random numbers, of standardized /mean/=0, and /variance/=1.
 
-	* <http://en.wikipedia.org/wiki/Box%E2%80%93Muller_transform>.
+	* <https://en.wikipedia.org/wiki/Box%E2%80%93Muller_transform>.
 -}
 boxMullerTransform :: (
 	Floating	f,
@@ -157,7 +157,7 @@ boxMullerTransform cartesian
 	* Uses the supplied random-number generator,
 	to generate a conceptually infinite list, of /normally distributed/ random numbers, with standardized /mean/=0, and /variance/=1.
 
-	* <http://en.wikipedia.org/wiki/Normal_distribution>, <http://mathworld.wolfram.com/NormalDistribution.html>.
+	* <https://en.wikipedia.org/wiki/Normal_distribution>, <http://mathworld.wolfram.com/NormalDistribution.html>.
 -}
 generateStandardizedNormalDistribution :: (
 	RealFloat		f,
@@ -188,7 +188,7 @@ generateContinuousPopulation probabilityDistribution randomGen
 	| otherwise							= (
 		case probabilityDistribution of
 			ExponentialDistribution lambda		-> let
-				quantile	= (/ lambda) . negate . log . (1 -)	-- <http://en.wikipedia.org/wiki/Quantile_function>.
+				quantile	= (/ lambda) . negate . log . (1 -)	-- <https://en.wikipedia.org/wiki/Quantile_function>.
 			 in map quantile . System.Random.randomRs (0, 1)
 			LogNormalDistribution location scale2	-> map (
 				exp . (+ location) . (* sqrt scale2)	-- Stretch the standard-deviation & re-locate the mean to that specified for the log-space, then return to the original coordinates.
@@ -199,7 +199,7 @@ generateContinuousPopulation probabilityDistribution randomGen
 
 {- |
 	* Uses the supplied random-number generator,
-	to generate a conceptually infinite population, of random integers conforming to the /Poisson distribution/; <http://en.wikipedia.org/wiki/Poisson_distribution>.
+	to generate a conceptually infinite population, of random integers conforming to the /Poisson distribution/; <https://en.wikipedia.org/wiki/Poisson_distribution>.
 
 	* CAVEAT:
 		uses an algorithm by Knuth, which having a /linear time-complexity/ in /lambda/, can be intolerably slow;

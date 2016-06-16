@@ -17,7 +17,7 @@
 {- |
  [@AUTHOR@]	Dr. Alistair Ward
 
- [@DESCRIPTION@]	<http://en.wikipedia.org/wiki/Fibonacci_number>.
+ [@DESCRIPTION@]	<https://en.wikipedia.org/wiki/Fibonacci_number>.
 -}
 
 module Factory.Math.Fibonacci(

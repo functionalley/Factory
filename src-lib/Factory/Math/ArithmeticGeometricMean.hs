@@ -17,7 +17,7 @@
 {- |
  [@AUTHOR@]	Dr. Alistair Ward
 
- [@DESCRIPTION@]	Determines the /Arithmetic-geometric mean/; <http://en.wikipedia.org/wiki/Arithmetic-geometric_mean>.
+ [@DESCRIPTION@]	Determines the /Arithmetic-geometric mean/; <https://en.wikipedia.org/wiki/Arithmetic-geometric_mean>.
 -}
 
 module Factory.Math.ArithmeticGeometricMean(
@@ -41,10 +41,10 @@ import qualified	Control.Parallel.Strategies
 import qualified	Factory.Math.Precision	as Math.Precision
 import qualified	Factory.Math.SquareRoot	as Math.SquareRoot
 
--- | The type of the /arithmetic mean/; <http://en.wikipedia.org/wiki/Arithmetic_mean>.
+-- | The type of the /arithmetic mean/; <https://en.wikipedia.org/wiki/Arithmetic_mean>.
 type ArithmeticMean	= Rational
 
--- | The type of the /geometric mean/; <http://en.wikipedia.org/wiki/Geometric_mean>.
+-- | The type of the /geometric mean/; <https://en.wikipedia.org/wiki/Geometric_mean>.
 type GeometricMean	= Rational
 
 -- | Encapsulates both /arithmetic/ and /geometric/ means.

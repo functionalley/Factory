@@ -40,10 +40,10 @@ module Factory.Math.Precision(
 
 import qualified	Data.Ratio
 
--- | The /order of convergence/; <http://en.wikipedia.org/wiki/Rate_of_convergence>.
+-- | The /order of convergence/; <https://en.wikipedia.org/wiki/Rate_of_convergence>.
 type ConvergenceOrder	= Int
 
--- | The /rate of convergence/; <http://en.wikipedia.org/wiki/Rate_of_convergence>.
+-- | The /rate of convergence/; <https://en.wikipedia.org/wiki/Rate_of_convergence>.
 type ConvergenceRate	= Double
 
 -- | A number of decimal digits; presumably positive.
@@ -88,7 +88,7 @@ getIterationsRequired convergenceOrder initialDecimalDigits requiredDecimalDigit
 	divided by the error after only @n@ terms, as the latter tends to infinity.
 	As such, for a /convergent/ series (in which the error get smaller with successive terms), it's value lies in the range @0 .. 1@.
 
-	* <http://en.wikipedia.org/wiki/Rate_of_convergence>.
+	* <https://en.wikipedia.org/wiki/Rate_of_convergence>.
 -}
 getTermsRequired :: Integral i
 	=> ConvergenceRate

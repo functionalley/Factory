@@ -21,7 +21,7 @@
 
 	* Describes a simple numeric type, designed to contain an /exponential/ number.
 
-	* <http://en.wikipedia.org/wiki/Exponentiation>.
+	* <https://en.wikipedia.org/wiki/Exponentiation>.
 -}
 
 module Factory.Data.Exponential(
@@ -62,7 +62,7 @@ getExponent	= snd
 {- |
 	* Construct an 'Exponential' merely raised to the 1st power.
 
-	* The value of the resulting exponential is the same as specified 'base'; <http://en.wikipedia.org/wiki/Identity_element>.
+	* The value of the resulting exponential is the same as specified 'base'; <https://en.wikipedia.org/wiki/Identity_element>.
 -}
 rightIdentity :: Num exponent => base -> Exponential base exponent
 rightIdentity x	= (x, 1)

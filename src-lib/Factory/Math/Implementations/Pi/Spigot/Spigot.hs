@@ -19,7 +19,7 @@
 
  [@DESCRIPTION@]
 
-	* Implements a /spigot/-algorithm; <http://en.wikipedia.org/wiki/Spigot_algorithm>.
+	* Implements a /spigot/-algorithm; <https://en.wikipedia.org/wiki/Spigot_algorithm>.
 
 	* Uses the traditional algorithm, rather than the /unbounded/ algorithm described by <http://www.comlab.ox.ac.uk/jeremy.gibbons/publications/spigot.pdf>.
 -}

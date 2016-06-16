@@ -38,7 +38,7 @@ class Algorithmic algorithm	where
 {- |
 	* Returns the constant list, defining the /Primorial/.
 
-	* <http://en.wikipedia.org/wiki/Primorial>.
+	* <https://en.wikipedia.org/wiki/Primorial>.
 
 	* <http://mathworld.wolfram.com/Primorial.html>.
 -}
@@ -55,7 +55,7 @@ primorial	= scanl (*) 1 . primes
 
 	* Only the subset composed from a prime exponent is returned; which is a strict superset of the /Mersenne Primes/.
 
-	* <http://en.wikipedia.org/wiki/Mersenne_prime>.
+	* <https://en.wikipedia.org/wiki/Mersenne_prime>.
 
 	* <http://mathworld.wolfram.com/MersenneNumber.html>
 -}

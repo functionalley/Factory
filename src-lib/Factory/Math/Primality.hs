@@ -48,7 +48,7 @@ class Algorithmic algorithm	where
 
 	* @1@ and @-1@ are the only numbers which are /coprime/ to themself.
 
-	* <http://en.wikipedia.org/wiki/Coprime>.
+	* <https://en.wikipedia.org/wiki/Coprime>.
 
 	* <http://mathworld.wolfram.com/RelativelyPrime.html>.
 -}
@@ -58,11 +58,11 @@ areCoprime i	= (== 1) . gcd i
 {- |
 	* Tests /Fermat's Little Theorem/ for all applicable values, as a probabilistic primality-test.
 
-	* <http://en.wikipedia.org/wiki/Fermat%27s_little_theorem>.
+	* <https://en.wikipedia.org/wiki/Fermat%27s_little_theorem>.
 
-	* <http://en.wikipedia.org/wiki/Fermat_primality_test>.
+	* <https://en.wikipedia.org/wiki/Fermat_primality_test>.
 
-	* <http://en.wikipedia.org/wiki/Fermat_pseudoprime>.
+	* <https://en.wikipedia.org/wiki/Fermat_pseudoprime>.
 
 	* CAVEAT: this primality-test fails for the /Carmichael numbers/.
 
@@ -75,7 +75,7 @@ isFermatWitness i	= not . all isFermatPseudoPrime $ filter (areCoprime i) [2 .. 
 {- |
 	* A /Carmichael number/ is an /odd/ /composite/ number which satisfies /Fermat's little theorem/.
 
-	* <http://en.wikipedia.org/wiki/Carmichael_number>.
+	* <https://en.wikipedia.org/wiki/Carmichael_number>.
 
 	* <http://mathworld.wolfram.com/CarmichaelNumber.html>.
 -}
@@ -92,7 +92,7 @@ isCarmichaelNumber algorithm i	= not $ or [
 	isPrime algorithm i
  ]
 
--- | An ordered list of the /Carmichael/ numbers; <http://en.wikipedia.org/wiki/Carmichael_number>.
+-- | An ordered list of the /Carmichael/ numbers; <https://en.wikipedia.org/wiki/Carmichael_number>.
 carmichaelNumbers :: (
 	Algorithmic		algorithm,
 	Control.DeepSeq.NFData	i,

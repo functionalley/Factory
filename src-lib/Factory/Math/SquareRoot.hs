@@ -87,7 +87,7 @@ getEstimate y
 	| otherwise	= (Math.Precision.simplify decimalDigits {-doubles performance by roughly length of the Rational representation-} . toRational $ rSqrt y, decimalDigits)
 	where
 		decimalDigits :: Math.Precision.DecimalDigits
-		decimalDigits	= 16	-- <http://en.wikipedia.org/wiki/IEEE_floating_point>.
+		decimalDigits	= 16	-- <https://en.wikipedia.org/wiki/IEEE_floating_point>.
 
 {- |
 	* The signed difference between the /square/ of an estimate for the /square-root/ of a value, and that value.

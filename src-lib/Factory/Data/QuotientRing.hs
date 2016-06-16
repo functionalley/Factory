@@ -19,7 +19,7 @@
 
  [@DESCRIPTION@]
 
-	* Describes a /Quotient Ring/; <http://en.wikipedia.org/wiki/Quotient_ring>.
+	* Describes a /Quotient Ring/; <https://en.wikipedia.org/wiki/Quotient_ring>.
 
 	* This is a /ring/ composed from a residue-class resulting from /modular/ division.
 -}

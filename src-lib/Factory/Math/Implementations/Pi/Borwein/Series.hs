@@ -17,7 +17,7 @@
 {- |
  [@AUTHOR@]	Dr. Alistair Ward
 
- [@DESCRIPTION@]	Defines a <http://en.wikipedia.org/wiki/Srinivasa_Borwein>-type series for /Pi/.
+ [@DESCRIPTION@]	Defines a <https://en.wikipedia.org/wiki/Srinivasa_Borwein>-type series for /Pi/.
 -}
 
 module Factory.Math.Implementations.Pi.Borwein.Series(

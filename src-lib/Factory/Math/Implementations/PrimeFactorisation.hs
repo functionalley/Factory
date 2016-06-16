@@ -55,9 +55,9 @@ import qualified	ToolShed.Data.Pair
 
 -- | The algorithms by which prime-factorisation has been implemented.
 data Algorithm
-	= DixonsMethod	-- ^ <http://en.wikipedia.org/wiki/Dixon%27s_factorization_method>.
-	| FermatsMethod	-- ^ <http://en.wikipedia.org/wiki/Fermat%27s_factorization_method>.
-	| TrialDivision	-- ^ <http://en.wikipedia.org/wiki/Trial_division>.
+	= DixonsMethod	-- ^ <https://en.wikipedia.org/wiki/Dixon%27s_factorization_method>.
+	| FermatsMethod	-- ^ <https://en.wikipedia.org/wiki/Fermat%27s_factorization_method>.
+	| TrialDivision	-- ^ <https://en.wikipedia.org/wiki/Trial_division>.
 	deriving (Eq, Read, Show)
 
 instance Data.Default.Default Algorithm	where
@@ -69,16 +69,16 @@ instance Math.PrimeFactorisation.Algorithmic Algorithm	where
 		FermatsMethod	-> Data.PrimeFactors.reduce . factoriseByFermatsMethod
 		TrialDivision	-> factoriseByTrialDivision
 
--- | <http://en.wikipedia.org/wiki/Dixon%27s_factorization_method>.
+-- | <https://en.wikipedia.org/wiki/Dixon%27s_factorization_method>.
 factoriseByDixonsMethod :: Integral base => base -> Data.PrimeFactors.Factors base exponent
 factoriseByDixonsMethod	= undefined
 
 {- |
-	* <http://en.wikipedia.org/wiki/Fermat%27s_factorization_method>.
+	* <https://en.wikipedia.org/wiki/Fermat%27s_factorization_method>.
 
 	* <http://mathworld.wolfram.com/FermatsFactorizationMethod.html>.
 
-	* <http://en.wikipedia.org/wiki/Congruence_of_squares>.
+	* <https://en.wikipedia.org/wiki/Congruence_of_squares>.
 
 	*	@i = f1 * f2@							Assume a non-trivial factorisation, ie. one in which both factors exceed one.
 	=>	@i = (larger + smaller) * (larger - smaller)@			Represent the co-factors as a sum and difference.
@@ -125,7 +125,7 @@ factoriseByFermatsMethod i
 
 {- |
 	* Decomposes the specified integer, into a product of /prime/-factors,
-	using <http://mathworld.wolfram.com/DirectSearchFactorization.html>, AKA <http://en.wikipedia.org/wiki/Trial_division>.
+	using <http://mathworld.wolfram.com/DirectSearchFactorization.html>, AKA <https://en.wikipedia.org/wiki/Trial_division>.
 
 	* This works best when the factors are small.
 -}

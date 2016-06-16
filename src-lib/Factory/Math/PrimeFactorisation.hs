@@ -19,10 +19,10 @@
 
  [@DESCRIPTION@]
 
-	* <http://en.wikipedia.org/wiki/Integer_factorization>.
+	* <https://en.wikipedia.org/wiki/Integer_factorization>.
 
 	* Exports a common interface to permit decomposition of positive integers,
-	into the unique combination of /prime/-factors known to exist according to the /Fundamental Theorem of Arithmetic/; <http://en.wikipedia.org/wiki/Fundamental_theorem_of_arithmetic>.
+	into the unique combination of /prime/-factors known to exist according to the /Fundamental Theorem of Arithmetic/; <https://en.wikipedia.org/wiki/Fundamental_theorem_of_arithmetic>.
 
 	* Leveraging this abstract capability, it derives the /smoothness/, /power-smoothness/, /omega/-numbers and /square-free/ integers.
 
@@ -75,7 +75,7 @@ maxBoundPrimeFactor	= floor . (sqrt :: Double -> Double) . fromIntegral
 {- |
 	* A constant, zero-indexed, conceptually infinite, list, of the /smooth/ness of all positive integers.
 
-	* <http://en.wikipedia.org/wiki/Smooth_number>.
+	* <https://en.wikipedia.org/wiki/Smooth_number>.
 
 	* <http://mathworld.wolfram.com/SmoothNumber.html>.
 -}
@@ -85,7 +85,7 @@ smoothness algorithm	= 0 : map (Data.Exponential.getBase . last . primeFactors a
 {- |
 	* A constant, zero-indexed, conceptually infinite, list of the /power-smooth/ness of all positive integers.
 
-	* <http://en.wikipedia.org/wiki/Smooth_number#Powersmooth_numbers>.
+	* <https://en.wikipedia.org/wiki/Smooth_number#Powersmooth_numbers>.
 -}
 powerSmoothness :: (Algorithmic algorithm, Control.DeepSeq.NFData base, Integral base) => algorithm -> [base]
 powerSmoothness algorithm	= 0 : map (maximum . map Data.Exponential.evaluate . primeFactors algorithm) [1 ..]
@@ -93,7 +93,7 @@ powerSmoothness algorithm	= 0 : map (maximum . map Data.Exponential.evaluate . p
 {- |
 	* Filters 'smoothness', to derive the constant list of /Hamming-numbers/.
 
-	* <http://en.wikipedia.org/wiki/Regular_number>.
+	* <https://en.wikipedia.org/wiki/Regular_number>.
 -}
 regularNumbers :: (Algorithmic algorithm, Control.DeepSeq.NFData base, Integral base) => algorithm -> [base]
 regularNumbers algorithm	= map fst . filter ((<= (5 :: Integer)) . snd) . zip [1 ..] . tail $ smoothness algorithm
@@ -112,7 +112,7 @@ primePowerTotient (base, exponent')	= pred base * base ^ pred exponent'
 {- |
 	* The number of /coprimes/ less than or equal to the specified positive integer.
 
-	* <http://en.wikipedia.org/wiki/Euler%27s_totient_function>.
+	* <https://en.wikipedia.org/wiki/Euler%27s_totient_function>.
 
 	* <http://mathworld.wolfram.com/TotientFunction.html>.
 
@@ -144,7 +144,7 @@ omega algorithm	= map (Data.List.genericLength . primeFactors algorithm) [0 :: I
 {- |
 	* A constant, conceptually infinite, list of the /square-free/ numbers, i.e. those which aren't divisible by any /perfect square/.
 
-	* <http://en.wikipedia.org/wiki/Square-free_integer>.
+	* <https://en.wikipedia.org/wiki/Square-free_integer>.
 -}
 squareFree :: (Algorithmic algorithm, Control.DeepSeq.NFData i, Integral i) => algorithm -> [i]
 squareFree algorithm	= filter (all (== 1) . map Data.Exponential.getExponent . primeFactors algorithm) [1 ..]

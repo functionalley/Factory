@@ -19,7 +19,7 @@
 
  [@DESCRIPTION@]
 
-	* Describes a /monic polynomial; <http://en.wikipedia.org/wiki/Monic_polynomial#Classifications>;
+	* Describes a /monic polynomial; <https://en.wikipedia.org/wiki/Monic_polynomial#Classifications>;
 	ie. in which the /coefficient/ of the /leading term/ is one.
 -}
 

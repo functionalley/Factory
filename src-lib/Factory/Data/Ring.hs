@@ -21,7 +21,7 @@
 
 	* Describes a /ring/ and operations on its members.
 
-	* <http://en.wikipedia.org/wiki/Ring_%28mathematics%29>.
+	* <https://en.wikipedia.org/wiki/Ring_%28mathematics%29>.
 
 	* <http://www.numericana.com/answer/rings.htm>.
 -}
@@ -54,11 +54,11 @@ infixr 8 =^	-- Same as (^).
 	* Minimal definition; '=+=', '=*=', 'additiveInverse', 'multiplicativeIdentity', 'additiveIdentity'.
 -}
 class Ring r	where
-	(=+=)			:: r -> r -> r	-- ^ Addition of two members; required to be /commutative/; <http://en.wikipedia.org/wiki/Commutativity>.
+	(=+=)			:: r -> r -> r	-- ^ Addition of two members; required to be /commutative/; <https://en.wikipedia.org/wiki/Commutativity>.
 	(=*=)			:: r -> r -> r	-- ^ Multiplication of two members.
-	additiveInverse		:: r -> r	-- ^ The operand required to yield /zero/ under addition; <http://en.wikipedia.org/wiki/Additive_inverse>.
+	additiveInverse		:: r -> r	-- ^ The operand required to yield /zero/ under addition; <https://en.wikipedia.org/wiki/Additive_inverse>.
 	multiplicativeIdentity	:: r		-- ^ The /identity/-member under multiplication; <http://mathworld.wolfram.com/MultiplicativeIdentity.html>.
-	additiveIdentity	:: r		-- ^ The /identity/-member under addition (AKA /zero/); <http://en.wikipedia.org/wiki/Additive_identity>.
+	additiveIdentity	:: r		-- ^ The /identity/-member under addition (AKA /zero/); <https://en.wikipedia.org/wiki/Additive_identity>.
 
 	(=-=) :: r -> r -> r			-- ^ Subtract the two specified /ring/-members.
 	l =-= r	= l =+= additiveInverse r	-- Default implementation.
@@ -70,7 +70,7 @@ class Ring r	where
 	* Raise a /ring/-member to the specified positive integral power.
 
 	* Exponentiation is implemented as a sequence of either squares of, or multiplications by, the /ring/-member;
-	<http://en.wikipedia.org/wiki/Exponentiation_by_squaring>.
+	<https://en.wikipedia.org/wiki/Exponentiation_by_squaring>.
 -}
 (=^) :: (
 	Eq		r,

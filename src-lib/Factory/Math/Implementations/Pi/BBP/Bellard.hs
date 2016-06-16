@@ -17,7 +17,7 @@
 {- |
  [@AUTHOR@]	Dr. Alistair Ward
 
- [@DESCRIPTION@]	Defines /Bellard/'s nega-base-@2^10@ /BBP/-formula; <http://en.wikipedia.org/wiki/Bellard%27s_formula>
+ [@DESCRIPTION@]	Defines /Bellard/'s nega-base-@2^10@ /BBP/-formula; <https://en.wikipedia.org/wiki/Bellard%27s_formula>
 -}
 
 module Factory.Math.Implementations.Pi.BBP.Bellard(

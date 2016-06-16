@@ -17,7 +17,7 @@
 {- |
  [@AUTHOR@]	Dr. Alistair Ward
 
- [@DESCRIPTION@]	Defines the /Chudnovsky/ series for /Pi/; <http://en.wikipedia.org/wiki/Pi>.
+ [@DESCRIPTION@]	Defines the /Chudnovsky/ series for /Pi/; <https://en.wikipedia.org/wiki/Pi>.
 -}
 
 module Factory.Math.Implementations.Pi.Ramanujan.Chudnovsky(

@@ -58,8 +58,8 @@ class Algorithmic algorithm where
 -- | Categorises the various algorithms.
 data Category agm bbp borwein ramanujan spigot
 	= AGM agm		-- ^ Algorithms based on the /Arithmetic-geometric Mean/.
-	| BBP bbp		-- ^ <http://en.wikipedia.org/wiki/Bailey%E2%80%93Borwein%E2%80%93Plouffe_formula>.
-	| Borwein borwein	-- ^ <http://en.wikipedia.org/wiki/Borwein%27s_algorithm>.
+	| BBP bbp		-- ^ <https://en.wikipedia.org/wiki/Bailey%E2%80%93Borwein%E2%80%93Plouffe_formula>.
+	| Borwein borwein	-- ^ <https://en.wikipedia.org/wiki/Borwein%27s_algorithm>.
 	| Ramanujan ramanujan	-- ^ <http://www.pi314.net/eng/ramanujan.php>.
 	| Spigot spigot		-- ^ Algorithms from which the digits of /Pi/ slowly drip, one by one.
 	deriving (Eq, Read, Show)

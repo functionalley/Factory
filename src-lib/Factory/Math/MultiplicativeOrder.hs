@@ -38,7 +38,7 @@ import qualified	Factory.Math.PrimeFactorisation	as Math.PrimeFactorisation
 
 	* Based on <http://rosettacode.org/wiki/Multiplicative_order#Haskell>.
 
-	* <http://en.wikipedia.org/wiki/Multiplicative_order>.
+	* <https://en.wikipedia.org/wiki/Multiplicative_order>.
 
 	* <http://mathworld.wolfram.com/MultiplicativeOrder.html>.
 -}

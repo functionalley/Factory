@@ -58,9 +58,9 @@ cubeRoot	= (** recip 3)
 	* Raise an arbitrary number to the specified positive integral power, using /modular/ arithmetic.
 
 	* Implements exponentiation as a sequence of either /squares/ or multiplications by the base;
-	<http://en.wikipedia.org/wiki/Exponentiation_by_squaring>.
+	<https://en.wikipedia.org/wiki/Exponentiation_by_squaring>.
 
-	* <http://en.wikipedia.org/wiki/Modular_exponentiation>.
+	* <https://en.wikipedia.org/wiki/Modular_exponentiation>.
 -}
 raiseModulo :: (Integral i, Integral power, Show power)
 	=> i	-- ^ Base.
