@@ -59,7 +59,8 @@ results	= sequence [
 	Test.QuickCheck.quickCheckResult prop_meanOfSet,
 	Test.QuickCheck.quickCheckResult prop_weightedMeanRational,
 	Test.QuickCheck.quickCheckResult prop_weightedMeanInteger,
-	Test.QuickCheck.quickCheckResult prop_weightedMeanUniformDenominator
+	Test.QuickCheck.quickCheckResult prop_weightedMeanUniformDenominator,
+	Test.QuickCheck.quickCheckResult prop_rootMeanSquare
  ] where
 	prop_nC0, prop_nC1, prop_sum :: Math.Implementations.Factorial.Algorithm -> Integer -> Test.QuickCheck.Property
 	prop_nC0 algorithm n	= Test.QuickCheck.label "prop_nC0" $ Math.Statistics.nCr algorithm (abs n) 0 == 1
@@ -124,4 +125,7 @@ results	= sequence [
 	 ) == (
 		Math.Statistics.getMean numerators :: Rational
 	 )
+
+	prop_rootMeanSquare :: [Rational] -> Test.QuickCheck.Property
+	prop_rootMeanSquare l		= not (null l)	==> Test.QuickCheck.label "prop_rootMeanSquare" $ Math.Statistics.getRootMeanSquare l == sqrt (Math.Statistics.getMean $ map Math.Power.square l :: Double)
 
