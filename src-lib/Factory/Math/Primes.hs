@@ -21,7 +21,7 @@
 -}
 
 module Factory.Math.Primes(
--- * Types-classes
+-- * Type-classes
 	Algorithmic(..),
 -- * Functions
 	primorial,

@@ -30,7 +30,7 @@ module Factory.Data.Ring(
 -- * Type-classes
 	Ring(..),
 -- * Types
--- ** Data.types
+-- ** Data-types
 --	Product,
 --	Sum,
 -- * Functions

@@ -31,7 +31,7 @@ module Factory.Data.Polynomial(
 -- * Types
 -- ** Type-synonyms
 --	MonomialList,
--- ** Data-types,
+-- ** Data-types
 	Polynomial,
 -- * Constants
 	zero,
