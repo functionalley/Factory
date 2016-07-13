@@ -120,7 +120,7 @@ and added the functions; `Factory.Data.Interval.precisely`, `Factory.Data.Interv
 * Replaced preprocessor-directives with **build-depends** constraints in the *.cabal*-file.
 * Added function `Factory.Math.Statistics.getWeightedMean` & corresponding tests in module "**Factory.Test.QuickCheck.Statistics**".
 * Since `(<$>)` is exported from the Prelude from **base-4.8**, imported **Prelude** hiding `(<*>)` into module "**Factory.Data.Monomial**", since this symbol is defined locally for other purposes.
-* Either replaced instances of `(<$>)` with `fmap` to avoid ambiguity between **Control.Applicative** & **Prelude** which (from **base-4.8**) also exports this symbol, or hid the symbol when importing the **Prelude**..
+* Either replaced instances of `(<$>)` with `fmap` to avoid ambiguity between **Control.Applicative** & **Prelude** which (from **base-4.8**) also exports this symbol, or hid the symbol when importing the **Prelude**.
 
 ## 0.2.1.2
 * Hid `(<$>)` when importing the **Prelude** into module "**src/Factory/Test/QuickCheck/Pi**".
@@ -145,3 +145,4 @@ and added the functions; `Factory.Data.Interval.precisely`, `Factory.Data.Interv
 * Re-code **Factory.Test.QuickCheck.Statistics** to **Data.Array.IArray** rather than **Data.Array**.
 * Added functions **Factory.Math.Statistics.getRootMeanSquare** **Factory.Test.QuickCheck.Statistics.prop_rootMeanSquare**.
 * Added function **Factory.Test.QuickCheck.Statistics.prop_standardDeviationRMS**.
+* Added **Eq** type-constraint to function **Factory.Math.Statistics.getWeightedMean**.

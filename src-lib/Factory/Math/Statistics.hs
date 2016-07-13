@@ -81,10 +81,11 @@ getRootMeanSquare foldable
 
 	* Should the caller define the result-type as 'Rational', then it will be free from rounding-errors.
 
-	* CAVEAT: because the operand isn't merely a list, no optimisation is performed when supplied a singleton.
+	* CAVEAT: because the operand is more general than a list, no optimisation is performed when supplied a singleton.
 -}
 getWeightedMean :: (
 	Data.Foldable.Foldable	foldable,
+	Eq			result,
 	Fractional		result,
 	Real			value,
 	Real			weight
@@ -93,14 +94,14 @@ getWeightedMean :: (
 	-> result
 getWeightedMean foldable
 	| denominator == 0	= error "Factory.Math.Statistics.getWeightedMean:\tzero weight => undefined result."
-	| otherwise		= numerator / realToFrac denominator
+	| otherwise		= numerator / denominator
 	where
 		(numerator, denominator)	= Data.Foldable.foldr (
-			\(value, weight)	-> if weight == 0
+			\(value, weight)	-> let
+				w	= realToFrac weight
+			in if w == 0
 				then id	-- Avoid unnecessarily evaluation.
-				else (
-					+ realToFrac value * realToFrac weight	-- Perform the arithmetic in the specified result-type.
-				) *** (+ weight)
+				else (+ realToFrac value * w) *** (+ w)	-- Perform the arithmetic in the specified result-type.
 		 ) (0, 0) foldable
 
 {- |
