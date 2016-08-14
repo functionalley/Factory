@@ -35,7 +35,7 @@ module Factory.Data.PrimeWheel(
 	generateMultiples,
 	roll,
 	rotate,
--- ** Constructors
+-- ** Constructor
 	mkPrimeWheel,
 -- ** Query
 	getCircumference,

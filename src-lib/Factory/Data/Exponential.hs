@@ -34,7 +34,7 @@ module Factory.Data.Exponential(
 -- ** Accessors
 	getBase,
 	getExponent,
--- ** Constructors
+-- ** Constructor
 	rightIdentity,
 -- ** Operators
 	(<^),

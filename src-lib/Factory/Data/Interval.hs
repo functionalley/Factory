@@ -54,7 +54,7 @@ module Factory.Data.Interval(
 -- ** Accessors
 	getMinBound,
 	getMaxBound,
--- ** Constructors
+-- ** Constructor
 	precisely,
 -- ** Predicates
 	isReversed

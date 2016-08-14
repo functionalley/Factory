@@ -28,7 +28,7 @@ module Factory.Data.MonicPolynomial(
 -- ** Data-types
 	MonicPolynomial(getPolynomial),	-- Hide the data-constructor.
 -- * Functions
--- ** Constructors
+-- ** Constructor
 	mkMonicPolynomial
 ) where
 

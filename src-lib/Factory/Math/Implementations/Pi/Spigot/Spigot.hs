@@ -42,7 +42,7 @@ module Factory.Math.Implementations.Pi.Spigot.Spigot(
 -- ** Accessors
 --	getQuotient,
 --	getRemainder,
--- ** Constructors
+-- ** Constructor
 --	mkRow
 ) where
 
