@@ -64,13 +64,7 @@ data Category agm bbp borwein ramanujan spigot
 	| Spigot spigot		-- ^ Algorithms from which the digits of /Pi/ slowly drip, one by one.
 	deriving (Eq, Read, Show)
 
-instance (
-	Data.Default.Default agm,
-	Data.Default.Default bbp,
-	Data.Default.Default borwein,
-	Data.Default.Default ramanujan,
-	Data.Default.Default spigot
- )  => Data.Default.Default (Category agm bbp borwein ramanujan spigot)	where
+instance Data.Default.Default bbp  => Data.Default.Default (Category agm bbp borwein ramanujan spigot)	where
 	def	= BBP Data.Default.def
 
 instance (

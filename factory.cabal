@@ -25,7 +25,7 @@ Synopsis:	Rational arithmetic in an irrational world.
 Build-type:	Simple
 Description:	A library of number-theory functions, for; factorials, square-roots, Pi and primes.
 Category:	Math, Number Theory
-Tested-with:	GHC == 7.4, GHC == 7.6, GHC == 7.8, GHC == 7.10.1
+Tested-with:	GHC == 7.4, GHC == 7.6, GHC == 7.8, GHC == 7.10.1, GHC == 8.0.1
 Homepage:	http://functionalley.eu/Factory/factory.html
 Maintainer:	mailto:factory@functionalley.eu
 Bug-reports:	mailto:factory@functionalley.eu
@@ -54,7 +54,7 @@ flag threaded
 
 Library
     Default-language:	Haskell2010
-    GHC-options:	-Wall -O2 -fno-warn-tabs
+    GHC-options:	-O2 -Wall -fno-warn-tabs
     Hs-source-dirs:	src-lib
 
     Exposed-modules:
@@ -128,19 +128,23 @@ Library
         toolshed >= 0.17
 
     if impl(ghc >= 7.4.1)
-        GHC-prof-options:	-prof -fprof-auto -fprof-cafs
+        GHC-prof-options:	-fprof-auto -fprof-cafs
     else
-        GHC-prof-options:	-prof -auto-all -caf-all
+        GHC-prof-options:	-auto-all -caf-all
 
     if impl(ghc >= 7.0) && flag(llvm)
         GHC-options:	-fllvm
 
 Executable factory
     Default-language:	Haskell2010
-    GHC-options:	-Wall -O2 -fno-warn-tabs
+    GHC-options:	-O2 -Wall -fno-warn-tabs
     Hs-source-dirs:	src-exe
     Main-is:		Main.hs
-    GHC-prof-options:	-prof -auto-all -caf-all
+
+    if impl(ghc >= 7.4.1)
+        GHC-prof-options:	-fprof-auto -fprof-cafs
+    else
+        GHC-prof-options:	-auto-all -caf-all
 
 -- Unexposed modules must be referenced for 'cabal sdist'.
     Other-modules:

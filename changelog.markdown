@@ -146,3 +146,4 @@ and added the functions; `Factory.Data.Interval.precisely`, `Factory.Data.Interv
 * Added functions **Factory.Math.Statistics.getRootMeanSquare** **Factory.Test.QuickCheck.Statistics.prop_rootMeanSquare**.
 * Added function **Factory.Test.QuickCheck.Statistics.prop_standardDeviationRMS**.
 * Added **Eq** type-constraint to function **Factory.Math.Statistics.getWeightedMean**.
+* Tested with **ghc-8.0.1**.

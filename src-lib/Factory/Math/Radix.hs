@@ -85,7 +85,7 @@ toBase base decimal
 			| n >&< encodes	= encodes ! n
 			| otherwise	= error $ "Factory.Math.Radix.toBase.toDigit:\tno suitable character-representation for integer " ++ show n
 			where
-				(>&<) :: (Data.Array.IArray.Ix i, Integral i) => i -> Data.Array.IArray.Array i Char -> Bool
+				(>&<) :: (Data.Array.IArray.Ix i) => i -> Data.Array.IArray.Array i Char -> Bool
 				index >&< array	= ($ index) `all` [(>= lower), (<= upper)]	where
 					(lower, upper)	= Data.Array.IArray.bounds array
 

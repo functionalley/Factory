@@ -32,7 +32,6 @@ module Factory.Test.QuickCheck.Pi(
 
 import			Factory.Test.QuickCheck.Factorial()
 import			Factory.Test.QuickCheck.SquareRoot()
-import qualified	Factory.Math.Factorial					as Math.Factorial
 import qualified	Factory.Math.Implementations.Factorial			as Math.Implementations.Factorial
 import qualified	Factory.Math.Implementations.Pi.AGM.Algorithm		as Math.Implementations.Pi.AGM.Algorithm
 import qualified	Factory.Math.Implementations.Pi.BBP.Algorithm		as Math.Implementations.Pi.BBP.Algorithm
@@ -42,7 +41,6 @@ import qualified	Factory.Math.Implementations.Pi.Spigot.Algorithm	as Math.Implem
 import qualified	Factory.Math.Implementations.SquareRoot			as Math.Implementations.SquareRoot
 import qualified	Factory.Math.Pi						as Math.Pi
 import qualified	Factory.Math.Precision					as Math.Precision
-import qualified	Factory.Math.SquareRoot					as Math.SquareRoot
 import qualified	Test.QuickCheck
 import			Test.QuickCheck((==>))
 
@@ -50,10 +48,7 @@ import			Test.QuickCheck((==>))
 import	Control.Applicative((<$>), (<*>))
 #endif
 
-instance (
-	Test.QuickCheck.Arbitrary	squareRootAlgorithm,
-	Math.SquareRoot.Algorithmic	squareRootAlgorithm
- ) => Test.QuickCheck.Arbitrary (Math.Implementations.Pi.AGM.Algorithm.Algorithm squareRootAlgorithm)	where
+instance Test.QuickCheck.Arbitrary squareRootAlgorithm => Test.QuickCheck.Arbitrary (Math.Implementations.Pi.AGM.Algorithm.Algorithm squareRootAlgorithm)	where
 	arbitrary	= Math.Implementations.Pi.AGM.Algorithm.BrentSalamin <$> Test.QuickCheck.arbitrary
 
 instance Test.QuickCheck.Arbitrary Math.Implementations.Pi.BBP.Algorithm.Algorithm	where
@@ -61,9 +56,7 @@ instance Test.QuickCheck.Arbitrary Math.Implementations.Pi.BBP.Algorithm.Algorit
 
 instance (
 	Test.QuickCheck.Arbitrary	squareRootAlgorithm,
-	Math.SquareRoot.Algorithmic	squareRootAlgorithm,
-	Test.QuickCheck.Arbitrary	factorialAlgorithm,
-	Math.Factorial.Algorithmic	factorialAlgorithm
+	Test.QuickCheck.Arbitrary	factorialAlgorithm
  ) => Test.QuickCheck.Arbitrary (Math.Implementations.Pi.Borwein.Algorithm.Algorithm squareRootAlgorithm factorialAlgorithm)	where
 	arbitrary	= Test.QuickCheck.oneof [
 		Math.Implementations.Pi.Borwein.Algorithm.Borwein1993 <$> Test.QuickCheck.arbitrary <*> Test.QuickCheck.arbitrary
@@ -71,9 +64,7 @@ instance (
 
 instance (
 	Test.QuickCheck.Arbitrary	squareRootAlgorithm,
-	Math.SquareRoot.Algorithmic	squareRootAlgorithm,
-	Test.QuickCheck.Arbitrary	factorialAlgorithm,
-	Math.Factorial.Algorithmic	factorialAlgorithm
+	Test.QuickCheck.Arbitrary	factorialAlgorithm
  ) => Test.QuickCheck.Arbitrary (Math.Implementations.Pi.Ramanujan.Algorithm.Algorithm squareRootAlgorithm factorialAlgorithm)	where
 	arbitrary	= Test.QuickCheck.oneof [
 		Math.Implementations.Pi.Ramanujan.Algorithm.Classic <$> Test.QuickCheck.arbitrary <*> Test.QuickCheck.arbitrary,

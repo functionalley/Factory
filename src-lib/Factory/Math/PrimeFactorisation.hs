@@ -95,7 +95,7 @@ powerSmoothness algorithm	= 0 : map (maximum . map Data.Exponential.evaluate . p
 
 	* <https://en.wikipedia.org/wiki/Regular_number>.
 -}
-regularNumbers :: (Algorithmic algorithm, Control.DeepSeq.NFData base, Integral base) => algorithm -> [base]
+regularNumbers :: (Algorithmic algorithm, Integral base) => algorithm -> [base]
 regularNumbers algorithm	= map fst . filter ((<= (5 :: Integer)) . snd) . zip [1 ..] . tail $ smoothness algorithm
 
 {- |
@@ -138,7 +138,7 @@ eulersTotient algorithm i
 
 	* <http://planetmath.org/encyclopedia/NumberOfDistinctPrimeFactorsFunction.html>.
 -}
-omega :: (Algorithmic algorithm, Control.DeepSeq.NFData i, Integral i) => algorithm -> [i]
+omega :: (Algorithmic algorithm, Integral i) => algorithm -> [i]
 omega algorithm	= map (Data.List.genericLength . primeFactors algorithm) [0 :: Integer ..]
 
 {- |

@@ -63,9 +63,7 @@ piPerformance category = ToolShed.System.TimePure.getCPUSeconds . Math.Pi.openS 
 -}
 piPerformanceGraph :: (
 	Math.SquareRoot.Algorithmic	squareRootAlgorithm,
-	Show				squareRootAlgorithm,
-	Math.Factorial.Algorithmic	factorialAlgorithm,
-	Show				factorialAlgorithm
+	Math.Factorial.Algorithmic	factorialAlgorithm
  ) => RealFrac i
 	=> Category squareRootAlgorithm factorialAlgorithm	-- ^ The algorithm.
 	-> i							-- ^ The factor by which the precision is increased on each iteration.
