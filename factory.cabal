@@ -14,7 +14,7 @@
 -- along with Factory.  If not, see <http://www.gnu.org/licenses/>.
 
 Name:		factory
-Version:	0.2.2.1
+Version:	0.3.0.0
 Cabal-version:	>= 1.10
 Copyright:	(C) 2011-2015 Dr. Alistair Ward
 License:	GPL

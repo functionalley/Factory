@@ -149,3 +149,6 @@ and added the functions; `Factory.Data.Interval.precisely`, `Factory.Data.Interv
 * Tested with **ghc-8.0.1**.
 ## 0.2.2.1
 * Commented-out flakey square-root test.
+## 0.3.0.0
+* Used strictness to improve efficiency of functions **getMean**, **getRootMeanSquare**, **getWeightedMean** & replaced **error** with **Control.Exception.assert**, in module **Factory.Math.Statistics**
+*

@@ -35,6 +35,7 @@ module Factory.Math.Statistics(
 ) where
 
 import			Control.Arrow((***))
+import qualified	Control.Exception
 import			Control.Parallel(par, pseq)
 import qualified	Data.Foldable
 import qualified	Data.List
@@ -54,11 +55,13 @@ getMean :: (
  )
 	=> foldable value
 	-> result
-getMean foldable
-	| denominator == 0	= error "Factory.Math.Statistics.getMean:\tno data => undefined result."
-	| otherwise		= realToFrac numerator / fromIntegral denominator
-	where
-		(numerator, denominator)	= Data.Foldable.foldr (\s -> (+ s) *** succ) (0, 0 :: Int) foldable
+getMean foldable	= Control.Exception.assert (denominator /= 0) $ realToFrac numerator / fromIntegral denominator	where
+	denominator :: Int
+	(numerator, denominator)	= Data.Foldable.foldl' (
+		\acc x	-> let
+			acc'@(n, d)	= (+ x) *** succ $ acc
+		in n `seq` d `seq` acc'
+	 ) (0, 0) foldable
 
 -- | Determines the /root mean square/ of the specified numbers; <https://en.wikipedia.org/wiki/Root_mean_square>.
 getRootMeanSquare :: (
@@ -68,11 +71,13 @@ getRootMeanSquare :: (
  )
 	=> foldable value
 	-> result
-getRootMeanSquare foldable
-	| denominator == 0	= error "Factory.Math.Statistics.getRootMeanSquare:\tno data => undefined result."
-	| otherwise		= sqrt $ realToFrac numerator / fromIntegral denominator
-	where
-		(numerator, denominator)	= Data.Foldable.foldr (\s -> (+ Math.Power.square s) *** succ) (0, 0 :: Int) foldable
+getRootMeanSquare foldable	= Control.Exception.assert (denominator /= 0) $ sqrt $ realToFrac numerator / fromIntegral denominator	where
+	denominator :: Int
+	(numerator, denominator)	= Data.Foldable.foldl' (
+		\acc x -> let
+			acc'@(n, d)	= (+ Math.Power.square x) *** succ $ acc
+		 in n `seq` d `seq` acc'
+	 ) (0, 0) foldable
 
 {- |
 	* Determines the /weighted mean/ of the specified numbers; <https://en.wikipedia.org/wiki/Weighted_arithmetic_mean>.
@@ -92,17 +97,14 @@ getWeightedMean :: (
  )
 	=> foldable (value, weight)	-- ^ Each pair consists of a value & the corresponding weight.
 	-> result
-getWeightedMean foldable
-	| denominator == 0	= error "Factory.Math.Statistics.getWeightedMean:\tzero weight => undefined result."
-	| otherwise		= numerator / denominator
-	where
-		(numerator, denominator)	= Data.Foldable.foldr (
-			\(value, weight)	-> let
-				w	= realToFrac weight
-			in if w == 0
-				then id	-- Avoid unnecessarily evaluation.
-				else (+ realToFrac value * w) *** (+ w)	-- Perform the arithmetic in the specified result-type.
-		 ) (0, 0) foldable
+getWeightedMean foldable = Control.Exception.assert (denominator /= 0) $ numerator / denominator	where
+	(numerator, denominator)	= Data.Foldable.foldl' (
+		\acc (value, weight)	-> case realToFrac weight of
+			0	-> acc	-- Avoid unnecessarily evaluation.
+			w	-> let
+				acc'@(n, d)	= (+ realToFrac value * w) *** (+ w) $ acc	-- Perform the arithmetic in the specified result-type.
+			 in n `seq` d `seq` acc'
+	 ) (0, 0) foldable
 
 {- |
 	* Measures the /dispersion/ of a /population/ of results from the /mean/ value; <https://en.wikipedia.org/wiki/Statistical_dispersion>.
@@ -162,11 +164,8 @@ getCoefficientOfVariance :: (
 	Functor			foldable,
 	Real			value
  ) => foldable value -> result
-getCoefficientOfVariance l
-	| mean == 0	= error "Factory.Math.Statistics.getCoefficientOfVariance:\tundefined if mean is zero."
-	| otherwise	= getStandardDeviation l / abs mean
-	where
-		mean	= getMean l
+getCoefficientOfVariance l	= Control.Exception.assert (mean /= 0) $ getStandardDeviation l / abs mean	where
+	mean	= getMean l
 
 -- | The number of unordered /combinations/ of /r/ objects taken from /n/; <https://en.wikipedia.org/wiki/Combination>.
 nCr :: (Math.Factorial.Algorithmic factorialAlgorithm, Integral i, Show i)
@@ -177,10 +176,8 @@ nCr :: (Math.Factorial.Algorithmic factorialAlgorithm, Integral i, Show i)
 nCr _ 0 _	= 1
 nCr _ _ 0	= 1
 nCr factorialAlgorithm n r
-	| n < 0		= error $ "Factory.Math.Statistics.nCr:\tinvalid n; " ++ show n
-	| r < 0		= error $ "Factory.Math.Statistics.nCr:\tinvalid r; " ++ show r
 	| n < r		= 0
-	| otherwise	= numerator `par` (denominator `pseq` numerator `div` denominator)
+	| otherwise	= Control.Exception.assert (n >= 0 && r >= 0) $ numerator `par` (denominator `pseq` numerator `div` denominator)
 	where
 		[smaller, bigger]	= Data.List.sort [r, n - r]
 		numerator		= Math.Implementations.Factorial.risingFactorial (succ bigger) (n - bigger)
@@ -194,8 +191,6 @@ nPr :: (Integral i, Show i)
 nPr 0 _	= 1
 nPr _ 0	= 1
 nPr n r
-	| n < 0		= error $ "Factory.Math.Statistics.nPr:\tinvalid n; " ++ show n
-	| r < 0		= error $ "Factory.Math.Statistics.nPr:\tinvalid r; " ++ show r
 	| n < r		= 0
-	| otherwise	= Math.Implementations.Factorial.fallingFactorial n r
+	| otherwise	= Control.Exception.assert (n >= 0 && r >= 0) $ Math.Implementations.Factorial.fallingFactorial n r
 
