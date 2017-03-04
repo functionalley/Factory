@@ -44,7 +44,7 @@ digits	= ['0' .. '9'] ++ ['a' .. 'z']
 
 -- | Constant random-access lookup for 'digits'.
 encodes :: (Data.Array.IArray.Ix index, Integral index) => Data.Array.IArray.Array index Char
-encodes	= Data.Array.IArray.listArray (0, pred $ Data.List.genericLength digits) digits
+encodes	= Data.Array.IArray.listArray (0, fromIntegral . pred $ length digits) digits
 
 -- | Constant reverse-lookup for 'digits'.
 decodes :: Integral i => [(Char, i)]
@@ -68,10 +68,12 @@ toBase :: (
 toBase 10 decimal	= show decimal	-- Base unchanged.
 toBase _ 0		= "0"		-- Zero has the same representation in any base.
 toBase base decimal
-	| abs base < 2					= error $ "Factory.Math.Radix.toBase:\tan arbitrary integer can't be represented in base " ++ show base
-	| abs base > Data.List.genericLength digits	= error $ "Factory.Math.Radix.toBase:\tunable to clearly represent the complete set of digits in base " ++ show base
-	| base > 0 && decimal < 0			= '-' : map toDigit (fromDecimal (negate decimal) [])
-	| otherwise					= toDigit `map` fromDecimal decimal []
+	| abs base < 2			= error $ "Factory.Math.Radix.toBase:\tan arbitrary integer can't be represented in base " ++ show base
+	| abs base > fromIntegral (
+		length digits
+	)				= error $ "Factory.Math.Radix.toBase:\tunable to clearly represent the complete set of digits in base " ++ show base
+	| base > 0 && decimal < 0	= '-' : map toDigit (fromDecimal (negate decimal) [])
+	| otherwise			= toDigit `map` fromDecimal decimal []
 	where
 		fromDecimal 0		= id
 		fromDecimal n
@@ -103,10 +105,12 @@ fromBase :: (
 fromBase 10 s	= read s	-- Base unchanged.
 fromBase _ "0"	= 0		-- Zero has the same representation in any base.
 fromBase base s
-	| abs base < 2					= error $ "Factory.Math.Radix.fromBase:\tan arbitrary integer can't be represented in base " ++ show base
-	| abs base > Data.List.genericLength digits	= error $ "Factory.Math.Radix.fromBase:\tunable to clearly represent the complete set of digits in base " ++ show base
-	| base > 0 && head s == '-'			= negate . fromBase base $ tail s	-- Recurse.
-	| otherwise					= Data.List.foldl' (\l -> ((l * fromIntegral base) +) . fromDigit) 0 s	where
+	| abs base < 2			= error $ "Factory.Math.Radix.fromBase:\tan arbitrary integer can't be represented in base " ++ show base
+	| abs base > fromIntegral (
+		length digits
+	)				= error $ "Factory.Math.Radix.fromBase:\tunable to clearly represent the complete set of digits in base " ++ show base
+	| base > 0 && head s == '-'	= negate . fromBase base $ tail s	-- Recurse.
+	| otherwise			= Data.List.foldl' (\l -> ((l * fromIntegral base) +) . fromDigit) 0 s	where
 		fromDigit :: Integral i => Char -> i
 		fromDigit c	= case c `lookup` decodes of
 			Just i

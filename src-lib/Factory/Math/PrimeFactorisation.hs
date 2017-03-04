@@ -46,7 +46,6 @@ module Factory.Math.PrimeFactorisation(
 ) where
 
 import qualified	Control.DeepSeq
-import qualified	Data.List
 import qualified	Factory.Data.Exponential	as Data.Exponential
 import qualified	Factory.Data.PrimeFactors	as Data.PrimeFactors
 
@@ -139,7 +138,7 @@ eulersTotient algorithm i
 	* <http://planetmath.org/encyclopedia/NumberOfDistinctPrimeFactorsFunction.html>.
 -}
 omega :: (Algorithmic algorithm, Integral i) => algorithm -> [i]
-omega algorithm	= map (Data.List.genericLength . primeFactors algorithm) [0 :: Integer ..]
+omega algorithm	= map (fromIntegral . length . primeFactors algorithm) [0 :: Integer ..]
 
 {- |
 	* A constant, conceptually infinite, list of the /square-free/ numbers, i.e. those which aren't divisible by any /perfect square/.
