@@ -132,8 +132,12 @@ Library
     else
         GHC-prof-options:	-auto-all -caf-all
 
-    if impl(ghc >= 7.0) && flag(llvm)
-        GHC-options:	-fllvm
+    if impl(ghc >= 7.0)
+        if flag(llvm)
+            GHC-options:	-fllvm
+
+        if impl(ghc >= 8.0)
+            GHC-options:	-Wredundant-constraints
 
 Executable factory
     Default-language:	Haskell2010
@@ -178,6 +182,9 @@ Executable factory
         if flag(llvm)
             GHC-options:	-fllvm
 
+        if impl(ghc >= 8.0)
+            GHC-options:	-Wredundant-constraints
+
 Test-Suite test
     Default-language:	Haskell2010
     GHC-options:	-Wall -fno-warn-tabs
@@ -216,3 +223,7 @@ Test-Suite test
         QuickCheck >= 2.2,
         random,
         toolshed >= 0.17
+
+    if impl(ghc >= 8.0)
+        GHC-options:	-Wredundant-constraints
+
