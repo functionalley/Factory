@@ -103,13 +103,15 @@ fromBase :: (
 	Show		base
  ) => base -> String -> decimal
 fromBase 10 s	= read s	-- Base unchanged.
+fromBase _ ""	= error "Factory.Math.Radix.fromBase:\tnull string."
 fromBase _ "0"	= 0		-- Zero has the same representation in any base.
 fromBase base s
 	| abs base < 2			= error $ "Factory.Math.Radix.fromBase:\tan arbitrary integer can't be represented in base " ++ show base
 	| abs base > fromIntegral (
 		length digits
 	)				= error $ "Factory.Math.Radix.fromBase:\tunable to clearly represent the complete set of digits in base " ++ show base
-	| base > 0 && head s == '-'	= negate . fromBase base $ tail s	-- Recurse.
+	| base > 0
+	, '-' : remainder <- s	= negate $ fromBase base remainder	-- Recurse.
 	| otherwise			= Data.List.foldl' (\l -> ((l * fromIntegral base) +) . fromDigit) 0 s	where
 		fromDigit :: Integral i => Char -> i
 		fromDigit c	= case c `lookup` decodes of
