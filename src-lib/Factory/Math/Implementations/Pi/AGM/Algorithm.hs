@@ -32,7 +32,7 @@ import qualified	Factory.Math.Pi						as Math.Pi
 import qualified	Factory.Math.SquareRoot					as Math.SquareRoot
 
 -- | Defines the available algorithms.
-data Algorithm squareRootAlgorithm	= BrentSalamin squareRootAlgorithm	deriving (Eq, Read, Show)
+newtype Algorithm squareRootAlgorithm	= BrentSalamin squareRootAlgorithm	deriving (Eq, Read, Show)
 
 instance Data.Default.Default squareRootAlgorithm => Data.Default.Default (Algorithm squareRootAlgorithm)	where
 	def	= BrentSalamin Data.Default.def

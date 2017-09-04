@@ -32,7 +32,7 @@ module Factory.Test.CommandOptions(
 import qualified	Data.Default
 
 -- | Declare a record used to contain command-line options.
-data CommandOptions	= MkCommandOptions {
+newtype CommandOptions	= MkCommandOptions {
 	verbose	:: Bool	-- ^ Whether additional informative output should be generated, where applicable.
 }
 
