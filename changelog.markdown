@@ -147,10 +147,14 @@ and added the functions; `Factory.Data.Interval.precisely`, `Factory.Data.Interv
 * Added function **Factory.Test.QuickCheck.Statistics.prop_standardDeviationRMS**.
 * Added **Eq** type-constraint to function **Factory.Math.Statistics.getWeightedMean**.
 * Tested with **ghc-8.0.1**.
+
 ## 0.2.2.1
 * Commented-out flakey square-root test.
+
 ## 0.3.0.0
 * Used strictness to improve efficiency of functions **getMean**, **getRootMeanSquare**, **getWeightedMean** & replaced **error** with **Control.Exception.assert**, in module **Factory.Math.Statistics**
 * Replaced 'Data.List.genericLength' with the more efficient @fromIntegral . length@.
 * Removed dependency on **Distribution.Package.PackageName**.
 * Checked for null-string in **Factory.Math.Radix.fromBase**.
+
+## 0.3.1.0
