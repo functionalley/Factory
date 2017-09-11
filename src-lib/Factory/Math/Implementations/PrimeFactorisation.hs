@@ -1,5 +1,5 @@
 {-
-	Copyright (C) 2011-2015 Dr. Alistair Ward
+	Copyright (C) 2011-2017 Dr. Alistair Ward
 
 	This program is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
@@ -118,7 +118,7 @@ factoriseByFermatsMethod i
 		 ) . filter (
 			Data.Maybe.isJust . snd	-- Search for a perfect square.
 		 ) . map (
-			Control.Arrow.second $ Math.PerfectPower.maybeSquareNumber {-hotspot-} . (+ negate i)	-- Associate the corresponding value of /smaller/.
+			Control.Arrow.second $ Math.PerfectPower.maybeSquareNumber {-hotspot-} . subtract i	-- Associate the corresponding value of /smaller/.
 		 ) . takeWhile (
 			(<= (i + 9) `div` 6) . fst	-- Terminate the search at the maximum value of /larger/.
 		 ) . Math.Power.squaresFrom {-hotspot-} . ceiling $ sqrt (fromIntegral i :: Double)	-- Start the search at the minimum value of /larger/.

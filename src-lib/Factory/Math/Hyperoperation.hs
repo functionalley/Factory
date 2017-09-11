@@ -1,5 +1,5 @@
 {-
-	Copyright (C) 2011 Dr. Alistair Ward
+	Copyright (C) 2011-2017 Dr. Alistair Ward
 
 	This program is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
@@ -102,7 +102,7 @@ hyperoperation rank base hyperExponent
 
 -- | The /Ackermann-Peter/-function; <https://en.wikipedia.org/wiki/Ackermann_function#Ackermann_numbers>.
 ackermannPeter :: (Integral rank, Show rank) => rank -> HyperExponent -> Base
-ackermannPeter rank	= (+ negate 3) . hyperoperation rank 2 {-base-} . (+ 3)
+ackermannPeter rank	= subtract 3 . hyperoperation rank 2 {-base-} . (+ 3)
 
 -- | True if @hyperoperation base hyperExponent@ has the same value for each specified 'rank'.
 areCoincidental :: (Integral rank, Show rank) => Base -> HyperExponent -> [rank] -> Bool

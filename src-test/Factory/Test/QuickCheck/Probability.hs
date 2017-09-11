@@ -45,7 +45,7 @@ normalise :: (
  ) => distribution -> [f] -> [f]
 normalise distribution
 	| variance == 0	= error "Factory.Test.Quick.Probability.normalise:\tzero variance => can't stretch to one."
-	| otherwise	= map $ (/ sqrt variance) . (+ negate mean)
+	| otherwise	= map $ (/ sqrt variance) . subtract mean
 	where
 		(mean, variance)	= Math.Probability.getMean &&& Math.Probability.getVariance $ distribution
 

@@ -1,5 +1,5 @@
 {-
-	Copyright (C) 2011 Dr. Alistair Ward
+	Copyright (C) 2011-2017 Dr. Alistair Ward
 
 	This program is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
@@ -117,7 +117,7 @@ getDispersionFromMean :: (
 	Functor			foldable,
 	Real			value
  ) => (Rational -> Rational) -> foldable value -> result
-getDispersionFromMean weight foldable	= getMean $ fmap (weight . (+ negate mean) . toRational) foldable	where
+getDispersionFromMean weight foldable	= getMean $ fmap (weight . subtract mean . toRational) foldable	where
 	mean :: Rational
 	mean	= getMean foldable
 

@@ -1,6 +1,6 @@
 {-# OPTIONS_GHC -fno-warn-orphans #-}
 {-
-	Copyright (C) 2011-2015 Dr. Alistair Ward
+	Copyright (C) 2011-2017 Dr. Alistair Ward
 
 	This program is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
@@ -26,7 +26,7 @@ module Factory.Test.QuickCheck.Polynomial(
 	results
 ) where
 
-import			Control.Arrow((***))
+import			Control.Arrow((&&&), (***))
 import			Factory.Data.Ring((=*=), (=+=), (=-=), (=^))
 import qualified	Data.Numbers.Primes
 import qualified	Factory.Data.Polynomial		as Data.Polynomial
@@ -36,12 +36,12 @@ import qualified	Test.QuickCheck
 import			Test.QuickCheck((==>))
 
 instance (
-	Test.QuickCheck.Arbitrary	c,
 	Integral			c,
-	Test.QuickCheck.Arbitrary	e,
-	Integral			e
+	Integral			e,
+	Test.QuickCheck.Arbitrary	c,
+	Test.QuickCheck.Arbitrary	e
  ) => Test.QuickCheck.Arbitrary (Data.Polynomial.Polynomial c e)	where
-	arbitrary	= (Data.Polynomial.mkPolynomial . map ((+ negate 4) . (`mod` 8) *** (`mod` 8))) `fmap` Test.QuickCheck.arbitrary
+	arbitrary	= (Data.Polynomial.mkPolynomial . map (subtract 4 . (`mod` 8) *** (`mod` 8))) `fmap` Test.QuickCheck.arbitrary
 
 -- | The constant test-results for this data-type.
 results :: IO [Test.QuickCheck.Result]
@@ -66,15 +66,13 @@ results	= sequence [
 	prop_quotRem, prop_degree, prop_ringNormalised, prop_quotientRingNormalised :: Data.Polynomial.Polynomial Integer Integer -> Data.Polynomial.Polynomial Integer Integer -> Test.QuickCheck.Property
 	prop_quotRem numerator denominator	= denominator' /= Data.Polynomial.zero	==> Test.QuickCheck.label "prop_quotRem" $ numerator' == denominator' =*= quotient =+= remainder	where
 		numerator', denominator' :: Data.Polynomial.Polynomial Rational Integer
-		numerator'	= Data.Polynomial.realCoefficientsToFrac numerator
-		denominator'	= Data.Polynomial.realCoefficientsToFrac denominator
+		(numerator', denominator')	= ($ numerator) &&& ($ denominator) $ Data.Polynomial.realCoefficientsToFrac 
 
 		(quotient, remainder)	= numerator' `Data.QuotientRing.quotRem'` denominator'
 
 	prop_degree numerator denominator	= denominator' /= Data.Polynomial.zero	==> Test.QuickCheck.label "prop_degree" $ remainder == Data.Polynomial.zero || Data.Polynomial.getDegree remainder < Data.Polynomial.getDegree denominator'	where
 		numerator', denominator' :: Data.Polynomial.Polynomial Rational Integer
-		numerator'	= Data.Polynomial.realCoefficientsToFrac numerator
-		denominator'	= Data.Polynomial.realCoefficientsToFrac denominator
+		(numerator', denominator')	= ($ numerator) &&& ($ denominator) $ Data.Polynomial.realCoefficientsToFrac 
 
 		remainder	= numerator' `Data.QuotientRing.rem'` denominator'
 
@@ -82,8 +80,7 @@ results	= sequence [
 
 	prop_quotientRingNormalised numerator denominator	= denominator' /= Data.Polynomial.zero	==> Test.QuickCheck.label "prop_quotientRingNormalised" $ all Data.Polynomial.isNormalised [numerator' `Data.QuotientRing.quot'` denominator', numerator' `Data.QuotientRing.rem'` denominator']	where
 		numerator', denominator' :: Data.Polynomial.Polynomial Rational Integer
-		numerator'	= Data.Polynomial.realCoefficientsToFrac numerator
-		denominator'	= Data.Polynomial.realCoefficientsToFrac denominator
+		(numerator', denominator')	= ($ numerator) &&& ($ denominator) $ Data.Polynomial.realCoefficientsToFrac 
 
 	prop_power, prop_perfectPower, prop_normalised :: Data.Polynomial.Polynomial Integer Integer -> Int -> Test.QuickCheck.Property
 	prop_power polynomial power	= Test.QuickCheck.label "prop_power" $ polynomial =^ power' == iterate (=*= polynomial) polynomial !! pred power'	where

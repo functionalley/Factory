@@ -158,3 +158,4 @@ and added the functions; `Factory.Data.Interval.precisely`, `Factory.Data.Interv
 * Checked for null-string in **Factory.Math.Radix.fromBase**.
 
 ## 0.3.1.0
+* Replaced  '+negate' with 'subtract'.
