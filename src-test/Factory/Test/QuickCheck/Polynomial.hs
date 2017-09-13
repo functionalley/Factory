@@ -66,13 +66,13 @@ results	= sequence [
 	prop_quotRem, prop_degree, prop_ringNormalised, prop_quotientRingNormalised :: Data.Polynomial.Polynomial Integer Integer -> Data.Polynomial.Polynomial Integer Integer -> Test.QuickCheck.Property
 	prop_quotRem numerator denominator	= denominator' /= Data.Polynomial.zero	==> Test.QuickCheck.label "prop_quotRem" $ numerator' == denominator' =*= quotient =+= remainder	where
 		numerator', denominator' :: Data.Polynomial.Polynomial Rational Integer
-		(numerator', denominator')	= ($ numerator) &&& ($ denominator) $ Data.Polynomial.realCoefficientsToFrac 
+		(numerator', denominator')	= ($ numerator) &&& ($ denominator) $ Data.Polynomial.realCoefficientsToFrac
 
 		(quotient, remainder)	= numerator' `Data.QuotientRing.quotRem'` denominator'
 
 	prop_degree numerator denominator	= denominator' /= Data.Polynomial.zero	==> Test.QuickCheck.label "prop_degree" $ remainder == Data.Polynomial.zero || Data.Polynomial.getDegree remainder < Data.Polynomial.getDegree denominator'	where
 		numerator', denominator' :: Data.Polynomial.Polynomial Rational Integer
-		(numerator', denominator')	= ($ numerator) &&& ($ denominator) $ Data.Polynomial.realCoefficientsToFrac 
+		(numerator', denominator')	= ($ numerator) &&& ($ denominator) $ Data.Polynomial.realCoefficientsToFrac
 
 		remainder	= numerator' `Data.QuotientRing.rem'` denominator'
 
@@ -80,7 +80,7 @@ results	= sequence [
 
 	prop_quotientRingNormalised numerator denominator	= denominator' /= Data.Polynomial.zero	==> Test.QuickCheck.label "prop_quotientRingNormalised" $ all Data.Polynomial.isNormalised [numerator' `Data.QuotientRing.quot'` denominator', numerator' `Data.QuotientRing.rem'` denominator']	where
 		numerator', denominator' :: Data.Polynomial.Polynomial Rational Integer
-		(numerator', denominator')	= ($ numerator) &&& ($ denominator) $ Data.Polynomial.realCoefficientsToFrac 
+		(numerator', denominator')	= ($ numerator) &&& ($ denominator) $ Data.Polynomial.realCoefficientsToFrac
 
 	prop_power, prop_perfectPower, prop_normalised :: Data.Polynomial.Polynomial Integer Integer -> Int -> Test.QuickCheck.Property
 	prop_power polynomial power	= Test.QuickCheck.label "prop_power" $ polynomial =^ power' == iterate (=*= polynomial) polynomial !! pred power'	where
