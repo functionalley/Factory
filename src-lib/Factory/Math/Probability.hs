@@ -50,7 +50,7 @@ import qualified	ToolShed.Data.Pair
 import qualified	ToolShed.SelfValidate
 
 -- | The maximum integer which can be accurately represented as a Double.
-maxPreciseInteger  :: RealFloat a => a -> Integer
+maxPreciseInteger :: RealFloat a => a -> Integer
 maxPreciseInteger	= (2 ^) . floatDigits
 
 {- |
