@@ -159,3 +159,5 @@ and added the functions; `Factory.Data.Interval.precisely`, `Factory.Data.Interv
 
 ## 0.3.1.0
 * Replaced  '+negate' with 'subtract'.
+* Removed **Eq** type-constraint from **Factory.Math.Statistics.getWeightedMean**.
+* Addes specialisation-pragmas to **Factory.Math.Statistics**.

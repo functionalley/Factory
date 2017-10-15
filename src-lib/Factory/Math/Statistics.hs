@@ -55,6 +55,8 @@ getMean :: (
  )
 	=> foldable value
 	-> result
+{-# SPECIALISE getMean :: Data.Foldable.Foldable foldable => foldable Double -> Double #-}
+{-# SPECIALISE getMean :: Data.Foldable.Foldable foldable => foldable Rational -> Rational #-}
 getMean foldable	= Control.Exception.assert (denominator /= 0) $ realToFrac numerator / fromIntegral denominator	where
 	denominator :: Int
 	(numerator, denominator)	= Data.Foldable.foldl' (
@@ -71,7 +73,8 @@ getRootMeanSquare :: (
  )
 	=> foldable value
 	-> result
-getRootMeanSquare foldable	= Control.Exception.assert (denominator /= 0) $ sqrt $ realToFrac numerator / fromIntegral denominator	where
+{-# SPECIALISE getRootMeanSquare :: Data.Foldable.Foldable foldable => foldable Double -> Double #-}
+getRootMeanSquare foldable	= Control.Exception.assert (denominator /= 0) . sqrt $ realToFrac numerator / fromIntegral denominator	where
 	denominator :: Int
 	(numerator, denominator)	= Data.Foldable.foldl' (
 		\acc x -> let
@@ -84,26 +87,25 @@ getRootMeanSquare foldable	= Control.Exception.assert (denominator /= 0) $ sqrt 
 
 	* The specified value is only evaluated if the corresponding weight is non-zero.
 
-	* Should the caller define the result-type as 'Rational', then it will be free from rounding-errors.
-
 	* CAVEAT: because the operand is more general than a list, no optimisation is performed when supplied a singleton.
 -}
 getWeightedMean :: (
 	Data.Foldable.Foldable	foldable,
-	Eq			result,
 	Fractional		result,
 	Real			value,
 	Real			weight
  )
 	=> foldable (value, weight)	-- ^ Each pair consists of a value & the corresponding weight.
 	-> result
-getWeightedMean foldable = Control.Exception.assert (denominator /= 0) $ numerator / denominator	where
+{-# SPECIALISE getWeightedMean :: Data.Foldable.Foldable foldable => foldable (Double, Double) -> Double #-}
+{-# SPECIALISE getWeightedMean :: Data.Foldable.Foldable foldable => foldable (Rational, Rational) -> Rational #-}
+getWeightedMean foldable	= Control.Exception.assert (denominator /= 0) $ numerator / realToFrac denominator	where
 	(numerator, denominator)	= Data.Foldable.foldl' (
-		\acc (value, weight)	-> case realToFrac weight of
-			0	-> acc	-- Avoid unnecessarily evaluation.
-			w	-> let
-				acc'@(n, d)	= (+ realToFrac value * w) *** (+ w) $ acc	-- Perform the arithmetic in the specified result-type.
-			 in n `seq` d `seq` acc'
+		\acc (value, weight)	-> if weight == 0
+			then acc	-- Avoid unnecessary evaluation.
+			else let
+				acc'@(n, d)	= (+ realToFrac weight * realToFrac value) *** (+ weight) $ acc
+			in n `seq` d `seq` acc'
 	 ) (0, 0) foldable
 
 {- |
@@ -117,8 +119,9 @@ getDispersionFromMean :: (
 	Functor			foldable,
 	Real			value
  ) => (Rational -> Rational) -> foldable value -> result
+{-# SPECIALISE getDispersionFromMean :: (Data.Foldable.Foldable foldable, Functor foldable) => (Rational -> Rational) -> foldable Double -> Double #-}
+{-# SPECIALISE getDispersionFromMean :: (Data.Foldable.Foldable foldable, Functor foldable) => (Rational -> Rational) -> foldable Rational -> Rational #-}
 getDispersionFromMean weight foldable	= getMean $ fmap (weight . subtract mean . toRational) foldable	where
-	mean :: Rational
 	mean	= getMean foldable
 
 {- |
@@ -132,6 +135,8 @@ getVariance :: (
 	Functor			foldable,
 	Real			value
  ) => foldable value -> variance
+{-# SPECIALISE getVariance :: (Data.Foldable.Foldable foldable, Functor foldable) => foldable Double -> Double #-}
+{-# SPECIALISE getVariance :: (Data.Foldable.Foldable foldable, Functor foldable) => foldable Rational -> Rational #-}
 getVariance	= getDispersionFromMean Math.Power.square
 
 -- | Determines the /standard-deviation/ of the specified numbers; <https://en.wikipedia.org/wiki/Standard_deviation>.
@@ -141,6 +146,7 @@ getStandardDeviation :: (
 	Functor			foldable,
 	Real			value
  ) => foldable value -> result
+{-# SPECIALISE getStandardDeviation :: (Data.Foldable.Foldable foldable, Functor foldable) => foldable Double -> Double #-}
 getStandardDeviation	= sqrt . getVariance
 
 {- |
@@ -154,6 +160,8 @@ getAverageAbsoluteDeviation :: (
 	Functor			foldable,
 	Real			value
  ) => foldable value -> result
+{-# SPECIALISE getAverageAbsoluteDeviation :: (Data.Foldable.Foldable foldable, Functor foldable) => foldable Double -> Double #-}
+{-# SPECIALISE getAverageAbsoluteDeviation :: (Data.Foldable.Foldable foldable, Functor foldable) => foldable Rational -> Rational #-}
 getAverageAbsoluteDeviation	= getDispersionFromMean abs
 
 -- | Determines the /coefficient-of-variance/ of the specified numbers; <https://en.wikipedia.org/wiki/Coefficient_of_variation>.
@@ -164,6 +172,7 @@ getCoefficientOfVariance :: (
 	Functor			foldable,
 	Real			value
  ) => foldable value -> result
+{-# SPECIALISE getCoefficientOfVariance :: (Data.Foldable.Foldable foldable, Functor foldable) => foldable Double -> Double #-}
 getCoefficientOfVariance l	= Control.Exception.assert (mean /= 0) $ getStandardDeviation l / abs mean	where
 	mean	= getMean l
 
