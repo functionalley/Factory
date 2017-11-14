@@ -28,7 +28,6 @@ module Factory.Math.Implementations.Primes.TrialDivision(
 ) where
 
 import qualified	Control.Arrow
-import qualified	Data.List
 import qualified	Factory.Math.Power		as Math.Power
 import qualified	Factory.Math.PrimeFactorisation	as Math.PrimeFactorisation
 import qualified	Factory.Data.PrimeWheel		as Data.PrimeWheel
@@ -53,7 +52,7 @@ trialDivision wheelSize	= Data.PrimeWheel.getPrimeComponents primeWheel ++ indiv
 	candidates	= map fst $ Data.PrimeWheel.roll primeWheel
 	indivisible	= uncurry (++) . Control.Arrow.second (
 		filter (`isIndivisibleBy` indivisible {-recurse-})
-	 ) $ Data.List.span (
+	 ) $ span (
 		< Math.Power.square (head candidates)	-- The first composite candidate, is the square of the next prime after the wheel's constituent ones.
 	 ) candidates
 
