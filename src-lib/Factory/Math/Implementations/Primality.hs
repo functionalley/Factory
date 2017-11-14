@@ -43,6 +43,7 @@ import			Control.Arrow((&&&))
 import qualified	Control.DeepSeq
 import qualified	Control.Parallel.Strategies
 import qualified	Data.Default
+import qualified	Data.List
 import qualified	Data.Numbers.Primes
 import qualified	Factory.Data.MonicPolynomial		as Data.MonicPolynomial
 import qualified	Factory.Data.Polynomial			as Data.Polynomial
@@ -111,7 +112,7 @@ isPrimeByAKS :: (
  ) => factorisationAlgorithm -> i -> Bool
 isPrimeByAKS factorisationAlgorithm n	= and [
 	not $ Math.PerfectPower.isPerfectPower n,	-- Step 1.
-	Math.Primality.areCoprime n `all` filter (/= n) [2 .. r],	-- Step 3.
+	Math.Primality.areCoprime n `all` Data.List.delete n [2 .. r],	-- Step 3.
 	and $ Control.Parallel.Strategies.parMap Control.Parallel.Strategies.rdeepseq	{-Benefits from '+RTS -H100M', which reduces garbage-collections-} (
 		\a	-> let
 --			lhs, rhs :: Data.Polynomial.Polynomial i i
