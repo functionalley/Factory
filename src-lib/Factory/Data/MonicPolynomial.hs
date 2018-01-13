@@ -50,7 +50,6 @@ newtype MonicPolynomial c e	= MkMonicPolynomial {
 mkMonicPolynomial :: (
 	Eq	c,
 	Num	c,
-	Ord	e,
 	Show	c,
 	Show	e
  ) => Data.Polynomial.Polynomial c e -> MonicPolynomial c e

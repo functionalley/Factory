@@ -116,7 +116,6 @@ normalise b
 -- | Bisect the /interval/ at the specified /end-point/; which should be between the two existing /end-points/.
 splitAt' :: (
 	Enum	endPoint,
-	Num	endPoint,
 	Ord	endPoint,
 	Show	endPoint
  ) => endPoint -> Interval endPoint -> (Interval endPoint, Interval endPoint)

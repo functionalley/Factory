@@ -70,7 +70,7 @@ instance Math.PrimeFactorisation.Algorithmic Algorithm	where
 		TrialDivision	-> factoriseByTrialDivision
 
 -- | <https://en.wikipedia.org/wiki/Dixon%27s_factorization_method>.
-factoriseByDixonsMethod :: Integral base => base -> Data.PrimeFactors.Factors base exponent
+factoriseByDixonsMethod :: base -> Data.PrimeFactors.Factors base exponent
 factoriseByDixonsMethod	= undefined
 
 {- |
