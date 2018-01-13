@@ -1,6 +1,6 @@
 # **Factory**
 
-[![Hackage](https://img.shields.io/hackage/v/factory.svg)](https://hackage.haskell.org/package/factory)
+[![Hackage](https://img.shields.io/hackage/v/factory.svg)](https://hackage.haskell.org/package/factory) [![Build Status](https://travis-ci.org/functionalley/Factory.svg?branch=master)](https://travis-ci.org/functionalley/Factory)
 
 This is "**Factory**", a library of number-theory functions.
 
