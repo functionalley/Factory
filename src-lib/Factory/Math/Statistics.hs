@@ -1,3 +1,4 @@
+{-# LANGUAGE CPP #-}
 {-
 	Copyright (C) 2011-2017 Dr. Alistair Ward
 
@@ -56,7 +57,9 @@ getMean :: (
 	=> foldable value
 	-> result
 {-# SPECIALISE getMean :: Data.Foldable.Foldable foldable => foldable Double -> Double #-}
+#if MIN_TOOL_VERSION_ghc(7,10,0)
 {-# SPECIALISE getMean :: Data.Foldable.Foldable foldable => foldable Rational -> Rational #-}
+#endif
 getMean foldable	= Control.Exception.assert (denominator /= 0) $ realToFrac numerator / fromIntegral denominator	where
 	denominator :: Int
 	(numerator, denominator)	= Data.Foldable.foldl' (
@@ -98,7 +101,9 @@ getWeightedMean :: (
 	=> foldable (value, weight)	-- ^ Each pair consists of a value & the corresponding weight.
 	-> result
 {-# SPECIALISE getWeightedMean :: Data.Foldable.Foldable foldable => foldable (Double, Double) -> Double #-}
+#if MIN_TOOL_VERSION_ghc(7,10,0)
 {-# SPECIALISE getWeightedMean :: Data.Foldable.Foldable foldable => foldable (Rational, Rational) -> Rational #-}
+#endif
 getWeightedMean foldable	= Control.Exception.assert (denominator /= 0) $ numerator / realToFrac denominator	where
 	(numerator, denominator)	= Data.Foldable.foldl' (
 		\acc (value, weight)	-> if weight == 0
@@ -120,7 +125,9 @@ getDispersionFromMean :: (
 	Real			value
  ) => (Rational -> Rational) -> foldable value -> result
 {-# SPECIALISE getDispersionFromMean :: (Data.Foldable.Foldable foldable, Functor foldable) => (Rational -> Rational) -> foldable Double -> Double #-}
+#if MIN_TOOL_VERSION_ghc(7,10,0)
 {-# SPECIALISE getDispersionFromMean :: (Data.Foldable.Foldable foldable, Functor foldable) => (Rational -> Rational) -> foldable Rational -> Rational #-}
+#endif
 getDispersionFromMean weight foldable	= getMean $ fmap (weight . subtract mean . toRational) foldable	where
 	mean	= getMean foldable
 
@@ -136,7 +143,9 @@ getVariance :: (
 	Real			value
  ) => foldable value -> variance
 {-# SPECIALISE getVariance :: (Data.Foldable.Foldable foldable, Functor foldable) => foldable Double -> Double #-}
+#if MIN_TOOL_VERSION_ghc(7,10,0)
 {-# SPECIALISE getVariance :: (Data.Foldable.Foldable foldable, Functor foldable) => foldable Rational -> Rational #-}
+#endif
 getVariance	= getDispersionFromMean Math.Power.square
 
 -- | Determines the /standard-deviation/ of the specified numbers; <https://en.wikipedia.org/wiki/Standard_deviation>.
@@ -161,7 +170,9 @@ getAverageAbsoluteDeviation :: (
 	Real			value
  ) => foldable value -> result
 {-# SPECIALISE getAverageAbsoluteDeviation :: (Data.Foldable.Foldable foldable, Functor foldable) => foldable Double -> Double #-}
+#if MIN_TOOL_VERSION_ghc(7,10,0)
 {-# SPECIALISE getAverageAbsoluteDeviation :: (Data.Foldable.Foldable foldable, Functor foldable) => foldable Rational -> Rational #-}
+#endif
 getAverageAbsoluteDeviation	= getDispersionFromMean abs
 
 -- | Determines the /coefficient-of-variance/ of the specified numbers; <https://en.wikipedia.org/wiki/Coefficient_of_variation>.
