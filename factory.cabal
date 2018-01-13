@@ -25,7 +25,7 @@ Synopsis:	Rational arithmetic in an irrational world.
 Build-type:	Simple
 Description:	A library of number-theory functions, for; factorials, square-roots, Pi and primes.
 Category:	Math, Number Theory
-Tested-with:	GHC == 7.4, GHC == 7.6, GHC == 7.8, GHC == 7.10.1, GHC == 8.0.1
+Tested-with:	GHC == 7.4, GHC == 7.6, GHC == 7.8, GHC == 7.10, GHC == 8.0
 Homepage:	http://functionalley.eu/Factory/factory.html
 Maintainer:	mailto:factory@functionalley.eu
 Bug-reports:	mailto:factory@functionalley.eu
