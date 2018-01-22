@@ -12,7 +12,7 @@
 	GNU General Public License for more details.
 
 	You should have received a copy of the GNU General Public License
-	along with this program.  If not, see <http://www.gnu.org/licenses/>.
+	along with this program.  If not, see <https://www.gnu.org/licenses/>.
 -}
 {- |
  [@AUTHOR@]	Dr. Alistair Ward
@@ -97,7 +97,7 @@ instance Math.SquareRoot.Iterator Algorithm where
 			dx'	= Math.Power.square dx / dydx'
 
 {-
-	* /Halley's/ method; <http://mathworld.wolfram.com/HalleysMethod.html>
+	* /Halley's/ method; <https://mathworld.wolfram.com/HalleysMethod.html>
 
 >		X(n+1) = Xn - f(Xn) / [f'(Xn) - f''(Xn) * f(Xn) / 2 * f'(Xn)]
 >			=> Xn - (Xn^2 - Y) / [2Xn - 2 * (Xn^2 - Y) / 2 * 2Xn] where Y = X^2, f(X) = X^2 - Y, f'(X) = 2X, f''(X) = 2
@@ -131,7 +131,7 @@ instance Math.SquareRoot.Iterator Algorithm where
 	<https://en.wikipedia.org/wiki/Solving_quadratic_equations_with_continued_fractions>,
 	<https://en.wikipedia.org/wiki/Generalized_continued_fraction#Roots_of_positive_numbers>,
 	<https://en.wikipedia.org/wiki/Methods_of_computing_square_roots#Continued_fraction_expansion>.
-	<http://www.myreckonings.com/Dead_Reckoning/Online/Materials/General%20Method%20for%20Extracting%20Roots.pdf>
+	<https://www.myreckonings.com/Dead_Reckoning/Online/Materials/General%20Method%20for%20Extracting%20Roots.pdf>
 
 	* The convergence <https://en.wikipedia.org/wiki/Rate_of_convergence> of the /continued-fraction/ is merely /1st order/ (linear).
 -}

@@ -12,7 +12,7 @@
 	GNU General Public License for more details.
 
 	You should have received a copy of the GNU General Public License
-	along with this program.  If not, see <http://www.gnu.org/licenses/>.
+	along with this program.  If not, see <https://www.gnu.org/licenses/>.
 -}
 {- |
  [@AUTHOR@]	Dr. Alistair Ward
@@ -40,7 +40,7 @@ class Algorithmic algorithm	where
 
 	* <https://en.wikipedia.org/wiki/Primorial>.
 
-	* <http://mathworld.wolfram.com/Primorial.html>.
+	* <https://mathworld.wolfram.com/Primorial.html>.
 -}
 primorial :: (
 	Algorithmic		algorithm,
@@ -57,7 +57,7 @@ primorial	= scanl (*) 1 . primes
 
 	* <https://en.wikipedia.org/wiki/Mersenne_prime>.
 
-	* <http://mathworld.wolfram.com/MersenneNumber.html>
+	* <https://mathworld.wolfram.com/MersenneNumber.html>
 -}
 mersenneNumbers :: (Algorithmic algorithm, Integral i) => algorithm -> [i]
 mersenneNumbers algorithm	= map (pred . (2 ^)) (primes algorithm :: [Int])	-- Whilst the exponentiation could be parallelised, not all values are known to be required.

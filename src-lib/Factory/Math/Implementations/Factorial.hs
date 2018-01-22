@@ -12,7 +12,7 @@
 	GNU General Public License for more details.
 
 	You should have received a copy of the GNU General Public License
-	along with this program.  If not, see <http://www.gnu.org/licenses/>.
+	along with this program.  If not, see <https://www.gnu.org/licenses/>.
 -}
 {- |
  [@AUTHOR@]	Dr. Alistair Ward
@@ -26,9 +26,9 @@
 
 	* <https://en.wikipedia.org/wiki/Factorial>.
 
-	* <http://mathworld.wolfram.com/Factorial.html>.
+	* <https://mathworld.wolfram.com/Factorial.html>.
 
-	* <http://www.luschny.de/math/factorial/FastFactorialFunctions.htm>.
+	* <https://www.luschny.de/math/factorial/FastFactorialFunctions.htm>.
 -}
 
 module Factory.Math.Implementations.Factorial(
@@ -89,7 +89,7 @@ primeFactors n	= takeWhile ((> 0) . snd) $ map (\prime -> (prime, primeMultiplic
 	* General purpose /prime-factorisation/ has /exponential time-complexity/,
 	so use /Legendre's Theorem/, which relates only to the /prime factors/ of /factorials/.
 
-	* <http://www.proofwiki.org/wiki/Multiplicity_of_Prime_Factor_in_Factorial>.
+	* <https://www.proofwiki.org/wiki/Multiplicity_of_Prime_Factor_in_Factorial>.
 -}
 primeMultiplicity :: Integral i
 	=> i	-- ^ A prime number.
@@ -97,7 +97,7 @@ primeMultiplicity :: Integral i
 	-> i	-- ^ The number of times the prime occurs in the factorial.
 primeMultiplicity prime	= sum . takeWhile (> 0) . tail . iterate (`div` prime)
 
--- | Returns the /rising factorial/; <http://mathworld.wolfram.com/RisingFactorial.html>
+-- | Returns the /rising factorial/; <https://mathworld.wolfram.com/RisingFactorial.html>
 risingFactorial :: (Integral i, Show i)
 	=> i	-- ^ The lower bound of the integer-range, whose product is returned.
 	-> i	-- ^ The number of integers in the range above.
@@ -106,7 +106,7 @@ risingFactorial _ 0	= 1
 risingFactorial 0 _	= 0
 risingFactorial x n	= Data.Interval.product' (recip 2) 64 $ Data.Interval.normalise (x, pred $ x + n)
 
--- | Returns the /falling factorial/; <http://mathworld.wolfram.com/FallingFactorial.html>
+-- | Returns the /falling factorial/; <https://mathworld.wolfram.com/FallingFactorial.html>
 fallingFactorial :: (Integral i, Show i)
 	=> i	-- ^ The upper bound of the integer-range, whose product is returned.
 	-> i	-- ^ The number of integers in the range beneath.

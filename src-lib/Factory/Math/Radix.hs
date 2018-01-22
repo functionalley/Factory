@@ -12,7 +12,7 @@
 	GNU General Public License for more details.
 
 	You should have received a copy of the GNU General Public License
-	along with this program.  If not, see <http://www.gnu.org/licenses/>.
+	along with this program.  If not, see <https://www.gnu.org/licenses/>.
 -}
 {- |
  [@AUTHOR@]	Dr. Alistair Ward
@@ -121,7 +121,7 @@ fromBase base s
 			_					-> error $ "Factory.Math.Radix.fromBase.fromDigit:\tunrecognised char " ++ show c
 
 {- |
-	* <http://mathworld.wolfram.com/DigitSum.html>.
+	* <https://mathworld.wolfram.com/DigitSum.html>.
 
 	* <https://en.wikipedia.org/wiki/Digit_sum>.
 -}

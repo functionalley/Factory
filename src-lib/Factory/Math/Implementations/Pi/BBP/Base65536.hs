@@ -12,12 +12,12 @@
 	GNU General Public License for more details.
 
 	You should have received a copy of the GNU General Public License
-	along with this program.  If not, see <http://www.gnu.org/licenses/>.
+	along with this program.  If not, see <https://www.gnu.org/licenses/>.
 -}
 {- |
  [@AUTHOR@]	Dr. Alistair Ward
 
- [@DESCRIPTION@]	Defines a specific base-@2^16@ /BBP/-formula; <http://mathworld.wolfram.com/PiFormulas.html>
+ [@DESCRIPTION@]	Defines a specific base-@2^16@ /BBP/-formula; <https://mathworld.wolfram.com/PiFormulas.html>
 
 -}
 

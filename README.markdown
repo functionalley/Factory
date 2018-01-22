@@ -10,7 +10,7 @@ It can be built and installed using [Cabal](https://www.haskell.org/cabal/users-
 
 ## Documentation
 
-More information about this library can be found at [Factory](http://functionalley.eu/Factory/factory.html).
+More information about this library can be found at [Factory](https://functionalley.eu/Factory/factory.html).
 
 ## License
 

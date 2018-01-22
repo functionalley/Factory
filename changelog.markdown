@@ -14,7 +14,7 @@
 * Renamed the function `Factory.Math.Precision.capPrecision` to `Factory.Math.Precision.simplify`.
 * Removed the module "**Factory.Test.Performance.Exponential**".
 * Removed the function `Factory.Math.Power.raise`, which was no more efficient than ghc's implementation of `(^)`.
-* Uploaded to [Hackage](http://hackage.haskell.org/package/factory).
+* Uploaded to [Hackage](https://hackage.haskell.org/package/factory).
 
 ## 0.1.0.0
 * Amended the *.cabal*-file to more correctly specify the dependency on package "**toolshed**".
@@ -43,7 +43,7 @@ and added the functions; `Factory.Data.Interval.precisely`, `Factory.Data.Interv
 * Added `Factory.Math.Primes.primorial`.
 * Altered `Factory.Math.Implementations.Primes.trialDivision` to take an integer defining the size of a `Factory.Data.PrimeWheel`, from which candidates are extracted.
 * Removed the command-line option `primesPerformanceGraph`, which appears to memoise data from previous tests.
-* Uploaded to [Hackage](http://hackage.haskell.org/packages/hackage.html).
+* Uploaded to [Hackage](https://hackage.haskell.org/packages/hackage.html).
 
 ## 0.1.0.3
 * Qualified `Factory.Math.Implementations.Primes.trialDivision` with pragma "**NOINLINE**", to block optimization which conflicts with rewrite-rule for `Factory.Math.Implementations.Primes.sieveOfEratosthenes` !

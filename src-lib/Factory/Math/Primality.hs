@@ -12,7 +12,7 @@
 	GNU General Public License for more details.
 
 	You should have received a copy of the GNU General Public License
-	along with this program.  If not, see <http://www.gnu.org/licenses/>.
+	along with this program.  If not, see <https://www.gnu.org/licenses/>.
 -}
 {- |
  [@AUTHOR@]	Dr. Alistair Ward
@@ -50,7 +50,7 @@ class Algorithmic algorithm	where
 
 	* <https://en.wikipedia.org/wiki/Coprime>.
 
-	* <http://mathworld.wolfram.com/RelativelyPrime.html>.
+	* <https://mathworld.wolfram.com/RelativelyPrime.html>.
 -}
 areCoprime :: Integral i => i -> i -> Bool
 areCoprime i	= (== 1) . gcd i
@@ -77,7 +77,7 @@ isFermatWitness i	= not . all isFermatPseudoPrime $ filter (areCoprime i) [2 .. 
 
 	* <https://en.wikipedia.org/wiki/Carmichael_number>.
 
-	* <http://mathworld.wolfram.com/CarmichaelNumber.html>.
+	* <https://mathworld.wolfram.com/CarmichaelNumber.html>.
 -}
 isCarmichaelNumber :: (
 	Algorithmic		algorithm,

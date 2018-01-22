@@ -12,7 +12,7 @@
 	GNU General Public License for more details.
 
 	You should have received a copy of the GNU General Public License
-	along with this program.  If not, see <http://www.gnu.org/licenses/>.
+	along with this program.  If not, see <https://www.gnu.org/licenses/>.
 -}
 {- |
  [@AUTHOR@]	Dr. Alistair Ward
@@ -21,7 +21,7 @@
 
 	* Implements several different prime-factorisation algorithms.
 
-	* <http://www.tug.org/texinfohtml/coreutils.html#factor-invocation>.
+	* <https://www.tug.org/texinfohtml/coreutils.html#factor-invocation>.
 -}
 
 module Factory.Math.Implementations.PrimeFactorisation(
@@ -76,7 +76,7 @@ factoriseByDixonsMethod	= undefined
 {- |
 	* <https://en.wikipedia.org/wiki/Fermat%27s_factorization_method>.
 
-	* <http://mathworld.wolfram.com/FermatsFactorizationMethod.html>.
+	* <https://mathworld.wolfram.com/FermatsFactorizationMethod.html>.
 
 	* <https://en.wikipedia.org/wiki/Congruence_of_squares>.
 
@@ -125,7 +125,7 @@ factoriseByFermatsMethod i
 
 {- |
 	* Decomposes the specified integer, into a product of /prime/-factors,
-	using <http://mathworld.wolfram.com/DirectSearchFactorization.html>, AKA <https://en.wikipedia.org/wiki/Trial_division>.
+	using <https://mathworld.wolfram.com/DirectSearchFactorization.html>, AKA <https://en.wikipedia.org/wiki/Trial_division>.
 
 	* This works best when the factors are small.
 -}

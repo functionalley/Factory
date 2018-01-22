@@ -12,7 +12,7 @@
 	GNU General Public License for more details.
 
 	You should have received a copy of the GNU General Public License
-	along with this program.  If not, see <http://www.gnu.org/licenses/>.
+	along with this program.  If not, see <https://www.gnu.org/licenses/>.
 -}
 {- |
  [@AUTHOR@]	Dr. Alistair Ward
@@ -21,8 +21,8 @@
 
 	* Implements the /Brent-Salamin/ (AKA /Gauss-Legendre/) algorithm;
 		<https://en.wikipedia.org/wiki/Gauss%E2%80%93Legendre_algorithm>,
-		<http://mathworld.wolfram.com/Brent-SalaminFormula.html>,
-		<http://www.pi314.net/eng/salamin.php>.
+		<https://mathworld.wolfram.com/Brent-SalaminFormula.html>,
+		<https://www.pi314.net/eng/salamin.php>.
 
 	* The precision of the result approximately doubles for each iteration.
 

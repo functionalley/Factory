@@ -13,7 +13,7 @@
 	GNU General Public License for more details.
 
 	You should have received a copy of the GNU General Public License
-	along with this program.  If not, see <http://www.gnu.org/licenses/>.
+	along with this program.  If not, see <https://www.gnu.org/licenses/>.
 -}
 {- |
  [@AUTHOR@]	Dr. Alistair Ward
@@ -24,7 +24,7 @@
 
 	* <https://en.wikipedia.org/wiki/Polynomial>.
 
-	* <http://mathworld.wolfram.com/Polynomial.html>.
+	* <https://mathworld.wolfram.com/Polynomial.html>.
 -}
 
 module Factory.Data.Polynomial(
@@ -167,7 +167,7 @@ instance (
 {-
 	Uses /Euclidian division/.
 	<https://en.wikipedia.org/wiki/Polynomial_long_division>.
-	<http://demonstrations.wolfram.com/PolynomialLongDivision/>.
+	<https://demonstrations.wolfram.com/PolynomialLongDivision/>.
 -}
 	_ `quotRem'` MkPolynomial []		= error "Factory.Data.Polynomial.quotRem':\tzero denominator."
 	polynomialN `quotRem'` polynomialD	= longDivide polynomialN	where
@@ -285,7 +285,7 @@ isPolynomial	= all Data.Monomial.isMonomial . getMonomialList
 {- |
 	* 'True' if the two specified /polynomials/ are /congruent/ in /modulo/-arithmetic.
 
-	* <http://planetmath.org/encyclopedia/PolynomialCongruence.html>.
+	* <https://planetmath.org/encyclopedia/PolynomialCongruence.html>.
 -}
 areCongruentModulo :: (Integral c, Num e, Ord e)
 	=> Polynomial c e	-- ^ LHS.
@@ -303,7 +303,7 @@ areCongruentModulo l r	modulus
 
 	* <https://en.wikipedia.org/wiki/Degree_of_a_polynomial>.
 
-	* <http://mathworld.wolfram.com/PolynomialDegree.html>.
+	* <https://mathworld.wolfram.com/PolynomialDegree.html>.
 -}
 getDegree :: Num e => Polynomial c e -> e
 getDegree (MkPolynomial [])	= -1	-- CAVEAT: debatable, but makes some operations more robust and consistent.

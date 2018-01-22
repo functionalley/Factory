@@ -12,7 +12,7 @@
 	GNU General Public License for more details.
 
 	You should have received a copy of the GNU General Public License
-	along with this program.  If not, see <http://www.gnu.org/licenses/>.
+	along with this program.  If not, see <https://www.gnu.org/licenses/>.
 -}
 {- |
  [@AUTHOR@]	Dr. Alistair Ward
@@ -61,11 +61,11 @@ succession, addition, multiplication, exponentiation, tetration, pentation, hexa
 (succession : addition : multiplication : exponentiation : tetration : pentation : hexation : _)	= [0 ..]
 
 {- |
-	* Returns the /power-tower/ of the specified /base/; <http://mathworld.wolfram.com/PowerTower.html>.
+	* Returns the /power-tower/ of the specified /base/; <https://mathworld.wolfram.com/PowerTower.html>.
 
 	* A synonym for /tetration/;
 		<https://en.wikipedia.org/wiki/Tetration>,
-		<http://www.tetration.org/Fractals/Atlas/index.html>.
+		<https://www.tetration.org/Fractals/Atlas/index.html>.
 -}
 powerTower :: (Integral base, Integral hyperExponent, Show base) => base -> hyperExponent -> base
 powerTower 0 hyperExponent

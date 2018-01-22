@@ -12,7 +12,7 @@
 	GNU General Public License for more details.
 
 	You should have received a copy of the GNU General Public License
-	along with this program.  If not, see <http://www.gnu.org/licenses/>.
+	along with this program.  If not, see <https://www.gnu.org/licenses/>.
 -}
 {- |
  [@AUTHOR@]	Dr. Alistair Ward
@@ -37,7 +37,7 @@ import qualified	Factory.Math.Power	as Math.Power
 
 	* <https://en.wikipedia.org/wiki/Square_number>.
 
-	* <http://mathworld.wolfram.com/SquareNumber.html>.
+	* <https://mathworld.wolfram.com/SquareNumber.html>.
 
 	* @(Math.Power.square . sqrt)@ is expensive, so the modulus of the operand is tested first, in an attempt to prove it isn't a /perfect square/.
 	The set of tests, and the valid moduli within each test, are ordered to maximize the rate of failure-detection.
@@ -71,7 +71,7 @@ maybeSquareNumber i
 
 	* <https://en.wikipedia.org/wiki/Perfect_power>.
 
-	* <http://mathworld.wolfram.com/PerfectPower.html>.
+	* <https://mathworld.wolfram.com/PerfectPower.html>.
 
 	* A generalisation of the concept of /perfect squares/, in which only the exponent '2' is significant.
 -}

@@ -12,7 +12,7 @@
 	GNU General Public License for more details.
 
 	You should have received a copy of the GNU General Public License
-	along with this program.  If not, see <http://www.gnu.org/licenses/>.
+	along with this program.  If not, see <https://www.gnu.org/licenses/>.
 -}
 {- |
  [@AUTHOR@]	Dr. Alistair Ward
@@ -23,7 +23,7 @@
 	the simple algorithms appropriate for that forum, leave a large margin for performance-improvement.
 	This module provides the interface for alternative algorithms.
 
-	* <http://mathworld.wolfram.com/Factorial.html>.
+	* <https://mathworld.wolfram.com/Factorial.html>.
 -}
 
 module Factory.Math.Factorial(

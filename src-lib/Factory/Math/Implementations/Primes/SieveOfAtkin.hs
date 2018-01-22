@@ -12,7 +12,7 @@
 	GNU General Public License for more details.
 
 	You should have received a copy of the GNU General Public License
-	along with this program.  If not, see <http://www.gnu.org/licenses/>.
+	along with this program.  If not, see <https://www.gnu.org/licenses/>.
 -}
 {- |
  [@AUTHOR@]	Dr. Alistair Ward
@@ -209,7 +209,7 @@ generateMultiplesOfSquareTo primeWheel prime max'	= takeWhile (<= max') . scanl 
 {- |
 	* Generates the constant /bounded/ list of /prime-numbers/.
 
-	* <http://cr.yp.to/papers/primesieves-19990826.pdf>
+	* <https://cr.yp.to/papers/primesieves-19990826.pdf>
 -}
 sieveOfAtkin :: (Control.DeepSeq.NFData i, Data.Array.IArray.Ix i, Integral i)
 	=> Data.PrimeWheel.NPrimes	-- ^ Other implementations effectively use a hard-coded value either /2/ or /3/, but /6/ seems better.

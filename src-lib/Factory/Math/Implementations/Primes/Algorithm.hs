@@ -12,7 +12,7 @@
 	GNU General Public License for more details.
 
 	You should have received a copy of the GNU General Public License
-	along with this program.  If not, see <http://www.gnu.org/licenses/>.
+	along with this program.  If not, see <https://www.gnu.org/licenses/>.
 -}
 {- |
  [@AUTHOR@]	Dr. Alistair Ward
@@ -21,11 +21,11 @@
 
 	* Generates the constant list of /prime-numbers/, by a variety of different algorithms.
 
-	* <http://www.haskell.org/haskellwiki/Prime_numbers>.
+	* <https://www.haskell.org/haskellwiki/Prime_numbers>.
 
-	* <http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.31.3936&rep=rep1&type=pdf>.
+	* <https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.31.3936&rep=rep1&type=pdf>.
 
-	* <http://larc.unt.edu/ian/pubs/sieve.pdf>.
+	* <https://larc.unt.edu/ian/pubs/sieve.pdf>.
 -}
 
 module Factory.Math.Implementations.Primes.Algorithm(
@@ -48,7 +48,7 @@ data Algorithm
 	= SieveOfAtkin Integer					-- ^ The /Sieve of Atkin/, optimised using a 'Data.PrimeWheel.PrimeWheel' of optimal size, for primes up to the specified maximum bound; <https://en.wikipedia.org/wiki/Sieve_of_Atkin>.
 	| SieveOfEratosthenes Data.PrimeWheel.NPrimes		-- ^ The /Sieve of Eratosthenes/ (<https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes>), optimised using a 'Data.PrimeWheel.PrimeWheel'.
 	| TrialDivision Data.PrimeWheel.NPrimes			-- ^ For each candidate, confirm indivisibility, by all /primes/ smaller than its /square-root/, optimised using a 'Data.PrimeWheel.PrimeWheel'.
-	| TurnersSieve						-- ^ For each /prime/, the infinite list of candidates greater than its /square/, is filtered for indivisibility; <http://www.haskell.org/haskellwiki/Prime_numbers#Turner.27s_sieve_-_Trial_division>.
+	| TurnersSieve						-- ^ For each /prime/, the infinite list of candidates greater than its /square/, is filtered for indivisibility; <https://www.haskell.org/haskellwiki/Prime_numbers#Turner.27s_sieve_-_Trial_division>.
 	| WheelSieve Int					-- ^ 'Data.Numbers.Primes.wheelSieve'.
 	deriving (Eq, Read, Show)
 

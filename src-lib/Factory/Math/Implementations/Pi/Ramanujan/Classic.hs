@@ -12,12 +12,12 @@
 	GNU General Public License for more details.
 
 	You should have received a copy of the GNU General Public License
-	along with this program.  If not, see <http://www.gnu.org/licenses/>.
+	along with this program.  If not, see <https://www.gnu.org/licenses/>.
 -}
 {- |
  [@AUTHOR@]	Dr. Alistair Ward
 
- [@DESCRIPTION@]	Defines the /Ramanujan/ series for /Pi/; <http://planetmath.org/encyclopedia/RamanujansFormulaForPi.html>.
+ [@DESCRIPTION@]	Defines the /Ramanujan/ series for /Pi/; <https://planetmath.org/encyclopedia/RamanujansFormulaForPi.html>.
 -}
 
 module Factory.Math.Implementations.Pi.Ramanujan.Classic(

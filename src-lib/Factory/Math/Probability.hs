@@ -12,7 +12,7 @@
 	GNU General Public License for more details.
 
 	You should have received a copy of the GNU General Public License
-	along with this program.  If not, see <http://www.gnu.org/licenses/>.
+	along with this program.  If not, see <https://www.gnu.org/licenses/>.
 -}
 {- |
  [@AUTHOR@]	Dr. Alistair Ward
@@ -157,7 +157,7 @@ boxMullerTransform cartesian
 	* Uses the supplied random-number generator,
 	to generate a conceptually infinite list, of /normally distributed/ random numbers, with standardized /mean/=0, and /variance/=1.
 
-	* <https://en.wikipedia.org/wiki/Normal_distribution>, <http://mathworld.wolfram.com/NormalDistribution.html>.
+	* <https://en.wikipedia.org/wiki/Normal_distribution>, <https://mathworld.wolfram.com/NormalDistribution.html>.
 -}
 generateStandardizedNormalDistribution :: (
 	RealFloat		f,

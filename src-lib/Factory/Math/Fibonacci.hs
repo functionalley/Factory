@@ -12,7 +12,7 @@
 	GNU General Public License for more details.
 
 	You should have received a copy of the GNU General Public License
-	along with this program.  If not, see <http://www.gnu.org/licenses/>.
+	along with this program.  If not, see <https://www.gnu.org/licenses/>.
 -}
 {- |
  [@AUTHOR@]	Dr. Alistair Ward
@@ -35,7 +35,7 @@ fibonacci	= 0 : scanl (+) 1 fibonacci
 {- |
 	* The subset of 'fibonacci', /indexed/ by a /prime/-number.
 
-	* <http://primes.utm.edu/glossary/page.php?sort=FibonacciPrime>.
+	* <https://primes.utm.edu/glossary/page.php?sort=FibonacciPrime>.
 -}
 primeIndexedFibonacci :: Integral i => [i]
 primeIndexedFibonacci	= map (fibonacci !!) Data.Numbers.Primes.primes

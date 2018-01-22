@@ -12,7 +12,7 @@
 	GNU General Public License for more details.
 
 	You should have received a copy of the GNU General Public License
-	along with this program.  If not, see <http://www.gnu.org/licenses/>.
+	along with this program.  If not, see <https://www.gnu.org/licenses/>.
 -}
 {- |
  [@AUTHOR@]	Dr. Alistair Ward
@@ -36,11 +36,11 @@ import qualified	Factory.Math.PrimeFactorisation	as Math.PrimeFactorisation
 	* The smallest positive integral power to which the specified integral base must be raised,
 	to be congruent with one, in the specified /modular/ arithmetic.
 
-	* Based on <http://rosettacode.org/wiki/Multiplicative_order#Haskell>.
+	* Based on <https://rosettacode.org/wiki/Multiplicative_order#Haskell>.
 
 	* <https://en.wikipedia.org/wiki/Multiplicative_order>.
 
-	* <http://mathworld.wolfram.com/MultiplicativeOrder.html>.
+	* <https://mathworld.wolfram.com/MultiplicativeOrder.html>.
 -}
 multiplicativeOrder :: (Math.PrimeFactorisation.Algorithmic primeFactorisationAlgorithm, Control.DeepSeq.NFData i, Integral i, Show i)
 	=> primeFactorisationAlgorithm

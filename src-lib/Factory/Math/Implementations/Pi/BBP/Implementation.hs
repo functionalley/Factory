@@ -12,14 +12,14 @@
 	GNU General Public License for more details.
 
 	You should have received a copy of the GNU General Public License
-	along with this program.  If not, see <http://www.gnu.org/licenses/>.
+	along with this program.  If not, see <https://www.gnu.org/licenses/>.
 -}
 {- |
  [@AUTHOR@]	Dr. Alistair Ward
 
  [@DESCRIPTION@]
 
-	* Implements a /Bailey-Borwein-Plouffe/ formula; <http://mathworld.wolfram.com/PiFormulas.html>
+	* Implements a /Bailey-Borwein-Plouffe/ formula; <https://mathworld.wolfram.com/PiFormulas.html>
 
 	* Surprisingly, because of the huge size of the 'Rational' quantities,
 	it is a /single/ call to @Factory.Math.Summation.sum'@, rather than the calculation of the many terms in the series, which is the performance-bottleneck.

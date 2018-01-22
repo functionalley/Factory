@@ -12,7 +12,7 @@
 	GNU General Public License for more details.
 
 	You should have received a copy of the GNU General Public License
-	along with this program.  If not, see <http://www.gnu.org/licenses/>.
+	along with this program.  If not, see <https://www.gnu.org/licenses/>.
 -}
 {- |
  [@AUTHOR@]	Dr. Alistair Ward
@@ -23,7 +23,7 @@
 
 	* <https://en.wikipedia.org/wiki/Primality_test>.
 
-	* <http://primes.utm.edu/index.html>
+	* <https://primes.utm.edu/index.html>
 
 	* CAVEAT: it doesn't determine the prime-factors of composite numbers, just that they exist.
 -}
@@ -92,17 +92,17 @@ instance Math.PrimeFactorisation.Algorithmic factorisationAlgorithm => Math.Prim
 	This mind-shift, allows one to introduce concepts like /modular/ arithmetic on polynomials,
 	which merely represent an operation on their coefficients and the pigeon-hole in which they're placed.
 
-	[@Manindra Agrawal, Neeraj Kayal and Nitin Saxena@]	<http://www.cse.iitk.ac.in/users/manindra/algebra/primality_v6.pdf>.
+	[@Manindra Agrawal, Neeraj Kayal and Nitin Saxena@]	<https://www.cse.iitk.ac.in/users/manindra/algebra/primality_v6.pdf>.
 
-	[@H. W. Lenstra, Jr. and Carl Pomerance@]		<http://www.math.dartmouth.edu/~carlp/PDF/complexity12.pdf>.
+	[@H. W. Lenstra, Jr. and Carl Pomerance@]		<https://www.math.dartmouth.edu/~carlp/PDF/complexity12.pdf>.
 
-	[@Salembier and Southerington@]				<http://ece.gmu.edu/courses/ECE746/project/F06_Project_resources/Salembier_Southerington_AKS.pdf>,
+	[@Salembier and Southerington@]				<https://ece.gmu.edu/courses/ECE746/project/F06_Project_resources/Salembier_Southerington_AKS.pdf>,
 
-	[@R. Crandall and J. Papadopoulos@]			<http://images.apple.com/acg/pdf/aks3.pdf>,
+	[@R. Crandall and J. Papadopoulos@]			<https://images.apple.com/acg/pdf/aks3.pdf>,
 
-	[@Andreas Klappenecker@]				<http://faculty.cs.tamu.edu/klappi/629/aks.ps>,
+	[@Andreas Klappenecker@]				<https://faculty.cs.tamu.edu/klappi/629/aks.ps>,
 
-	[@Vibhor Bhatt and G. K. Patra@]			<http://www.cmmacs.ernet.in/cmmacs/Publications/resch_rep/rrcm0307.pdf>,
+	[@Vibhor Bhatt and G. K. Patra@]			<https://www.cmmacs.ernet.in/cmmacs/Publications/resch_rep/rrcm0307.pdf>,
 -}
 isPrimeByAKS :: (
 	Control.DeepSeq.NFData			i,
@@ -145,7 +145,7 @@ isPrimeByAKS factorisationAlgorithm n	= and [
 {- |
 	* Uses the specified 'base' in an attempt to prove the /compositeness/ of an integer.
 
-	* This is the opposite of the /Miller Test/; <http://mathworld.wolfram.com/MillersPrimalityTest.html>.
+	* This is the opposite of the /Miller Test/; <https://mathworld.wolfram.com/MillersPrimalityTest.html>.
 
 	* If the result is 'True', then the candidate is /composite/; regrettably the converse isn't true.
 	Amongst the set of possible bases, over three-quarters are /witnesses/ to the compositeness of a /composite/ candidate,
@@ -173,15 +173,15 @@ witnessesCompositeness candidate oddRemainder nPowersOfTwo base	= all (
 
 	* The test becomes deterministic, for any candidate integer, when the number of tests reaches the limit defined by /Eric Bach/.
 
-	* A testing of smaller set of bases, is sufficient for candidates smaller than various thresholds; <http://primes.utm.edu/prove/prove2_3.html>.
+	* A testing of smaller set of bases, is sufficient for candidates smaller than various thresholds; <https://primes.utm.edu/prove/prove2_3.html>.
 
 	* <https://en.wikipedia.org/wiki/Miller-Rabin_primality_test>.
 
-	* <http://mathworld.wolfram.com/Rabin-MillerStrongPseudoprimeTest.html>
+	* <https://mathworld.wolfram.com/Rabin-MillerStrongPseudoprimeTest.html>
 
-	* <http://mathworld.wolfram.com/StrongPseudoprime.html>.
+	* <https://mathworld.wolfram.com/StrongPseudoprime.html>.
 
-	* <http://oeis.org/A014233>, <http://oeis.org/A006945>.
+	* <https://oeis.org/A014233>, <https://oeis.org/A006945>.
 -}
 isPrimeByMillerRabin :: (Integral i, Show i) => i -> Bool
 isPrimeByMillerRabin primeCandidate	= not $ witnessesCompositeness primeCandidate (

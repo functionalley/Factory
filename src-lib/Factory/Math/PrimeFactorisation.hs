@@ -12,7 +12,7 @@
 	GNU General Public License for more details.
 
 	You should have received a copy of the GNU General Public License
-	along with this program.  If not, see <http://www.gnu.org/licenses/>.
+	along with this program.  If not, see <https://www.gnu.org/licenses/>.
 -}
 {- |
  [@AUTHOR@]	Dr. Alistair Ward
@@ -76,7 +76,7 @@ maxBoundPrimeFactor	= floor . (sqrt :: Double -> Double) . fromIntegral
 
 	* <https://en.wikipedia.org/wiki/Smooth_number>.
 
-	* <http://mathworld.wolfram.com/SmoothNumber.html>.
+	* <https://mathworld.wolfram.com/SmoothNumber.html>.
 -}
 smoothness :: (Algorithmic algorithm, Control.DeepSeq.NFData base, Integral base) => algorithm -> [base]
 smoothness algorithm	= 0 : map (Data.Exponential.getBase . last . primeFactors algorithm) [1 ..]
@@ -113,7 +113,7 @@ primePowerTotient (base, exponent')	= pred base * base ^ pred exponent'
 
 	* <https://en.wikipedia.org/wiki/Euler%27s_totient_function>.
 
-	* <http://mathworld.wolfram.com/TotientFunction.html>.
+	* <https://mathworld.wolfram.com/TotientFunction.html>.
 
 	* AKA /EulerPhi/.
 -}
@@ -131,11 +131,11 @@ eulersTotient algorithm i
 {- |
 	* A constant, zero-indexed, conceptually infinite, list of the /small omega/ numbers (i.e. the number of /distinct/ prime factors); cf. /big omega/.
 
-	* <http://oeis.org/wiki/Omega%28n%29,_number_of_distinct_primes_dividing_n>.
+	* <https://oeis.org/wiki/Omega%28n%29,_number_of_distinct_primes_dividing_n>.
 
-	* <http://mathworld.wolfram.com/DistinctPrimeFactors.html>
+	* <https://mathworld.wolfram.com/DistinctPrimeFactors.html>
 
-	* <http://planetmath.org/encyclopedia/NumberOfDistinctPrimeFactorsFunction.html>.
+	* <https://planetmath.org/encyclopedia/NumberOfDistinctPrimeFactorsFunction.html>.
 -}
 omega :: (Algorithmic algorithm, Integral i) => algorithm -> [i]
 omega algorithm	= map (fromIntegral . length . primeFactors algorithm) [0 :: Integer ..]

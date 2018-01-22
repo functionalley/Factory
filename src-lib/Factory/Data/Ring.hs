@@ -12,7 +12,7 @@
 	GNU General Public License for more details.
 
 	You should have received a copy of the GNU General Public License
-	along with this program.  If not, see <http://www.gnu.org/licenses/>.
+	along with this program.  If not, see <https://www.gnu.org/licenses/>.
 -}
 {- |
  [@AUTHOR@]	Dr. Alistair Ward
@@ -23,7 +23,7 @@
 
 	* <https://en.wikipedia.org/wiki/Ring_%28mathematics%29>.
 
-	* <http://www.numericana.com/answer/rings.htm>.
+	* <https://www.numericana.com/answer/rings.htm>.
 -}
 
 module Factory.Data.Ring(
@@ -57,7 +57,7 @@ class Ring r	where
 	(=+=)			:: r -> r -> r	-- ^ Addition of two members; required to be /commutative/; <https://en.wikipedia.org/wiki/Commutativity>.
 	(=*=)			:: r -> r -> r	-- ^ Multiplication of two members.
 	additiveInverse		:: r -> r	-- ^ The operand required to yield /zero/ under addition; <https://en.wikipedia.org/wiki/Additive_inverse>.
-	multiplicativeIdentity	:: r		-- ^ The /identity/-member under multiplication; <http://mathworld.wolfram.com/MultiplicativeIdentity.html>.
+	multiplicativeIdentity	:: r		-- ^ The /identity/-member under multiplication; <https://mathworld.wolfram.com/MultiplicativeIdentity.html>.
 	additiveIdentity	:: r		-- ^ The /identity/-member under addition (AKA /zero/); <https://en.wikipedia.org/wiki/Additive_identity>.
 
 	(=-=) :: r -> r -> r			-- ^ Subtract the two specified /ring/-members.
