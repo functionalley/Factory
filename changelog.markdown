@@ -164,6 +164,7 @@ and added the functions; `Factory.Data.Interval.precisely`, `Factory.Data.Interv
 
 ## 0.3.1.4
 
-## 0.3.1.5
+## 0.3.2.0
 * Added **Paths_factory** to **Other-modules** section of cabal file.
-* Accounted for **Semigroup** becomming a superclass of **Monoid** in **ghc-8.4**.
+* Accounted for **Semigroup** becoming a superclass of **Monoid** in **ghc-8.4**.
+
