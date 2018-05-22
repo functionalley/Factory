@@ -1,3 +1,4 @@
+{-# LANGUAGE CPP #-}
 {-
 	Copyright (C) 2011 Dr. Alistair Ward
 
@@ -41,7 +42,6 @@ module Factory.Data.Ring(
 ) where
 
 import qualified	Data.Monoid
-import qualified	Data.Semigroup
 import qualified	Factory.Math.DivideAndConquer	as Math.DivideAndConquer
 
 infixl 6 =+=	-- Same as (+).
@@ -95,12 +95,16 @@ newtype Product p	= MkProduct {
 } deriving (Read, Show)
 
 -- Added for 'ghc-8.4', when 'Semigroup' became a superclass of 'Monoid'.
-instance Ring r => Data.Semigroup.Semigroup (Product r)	where
-	MkProduct l <> MkProduct r	= MkProduct $ l =*= r
+#if MIN_VERSION_base(4,11,0)
+instance Ring r => Semigroup (Product r)	where
+	MkProduct x <> MkProduct y	= MkProduct $ x =*= y
+#endif
 
 instance Ring r => Data.Monoid.Monoid (Product r)	where
 	mempty					= MkProduct multiplicativeIdentity
+#if !MIN_VERSION_base(4,11,0)
 	MkProduct x `mappend` MkProduct y	= MkProduct $ x =*= y
+#endif
 
 -- | Returns the /product/ of the list of /ring/-members.
 product' :: Ring r => Math.DivideAndConquer.BisectionRatio -> Math.DivideAndConquer.MinLength -> [r] -> r
@@ -113,12 +117,16 @@ newtype Sum s	= MkSum {
 } deriving (Read, Show)
 
 -- Added for 'ghc-8.4', when 'Semigroup' became a superclass of 'Monoid'.
-instance Ring r => Data.Semigroup.Semigroup (Sum r)	where
-	MkSum l <> MkSum r	= MkSum $ l =+= r
+#if MIN_VERSION_base(4,11,0)
+instance Ring r => Semigroup (Sum r)	where
+	MkSum x <> MkSum y	= MkSum $ x =+= y
+#endif
 
 instance Ring r => Data.Monoid.Monoid (Sum r)	where
 	mempty				= MkSum additiveIdentity
+#if !MIN_VERSION_base(4,11,0)
 	MkSum x `mappend` MkSum y	= MkSum $ x =+= y
+#endif
 
 -- | Returns the /sum/ of the list of /ring/-members.
 sum' :: Ring r => Math.DivideAndConquer.BisectionRatio -> Math.DivideAndConquer.MinLength -> [r] -> r
