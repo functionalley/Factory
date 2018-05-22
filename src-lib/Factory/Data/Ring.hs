@@ -41,6 +41,7 @@ module Factory.Data.Ring(
 ) where
 
 import qualified	Data.Monoid
+import qualified	Data.Semigroup
 import qualified	Factory.Math.DivideAndConquer	as Math.DivideAndConquer
 
 infixl 6 =+=	-- Same as (+).
@@ -93,6 +94,10 @@ newtype Product p	= MkProduct {
 	getProduct :: p	-- ^ Access the polymorphic payload.
 } deriving (Read, Show)
 
+-- Added for 'ghc-8.4', when 'Semigroup' became a superclass of 'Monoid'.
+instance Ring r => Data.Semigroup.Semigroup (Product r)	where
+	MkProduct l <> MkProduct r	= MkProduct $ l =*= r
+
 instance Ring r => Data.Monoid.Monoid (Product r)	where
 	mempty					= MkProduct multiplicativeIdentity
 	MkProduct x `mappend` MkProduct y	= MkProduct $ x =*= y
@@ -106,6 +111,10 @@ product' ratio minLength	= getProduct . Math.DivideAndConquer.divideAndConquer r
 newtype Sum s	= MkSum {
 	getSum :: s	-- ^ Access the polymorphic payload.
 } deriving (Read, Show)
+
+-- Added for 'ghc-8.4', when 'Semigroup' became a superclass of 'Monoid'.
+instance Ring r => Data.Semigroup.Semigroup (Sum r)	where
+	MkSum l <> MkSum r	= MkSum $ l =+= r
 
 instance Ring r => Data.Monoid.Monoid (Sum r)	where
 	mempty				= MkSum additiveIdentity
