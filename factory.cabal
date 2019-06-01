@@ -135,7 +135,7 @@ Library
             GHC-prof-options:	-fprof-auto -fprof-cafs
     
             if impl(ghc >= 8.0)
-                GHC-options:	-j -Wredundant-constraints
+                GHC-options:	-Wredundant-constraints
         else
             GHC-prof-options:	-auto-all -caf-all
 
@@ -184,7 +184,7 @@ Executable factory
             GHC-options:	-fllvm
 
         if impl(ghc >= 8.0)
-            GHC-options:	-j -Wredundant-constraints
+            GHC-options:	-Wredundant-constraints
 
 Test-Suite test
     Default-language:	Haskell2010
@@ -228,5 +228,5 @@ Test-Suite test
     GHC-options:	-rtsopts "-with-rtsopts=-k100M"
 
     if impl(ghc >= 8.0)
-        GHC-options:	-j -Wredundant-constraints
+        GHC-options:	-Wredundant-constraints
 
