@@ -13,7 +13,7 @@ It can be built and installed using [Cabal](https://www.haskell.org/cabal/users-
 
 ## Documentation
 
-More information about this library can be found at [Factory](https://functionalley.eu/Factory/factory.html).
+More information about this library can be found at [Factory](https://functionalley.com/Factory/factory.html).
 
 ## License
 
@@ -21,7 +21,7 @@ For information on copying and distributing this package, see the file "**LICENS
 
 ## Bug-reporting
 
-Bug-reports should be emailed to <factory@functionalley.eu>.
+Bug-reports should be emailed to <factory@functionalley.com>.
 
 ## Testing
 

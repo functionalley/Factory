@@ -1,4 +1,4 @@
-# 2011-03-01 Dr. Alistair Ward <factory@functionalley.eu>
+# 2011-03-01 Dr. Alistair Ward <factory@functionalley.com>
 
 ## 0.0.0.1
 * First version of the package.
@@ -168,3 +168,5 @@ and added the functions; `Factory.Data.Interval.precisely`, `Factory.Data.Interv
 * Added **Paths_factory** to **Other-modules** section of cabal file.
 * Accounted for **Semigroup** becoming a superclass of **Monoid** in **ghc-8.4**.
 
+## 0.3.2.1
+Changed references to author's domain-name.
