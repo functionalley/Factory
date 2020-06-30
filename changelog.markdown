@@ -170,3 +170,6 @@ and added the functions; `Factory.Data.Interval.precisely`, `Factory.Data.Interv
 
 ## 0.3.2.1
 Changed references to author's domain-name.
+
+## 0.3.2.2
+Updated list of test-compilers.
