@@ -101,7 +101,9 @@ type Testable	= Category -> Category -> Math.Precision.DecimalDigits -> Test.Qui
 
 -- | The constant test-results for this data-type.
 results :: IO [Test.QuickCheck.Result]
-results	= mapM Test.QuickCheck.quickCheckResult [prop_consistency]	where
+results	= mapM (
+	Test.QuickCheck.quickCheckWithResult Test.QuickCheck.stdArgs { Test.QuickCheck.maxSuccess = 256 }
+ ) [prop_consistency]	where
 	prop_consistency :: Testable
 	prop_consistency l r decimalDigits	= l /= r	==> Test.QuickCheck.label "prop_consistency" $ Math.Pi.openI l decimalDigits' - Math.Pi.openI r decimalDigits' <= 1 {-rounding error-}	where
 		decimalDigits'	= succ $ decimalDigits `mod` 250
