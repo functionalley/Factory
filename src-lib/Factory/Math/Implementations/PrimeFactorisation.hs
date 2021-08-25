@@ -1,3 +1,4 @@
+{-# LANGUAGE LambdaCase #-}
 {-
 	Copyright (C) 2011-2017 Dr. Alistair Ward
 
@@ -64,7 +65,7 @@ instance Data.Default.Default Algorithm	where
 	def	= TrialDivision
 
 instance Math.PrimeFactorisation.Algorithmic Algorithm	where
-	primeFactors algorithm	= case algorithm of
+	primeFactors = \case
 		DixonsMethod	-> factoriseByDixonsMethod
 		FermatsMethod	-> Data.PrimeFactors.reduce . factoriseByFermatsMethod
 		TrialDivision	-> factoriseByTrialDivision
