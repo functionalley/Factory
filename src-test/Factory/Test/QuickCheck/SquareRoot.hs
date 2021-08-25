@@ -60,7 +60,7 @@ results	= sequence [
 		operand' :: Rational
 		operand'	= abs operand
 
-	prop_factorable (algorithm, decimalDigits, operand)	= Test.QuickCheck.label "prop_factorable" . (<= 6) . (
+	prop_factorable (algorithm, decimalDigits, operand)	= Test.QuickCheck.label "prop_factorable" . (<= 9) . (
 		* 10 ^ requiredDecimalDigits	-- Promote the relative error.
 	 ) . abs $ 1 - (
 		Math.SquareRoot.squareRoot algorithm requiredDecimalDigits (

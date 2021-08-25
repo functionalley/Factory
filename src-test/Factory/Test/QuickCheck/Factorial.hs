@@ -60,9 +60,9 @@ results	= sequence [
 
 	prop_symmetry x n	= Test.QuickCheck.label "prop_symmetry" $ Math.Implementations.Factorial.risingFactorial x n == Math.Implementations.Factorial.fallingFactorial (pred $ x + n) n
 
-	prop_x0 x _		= Test.QuickCheck.label "prop_x0" $ all (== 1) $ map ($ 0) [Math.Implementations.Factorial.risingFactorial x, Math.Implementations.Factorial.fallingFactorial x]
+	prop_x0 x _		= Test.QuickCheck.label "prop_x0" $ all ((== 1) . ($ 0)) [Math.Implementations.Factorial.risingFactorial x, Math.Implementations.Factorial.fallingFactorial x]
 
-	prop_0n _ n		= Test.QuickCheck.label "prop_0n" $ all (== if n == 0 then 1 else 0) $ map ($ n) [Math.Implementations.Factorial.risingFactorial 0, Math.Implementations.Factorial.fallingFactorial 0]
+	prop_0n _ n		= Test.QuickCheck.label "prop_0n" $ all ((== if n == 0 then 1 else 0) . ($ n)) [Math.Implementations.Factorial.risingFactorial 0, Math.Implementations.Factorial.fallingFactorial 0]
 
 	prop_ratio :: Math.Implementations.Factorial.Algorithm -> Integer -> Integer -> Test.QuickCheck.Property
 	prop_ratio algorithm i j	= Test.QuickCheck.label "prop_ratio" $ n !/! d == Math.Factorial.factorial algorithm n % Math.Factorial.factorial algorithm d	where

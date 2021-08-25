@@ -27,7 +27,7 @@ module Factory.Test.QuickCheck.Statistics(
 
 import qualified	Data.Array.IArray
 import qualified	Data.List
-import qualified	Data.Map
+import qualified	Data.Map.Strict
 import qualified	Data.Numbers.Primes
 import qualified	Data.Set
 import qualified	Factory.Math.Implementations.Factorial	as Math.Implementations.Factorial
@@ -99,7 +99,7 @@ results	= sequence [
 	prop_varianceOfArray l		= not (null l)	==> Test.QuickCheck.label "prop_varianceOfArray" $ Math.Statistics.getVariance (
 		Data.Array.IArray.array (1, length l) $ zip [1 ..] l :: Data.Array.IArray.Array Int Integer
 	 ) == (Math.Statistics.getVariance l :: Rational)
-	prop_varianceOfMap l		= not (null l)	==> Test.QuickCheck.label "prop_varianceOfMap" $ Math.Statistics.getVariance (Data.Map.fromList $ zip [0 :: Int ..] l) == (Math.Statistics.getVariance l :: Rational)
+	prop_varianceOfMap l		= not (null l)	==> Test.QuickCheck.label "prop_varianceOfMap" $ Math.Statistics.getVariance (Data.Map.Strict.fromList $ zip [0 :: Int ..] l) == (Math.Statistics.getVariance l :: Rational)
 	prop_meanOfSet l		= not (null l')	==> Test.QuickCheck.label "prop_meanOfSet" $ Math.Statistics.getMean (Data.Set.fromList l') == (Math.Statistics.getMean l' :: Rational)	where
 		l'	= Data.List.nub l
 

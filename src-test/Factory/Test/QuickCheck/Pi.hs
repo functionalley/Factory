@@ -105,6 +105,6 @@ results	= mapM (
 	Test.QuickCheck.quickCheckWithResult Test.QuickCheck.stdArgs { Test.QuickCheck.maxSuccess = 256 }
  ) [prop_consistency]	where
 	prop_consistency :: Testable
-	prop_consistency l r decimalDigits	= l /= r	==> Test.QuickCheck.label "prop_consistency" $ Math.Pi.openI l decimalDigits' - Math.Pi.openI r decimalDigits' <= 1 {-rounding error-}	where
+	prop_consistency l r decimalDigits	= l /= r	==> Test.QuickCheck.label "prop_consistency" $ Math.Pi.openI l decimalDigits' - Math.Pi.openI r decimalDigits' <= 2 {-rounding error-}	where
 		decimalDigits'	= succ $ decimalDigits `mod` 250
 

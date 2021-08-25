@@ -60,7 +60,7 @@ results	= let
 		Math.Statistics.getMean &&& pred . Math.Statistics.getStandardDeviation	-- Both of which, having been normalised, should be zero.
 	 ) . (
 		normalise distribution :: [Double] -> [Double]
-	 ) . take 10000 $ Math.Probability.generatePopulation distribution randomGen	where
+	 ) . take 100000 $ Math.Probability.generatePopulation distribution randomGen	where
 		maxParameter	= log . fromInteger $ Math.Probability.maxPreciseInteger (undefined :: Double)
 		location'
 			| location >= 0	= maxParameter `min` location
@@ -134,7 +134,7 @@ results	= let
 		Math.Statistics.getMean &&& pred . Math.Statistics.getStandardDeviation	-- Both of which, having been normalised, should be zero.
 	 ) . (
 		normalise distribution :: [Double] -> [Double]
-	 ) . take 10000 $ Math.Probability.generatePopulation distribution randomGen	where
+	 ) . take 100000 $ Math.Probability.generatePopulation distribution randomGen	where
 		probability'	= recip . succ $ abs probability	-- Semi-closed unit-interval (0, 1].
 		distribution	= Math.Probability.ShiftedGeometricDistribution probability'
 
