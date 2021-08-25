@@ -27,7 +27,7 @@
 module Main(main) where
 
 import qualified	Data.Default
-import qualified	Data.Map
+import qualified	Data.Map.Strict
 import qualified	Data.List
 import qualified	Data.Version
 import qualified	Factory.Math.Hyperoperation			as Math.Hyperoperation
@@ -183,7 +183,7 @@ main	= do
 				distribution :: Math.Probability.DiscreteDistribution Double
 				(n, distribution)	= readCommandArg arg
 			 in do
-				System.Random.getStdGen >>= print . Data.Map.toList . Data.Map.map ((/ (fromIntegral n :: Double)) . fromInteger) . Data.Map.fromListWith (+) . (`zip` repeat 1) . (take n :: [Integer] -> [Integer]) . Math.Probability.generateDiscretePopulation distribution
+				System.Random.getStdGen >>= print . Data.Map.Strict.toList . Data.Map.Strict.map ((/ (fromIntegral n :: Double)) . fromInteger) . Data.Map.Strict.fromListWith (+) . (`zip` repeat 1) . (take n :: [Integer] -> [Integer]) . Math.Probability.generateDiscretePopulation distribution
 
 				System.Exit.exitSuccess
 
