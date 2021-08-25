@@ -173,3 +173,6 @@ Changed references to author's domain-name.
 
 ## 0.3.2.2
 Updated list of test-compilers.
+
+## 0.3.2.3
+Attempt to make tests more reliable.

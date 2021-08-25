@@ -1,6 +1,6 @@
 # **Factory**
 
-[![Build Status](https://travis-ci.org/functionalley/Factory.svg?branch=master)](https://travis-ci.org/functionalley/Factory)
+[![Build Status](https://travis-ci.com/functionalley/Factory.svg?branch=master)](https://travis-ci.com/functionalley/Factory)
 [![Hackage](https://img.shields.io/hackage/v/factory.svg)](https://hackage.haskell.org/package/factory)
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![Haskell](https://b.repl.ca/v1/language-haskell-yellow.png)](https://haskell.org)
@@ -9,7 +9,10 @@ This is "**Factory**", a library of number-theory functions.
 
 ## Installation
 
-It can be built and installed using [Cabal](https://www.haskell.org/cabal/users-guide/installing-packages.html).
+It can be built and installed using:
+
+* [Cabal](https://www.haskell.org/cabal/),
+* [The Haskell Tool Stack](https://docs.haskellstack.org/en/stable/README/).
 
 ## Documentation
 
@@ -27,9 +30,9 @@ Bug-reports should be emailed to <factory@functionalley.com>.
 
 The test-suite can be run using:
 
-    cabal configure --enable-tests;
-    cabal build;
-    cabal test --show-details=always;
+* "**cabal configure --enable-tests && cabal build && cabal test --show-details=always**",
+* "**stack test**",
+* "**make test**" issued from the product's installation-directory.
 
 ## Author
 
