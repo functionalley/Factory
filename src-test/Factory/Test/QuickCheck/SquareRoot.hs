@@ -55,7 +55,7 @@ results	= sequence [
 	prop_accuracy, prop_factorable, prop_perfectSquare :: (Math.Implementations.SquareRoot.Algorithm, Math.Precision.DecimalDigits, Rational) -> Test.QuickCheck.Property
 	prop_accuracy (algorithm, decimalDigits, operand)	= Test.QuickCheck.label "prop_accuracy" . (>= requiredDecimalDigits) . Math.SquareRoot.getAccuracy operand' $ Math.SquareRoot.squareRoot algorithm requiredDecimalDigits operand'	where
 		requiredDecimalDigits :: Math.Precision.DecimalDigits
-		requiredDecimalDigits	= succ $ decimalDigits `mod` 1024
+		requiredDecimalDigits	= succ $ decimalDigits `mod` 512
 
 		operand' :: Rational
 		operand'	= abs operand
