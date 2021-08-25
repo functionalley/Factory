@@ -110,10 +110,12 @@ isPrimeByAKS :: (
 	Math.PrimeFactorisation.Algorithmic	factorisationAlgorithm,
 	Show					i
  ) => factorisationAlgorithm -> i -> Bool
-isPrimeByAKS factorisationAlgorithm n	= and [
-	not $ Math.PerfectPower.isPerfectPower n,	-- Step 1.
-	Math.Primality.areCoprime n `all` Data.List.delete n [2 .. r],	-- Step 3.
-	and $ Control.Parallel.Strategies.parMap Control.Parallel.Strategies.rdeepseq	{-Benefits from '+RTS -H100M', which reduces garbage-collections-} (
+isPrimeByAKS factorisationAlgorithm n	= not (
+	Math.PerfectPower.isPerfectPower n	-- Step 1.
+ ) && (
+	Math.Primality.areCoprime n `all` Data.List.delete n [2 .. r]	-- Step 3.
+ ) && and (
+	Control.Parallel.Strategies.parMap Control.Parallel.Strategies.rdeepseq	{-Benefits from '+RTS -H100M', which reduces garbage-collections-} (
 		\a	-> let
 --			lhs, rhs :: Data.Polynomial.Polynomial i i
 			lhs	= Data.Polynomial.raiseModulo (Data.Polynomial.mkLinear 1 a) n {-power-} n {-modulus-}
@@ -128,7 +130,7 @@ isPrimeByAKS factorisationAlgorithm n	= and [
 	) [
 		1 .. floor . (* lg) . sqrt $ fromIntegral r
 	] -- Step 4; (x + a)^n ~ x^n + a mod (x^r - 1, n).
- ] where
+ ) where
 	lg :: Double
 	lg	= logBase 2 $ fromIntegral n
 

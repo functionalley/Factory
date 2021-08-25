@@ -146,5 +146,9 @@ omega algorithm	= map (fromIntegral . length . primeFactors algorithm) [0 :: Int
 	* <https://en.wikipedia.org/wiki/Square-free_integer>.
 -}
 squareFree :: (Algorithmic algorithm, Control.DeepSeq.NFData i, Integral i) => algorithm -> [i]
-squareFree algorithm	= filter (all (== 1) . map Data.Exponential.getExponent . primeFactors algorithm) [1 ..]
+squareFree algorithm	= filter (
+	all (
+		(== 1) . Data.Exponential.getExponent
+	) . primeFactors algorithm
+ ) [1 ..]
 
